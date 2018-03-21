@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using EntityFramework.DynamicFilters;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using TrackerEnabledDbContext.Identity;
 
 namespace ERPv1.Models
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : TrackerIdentityContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection")
         {
         }
         public DbSet<Kunde> Kunden { get; set; }
@@ -21,6 +24,46 @@ namespace ERPv1.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        public override int SaveChanges()
+        {
+            ApplicationUser au = null;
+            var entries = ChangeTracker.Entries().Where(c => c.Entity is BaseClass && c.State == EntityState.Added 
+                                                             || c.State == EntityState.Deleted || c.State == EntityState.Modified);
+            var currentUserId = HttpContext.Current?.User.Identity.GetUserId();
+            if (currentUserId != null)
+            {
+                au = this.Users.Find(HttpContext.Current?.User.Identity.GetUserId());
+            }
+
+           // if (au == null) base.SaveChanges();
+
+            foreach (var e in entries)
+            {
+                if (e.State == EntityState.Added)
+                {
+                    ((BaseClass) e.Entity).CreatedBy = au;
+                    ((BaseClass) e.Entity).CreatedOn = DateTime.Now;
+                }
+                if (e.State == EntityState.Deleted)
+                {
+                    ((BaseClass) e.Entity).DeletedOn = DateTime.Now;
+                    ((BaseClass) e.Entity).DeletedBy = au;
+                    e.State = EntityState.Modified;
+                }
+
+
+                ((BaseClass) e.Entity).ChangedBy = au;
+                ((BaseClass) e.Entity).ChangedOn = DateTime.Now;
+            }
+            return base.SaveChanges();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Filter("Deleted", (BaseClass c) => !c.DeletedOn.HasValue);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

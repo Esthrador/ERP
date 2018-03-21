@@ -10,7 +10,7 @@ namespace ERPv1.Models
 {
     [Table("Kunden")]
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class Kunde
+    public class Kunde : BaseClass
     {
         [Key]
         public Guid ID { get;set; }
@@ -23,6 +23,5 @@ namespace ERPv1.Models
         public string Addresse { get; set; }
         public string Tel { get; set; }
         public string KurzBezeichnung { get; set; }
-        public bool Gelöscht { get; set; }
     }
 }

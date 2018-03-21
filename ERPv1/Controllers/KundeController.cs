@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ERPv1.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ERPv1.Controllers
 {
@@ -48,6 +49,7 @@ namespace ERPv1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Vorname,Nachname,IsFirma,Email,PLZ,Ort,Addresse,Tel,KurzBezeichnung,Gelöscht")] Kunde kunde)
         {
+            var usr = db.Users.Find(User.Identity.GetUserId());
             if (ModelState.IsValid)
             {
                 kunde.ID = Guid.NewGuid();
@@ -111,7 +113,8 @@ namespace ERPv1.Controllers
         public ActionResult DeleteConfirmed(Guid id)
         {
             Kunde kunde = db.Kunden.Find(id);
-            db.Kunden.Remove(kunde);
+            kunde.DeletedOn = DateTime.Now;
+            kunde.DeletedBy = db.Users.Find(User.Identity.GetUserId());
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -18,6 +18,8 @@ namespace ERPv1.Models
         public string KurzBezeichnung { get; set; }
         public int Anzahl { get; set; }
         public DateTime? ChangedOn { get;set; }
+        public virtual ApplicationUser ChangedBy { get; set; }
+        public virtual ApplicationUser CreatedBy { get;set; }
         public DateTime CreatedOn { get;set; }
         public decimal Preis { get; set; }
         public int SteuerKlasse { get; set; }
