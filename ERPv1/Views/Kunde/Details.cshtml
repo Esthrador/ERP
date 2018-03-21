@@ -1,0 +1,99 @@
+﻿@model ERPv1.Models.Kunde
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kunde</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vorname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vorname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nachname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nachname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsFirma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsFirma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PLZ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PLZ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ort)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ort)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Addresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Addresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KurzBezeichnung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KurzBezeichnung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gelöscht)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gelöscht)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

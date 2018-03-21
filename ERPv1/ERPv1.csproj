@@ -168,8 +168,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuftragsController.cs" />
+    <Compile Include="Controllers\AuftragStatusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KundeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\WarenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,6 +256,26 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\AuftragStatus\Create.cshtml" />
+    <Content Include="Views\AuftragStatus\Delete.cshtml" />
+    <Content Include="Views\AuftragStatus\Details.cshtml" />
+    <Content Include="Views\AuftragStatus\Edit.cshtml" />
+    <Content Include="Views\AuftragStatus\Index.cshtml" />
+    <Content Include="Views\Kunde\Create.cshtml" />
+    <Content Include="Views\Kunde\Delete.cshtml" />
+    <Content Include="Views\Kunde\Details.cshtml" />
+    <Content Include="Views\Kunde\Edit.cshtml" />
+    <Content Include="Views\Kunde\Index.cshtml" />
+    <Content Include="Views\Auftrags\Create.cshtml" />
+    <Content Include="Views\Auftrags\Delete.cshtml" />
+    <Content Include="Views\Auftrags\Details.cshtml" />
+    <Content Include="Views\Auftrags\Edit.cshtml" />
+    <Content Include="Views\Auftrags\Index.cshtml" />
+    <Content Include="Views\Waren\Create.cshtml" />
+    <Content Include="Views\Waren\Delete.cshtml" />
+    <Content Include="Views\Waren\Details.cshtml" />
+    <Content Include="Views\Waren\Edit.cshtml" />
+    <Content Include="Views\Waren\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

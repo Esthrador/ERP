@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ERPv1.Models.Ware>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Bezeichnung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KurzBezeichnung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Anzahl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChangedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SteuerKlasse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EinzelGewicht)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bezeichnung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KurzBezeichnung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Anzahl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChangedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Preis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SteuerKlasse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EinzelGewicht)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
