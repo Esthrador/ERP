@@ -17,7 +17,7 @@
     <AssemblyName>ERPv1</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -224,15 +224,24 @@
     <Compile Include="Migrations\201803211229383_TestKram.Designer.cs">
       <DependentUpon>201803211229383_TestKram.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803221011268_AuftragWarenAdditional.cs" />
+    <Compile Include="Migrations\201803221011268_AuftragWarenAdditional.Designer.cs">
+      <DependentUpon>201803221011268_AuftragWarenAdditional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201803221016319_AppUserWithName.cs" />
     <Compile Include="Migrations\201803221016319_AppUserWithName.Designer.cs">
       <DependentUpon>201803221016319_AppUserWithName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221242487_MergeMigration1.cs" />
+    <Compile Include="Migrations\201803221242487_MergeMigration1.Designer.cs">
+      <DependentUpon>201803221242487_MergeMigration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
     <Compile Include="Models\Auftrag.cs" />
     <Compile Include="Models\AuftragStatus.cs" />
+    <Compile Include="Models\AuftragWaren.cs" />
     <Compile Include="Models\BaseClass.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Kunde.cs" />
@@ -267,6 +276,7 @@
     </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -346,6 +356,12 @@
     <EmbeddedResource Include="Migrations\201803221016319_AppUserWithName.resx">
       <DependentUpon>201803221016319_AppUserWithName.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221011268_AuftragWarenAdditional.resx">
+      <DependentUpon>201803221011268_AuftragWarenAdditional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221242487_MergeMigration1.resx">
+      <DependentUpon>201803221242487_MergeMigration1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -365,7 +381,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2332</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:2332/</IISUrl>
+          <IISUrl>http://localhost/ERPv1</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

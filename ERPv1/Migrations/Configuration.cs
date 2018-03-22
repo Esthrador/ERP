@@ -72,8 +72,8 @@ namespace ERPv1.Migrations
 
             if (userManager.FindByEmail("mitarbeiter1@erp.de") == null)
             {
-                userManager.Create(adminUser, "Pw123456#");
-                userManager.AddToRole(adminUser.Id, "Mitarbeiter");
+                userManager.Create(mitarbeiter1User, "Pw123456#");
+                userManager.AddToRole(mitarbeiter1User.Id, "Mitarbeiter");
             }
 
             // Anderweitige Änderungen speichern
