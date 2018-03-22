@@ -17,7 +17,7 @@
     <AssemblyName>ERPv1</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201803211229383_TestKram.Designer.cs">
       <DependentUpon>201803211229383_TestKram.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803221016319_AppUserWithName.cs" />
+    <Compile Include="Migrations\201803221016319_AppUserWithName.Designer.cs">
+      <DependentUpon>201803221016319_AppUserWithName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
@@ -257,7 +261,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -336,6 +342,9 @@
     <EmbeddedResource Include="Migrations\201803211229383_TestKram.resx">
       <DependentUpon>201803211229383_TestKram.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221016319_AppUserWithName.resx">
+      <DependentUpon>201803221016319_AppUserWithName.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -355,7 +364,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2332</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/ERPv1</IISUrl>
+          <IISUrl>http://localhost:2332/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
