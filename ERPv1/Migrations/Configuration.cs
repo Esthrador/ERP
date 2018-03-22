@@ -33,17 +33,47 @@ namespace ERPv1.Migrations
             // User erzeugen
             var adminUser = new ApplicationUser
             {
-                Email = "admin@admin.de",
-                UserName = "admin@admin.de",
+                Email = "admin@erp.de",
+                UserName = "admin@erp.de",
                 EmailConfirmed = true,
                 FirstName = "Walter",
                 LastName = "Röhrich"
             };
 
-            if (userManager.FindByEmail("admin@admin.de") == null)
+            var leiter1User = new ApplicationUser
             {
-                userManager.Create(adminUser, "Admin123456#");
+                Email = "abteilungsleiter1@erp.de",
+                UserName = "abteilungsleiter1@erp.de",
+                EmailConfirmed = true,
+                FirstName = "Werner",
+                LastName = "Eckhardt"
+            };
+
+            var mitarbeiter1User = new ApplicationUser
+            {
+                Email = "mitarbeiter1@erp.de",
+                UserName = "mitarbeiter1@erp.de",
+                EmailConfirmed = true,
+                FirstName = "Andi",
+                LastName = "Feldmann"
+            };
+
+            if (userManager.FindByEmail("admin@erp.de") == null)
+            {
+                userManager.Create(adminUser, "Pw123456#");
                 userManager.AddToRole(adminUser.Id, "Administration");
+            }
+
+            if (userManager.FindByEmail("abteilungsleiter1@erp.de") == null)
+            {
+                userManager.Create(leiter1User, "Pw123456#");
+                userManager.AddToRole(leiter1User.Id, "Abteilungsleiter");
+            }
+
+            if (userManager.FindByEmail("mitarbeiter1@erp.de") == null)
+            {
+                userManager.Create(adminUser, "Pw123456#");
+                userManager.AddToRole(adminUser.Id, "Mitarbeiter");
             }
 
             // Anderweitige Änderungen speichern
