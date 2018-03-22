@@ -47,6 +47,7 @@ namespace ERPv1.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 auftragStatus.ID = Guid.NewGuid();
                 db.AuftragStatus.Add(auftragStatus);
                 db.SaveChanges();
