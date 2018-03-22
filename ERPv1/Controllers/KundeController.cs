@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 
 namespace ERPv1.Controllers
 {
+    [Authorize]
     public class KundeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

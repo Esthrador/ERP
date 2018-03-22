@@ -7,6 +7,7 @@ using ERPv1.Models;
 
 namespace ERPv1.Controllers
 {
+    [Authorize]
     public class AuftragStatusController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
