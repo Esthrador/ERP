@@ -223,11 +223,16 @@
     <Compile Include="Migrations\201803211229383_TestKram.Designer.cs">
       <DependentUpon>201803211229383_TestKram.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803221011268_AuftragWarenAdditional.cs" />
+    <Compile Include="Migrations\201803221011268_AuftragWarenAdditional.Designer.cs">
+      <DependentUpon>201803221011268_AuftragWarenAdditional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
     <Compile Include="Models\Auftrag.cs" />
     <Compile Include="Models\AuftragStatus.cs" />
+    <Compile Include="Models\AuftragWaren.cs" />
     <Compile Include="Models\BaseClass.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Kunde.cs" />
@@ -260,6 +265,7 @@
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -335,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803211229383_TestKram.resx">
       <DependentUpon>201803211229383_TestKram.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221011268_AuftragWarenAdditional.resx">
+      <DependentUpon>201803221011268_AuftragWarenAdditional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
