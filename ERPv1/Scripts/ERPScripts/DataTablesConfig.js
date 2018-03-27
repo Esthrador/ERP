@@ -1,5 +1,3 @@
-﻿$(document).ready(function() {
-
-    $("#indexTable").dataTable();
-
+﻿$(document).ready(function () {
+    $('#indexTable').DataTable();
 });
