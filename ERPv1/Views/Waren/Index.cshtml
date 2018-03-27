@@ -10,67 +10,31 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="display table" id="indexTable">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Bezeichnung)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KurzBezeichnung)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Anzahl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChangedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Preis)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SteuerKlasse)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EinzelGewicht)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bezeichnung)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KurzBezeichnung)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Anzahl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChangedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Preis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SteuerKlasse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EinzelGewicht)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
+<table id="indexTable" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.Bezeichnung)</th>
+            <th>@Html.DisplayNameFor(x => x.KurzBezeichnung)</th>
+            <th>@Html.DisplayNameFor(x => x.EinzelGewicht)</th>
+            <th>@Html.DisplayNameFor(x => x.Preis)</th>
+            <th>@Html.DisplayNameFor(x => x.Anzahl)</th>
+            <th>@Html.DisplayNameFor(x => x.SteuerKlasse)</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var ware in Model)
+    {
+        <tr>
+            <td>@ware.Bezeichnung</td>
+            <td>@ware.KurzBezeichnung</td>
+            <td>@ware.EinzelGewicht</td>
+            <td>@ware.Preis</td>
+            <td>@ware.Anzahl</td>
+            <td>@ware.SteuerKlasse</td>
+        </tr>
+    }
+    </tbody>
 </table>
+
+@Scripts.Render("~/Scripts/ERPScripts/DataTablesConfig.js")
