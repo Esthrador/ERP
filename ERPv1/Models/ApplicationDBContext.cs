@@ -31,7 +31,7 @@ namespace ERPv1.Models
             ApplicationUser au = null;
             var entries = ChangeTracker.Entries().Where(c => c.Entity is BaseClass && c.State == EntityState.Added 
                                                              || c.State == EntityState.Deleted || c.State == EntityState.Modified);
-            var currentUserId = HttpContext.Current?.User.Identity.GetUserId();
+            var currentUserId = HttpContext.Current?.User?.Identity?.GetUserId();
             if (currentUserId != null)
             {
                 au = this.Users.Find(HttpContext.Current?.User.Identity.GetUserId());
