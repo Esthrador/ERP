@@ -8,7 +8,7 @@ using ERPv1.Models;
 namespace ERPv1.Controllers
 {
     [Authorize]
-    public class AuftragsController : Controller
+    public class AuftragController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
