@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using EntityFramework.DynamicFilters;
+using ERPv1.Migrations;
 using Microsoft.AspNet.Identity;
 using TrackerEnabledDbContext.Identity;
 
@@ -13,6 +14,7 @@ namespace ERPv1.Models
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
         public DbSet<Kunde> Kunden { get; set; }
         public DbSet<AuftragStatus> AuftragStatus { get; set; }
