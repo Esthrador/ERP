@@ -25,6 +25,9 @@ namespace ERPv1
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/DataTables/css/dataTables.bootstrap4.min.css",
+                      //"~/Content/DataTables/css/jquery.dataTables.min.css",
+                      //"~/Content/DataTables/css/responsive.dataTables.min.css",
                       "~/Content/site.css"));
         }
     }
