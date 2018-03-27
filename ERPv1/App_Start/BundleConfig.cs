@@ -20,14 +20,15 @@ namespace ERPv1
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/umd/popper.min.js",
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/bootstrap.min.js",
+                      "~/Scripts/mdb.min.js",
+                      "~/Scripts/respond.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/mdb.min.css",
+                      "~/Content/bootstrap.min.css",
                       "~/Content/DataTables/css/dataTables.bootstrap4.min.css",
-                      //"~/Content/DataTables/css/jquery.dataTables.min.css",
-                      //"~/Content/DataTables/css/responsive.dataTables.min.css",
+                      "~/Content/font-awesome.min.css",
                       "~/Content/site.css"));
         }
     }

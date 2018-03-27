@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
+@using ERPv1.Extensions
+
 @if (Request.IsAuthenticated)
 {
     <li class="nav-item">
@@ -7,7 +9,8 @@
 
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
     {
-        @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken(true)
+
         <li class="nav-item">
             <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Abmelden</a>
         </li>
