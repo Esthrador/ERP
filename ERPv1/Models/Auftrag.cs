@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
+using System.Web.Mvc;
 
 namespace ERPv1.Models
 {
@@ -26,5 +27,9 @@ namespace ERPv1.Models
         public string Notiz { get; set; }
         [Display(Name = "Lieferant")]
         public string Lieferant { get; set; }
+
+        [NotMapped]
+        public List<SelectListItem> WarenAuswahl { get; set; }
+
     }
 }

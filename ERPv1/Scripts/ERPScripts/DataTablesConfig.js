@@ -27,4 +27,11 @@ $(document).ready(function () {
     $('#indexTable').DataTable({
         "language": languageDE
     });
+
+    $('#selectionTable').DataTable({
+        "language": languageDE,
+
+    })
+
+
 });

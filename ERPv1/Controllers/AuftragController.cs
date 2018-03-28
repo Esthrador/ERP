@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using ERPv1.Models;
+using ERPv1.Models.ViewModels;
 
 namespace ERPv1.Controllers
 {
@@ -36,7 +38,10 @@ namespace ERPv1.Controllers
         // GET: Auftrags/Create
         public ActionResult Create()
         {
-            return View();
+            AuftragViewModel avm = new AuftragViewModel();
+            avm.Waren = db.Waren.Where(c => c.Anzahl > 0);
+
+            return View(avm);
         }
 
         // POST: Auftrags/Create
