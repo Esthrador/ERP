@@ -5,8 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="card">
-    <div class="card-header deep-purple white-text lighten-1">
+<div class="card animated fadeInLeft">
+    <div class="card-header">
         Ware erstellen
     </div>
     <div class="card-body">
@@ -36,8 +36,6 @@
                 @Html.ValidationMessageFor(model => model.Anzahl, "", new { @class = "text-danger" })
             </div>
 
-
-
             <div class="md-form">
                 @Html.LabelFor(model => model.Preis)
                 @Html.EditorFor(model => model.Preis, new { htmlAttributes = new { @class = "form-control" } })
@@ -56,15 +54,14 @@
                 @Html.ValidationMessageFor(model => model.EinzelGewicht, "", new { @class = "text-danger" })
             </div>
 
-            <input type="submit" value="Speichern" class="btn btn-primary" />
+            <div class="flex-row card-buttons">
+                <input type="submit" value="Speichern" class="btn btn-primary" />
 
-            @Html.ActionLink("Zurück", "Index", null, new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Zurück", "Index", null, new { @class = "btn btn-white text-dark" })
+            </div>
+            
         }
     </div>
-</div>
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
