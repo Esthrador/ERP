@@ -10,9 +10,10 @@
         Auftrag anlegen
     </div>
     <div class="card-body">
-        
-        @Html.Partial("_CreateOrEditPartial", Model)
-    
+        @using (Html.BeginForm())
+        {
+            @Html.Partial("_CreateOrEditPartial", Model)
+        }
     </div>
 </div>
 
@@ -22,22 +23,17 @@
 </div>
 
 
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/Scripts/ERPScripts/DataTablesConfig.js")
     <script type="text/javascript">
         $(document).ready(function() {
             $('.datepicker').datepicker();
-
-
             $('#selectionTable tbody').on('click',
                 'tr',
                 function() {
-                    $(this).toggleClass('selected');
+                    $(this).toggleClass('table-active');
                 });
         });
-
-
     </script>
 }

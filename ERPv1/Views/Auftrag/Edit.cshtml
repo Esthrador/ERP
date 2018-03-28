@@ -9,7 +9,10 @@
         Auftrag bearbeiten
     </div>
     <div class="card-body">
-        @Html.Partial("_CreateOrEditPartial")
+        @using (Html.BeginForm())
+        {
+            @Html.Partial("_CreateOrEditPartial", Model)
+        }
     </div>
 </div>
 
