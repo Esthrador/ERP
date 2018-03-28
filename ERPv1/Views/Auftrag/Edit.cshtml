@@ -1,35 +1,44 @@
-﻿@model ERPv1.Models.Auftrag
-
-@{
+﻿@{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
 
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Auftrag</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+<div class="card">
+    <div class="card-header deep-purple white-text lighten-1">
+        Auftrag bearbeiten
     </div>
-}
+    <div class="card-body">
+        @Html.Partial("_CreateOrEditPartial")
+    </div>
+</div>
+
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Zurück zur Übersicht", "Index")
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/ERPScripts/DataTablesConfig.js")
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.datepicker').datepicker();
+
+
+            $('#selectionTable').on('click',
+                'tr',
+                function() {
+                    $(this).toggleClass('selected');
+                });
+        });
+
+
+    </script>
 }
