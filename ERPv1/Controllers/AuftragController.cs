@@ -40,7 +40,7 @@ namespace ERPv1.Controllers
         {
             AuftragViewModel avm = new AuftragViewModel();
             avm.Waren = db.Waren.Where(c => c.Anzahl > 0);
-
+            avm.Auftrag = new Auftrag();
             return View(avm);
         }
 
@@ -49,17 +49,15 @@ namespace ERPv1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID")] Auftrag auftrag)
+        public ActionResult Create(AuftragViewModel avm)
         {
             if (ModelState.IsValid)
             {
-                auftrag.ID = Guid.NewGuid();
-                db.Auftrag.Add(auftrag);
-                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
-            return View(auftrag);
+            return View(avm);
         }
 
         // GET: Auftrags/Edit/5

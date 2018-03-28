@@ -1,7 +1,7 @@
 ﻿@model ERPv1.Models.ViewModels.AuftragViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Auftrag anlegen";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -67,9 +67,6 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -79,11 +76,13 @@
             $('.datepicker').datepicker();
 
 
-            $('#selectionTable').on('click',
+            $('#selectionTable tbody').on('click',
                 'tr',
                 function () {
                     $(this).toggleClass('selected');
                 });
         });
+
+
     </script>
 }
