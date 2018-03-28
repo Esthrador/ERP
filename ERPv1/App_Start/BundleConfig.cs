@@ -23,13 +23,13 @@ namespace ERPv1
                       "~/Scripts/bootstrap.min.js",
                       "~/Scripts/mdb.min.js",
                       "~/Scripts/respond.min.js",
-                      "~/Scripts/bootstrap-datepicker.min.js",
+                      "~/Scripts/bootstrap-datepicker.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/mdb.min.css",
                       "~/Content/bootstrap.min.css",
-                      "~/Content/bootstrap-datepicker.min.css",
+                      "~/Content/bootstrap-datepicker.standalone.css",
                       "~/Content/DataTables/css/dataTables.bootstrap4.min.css",
                       "~/Content/font-awesome.min.css",
                       "~/Content/site.css"));
