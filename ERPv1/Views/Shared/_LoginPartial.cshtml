@@ -9,7 +9,9 @@
 
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
     {
-        @Html.AntiForgeryToken(true)
+        <span style="display: none">
+            @Html.AntiForgeryToken()
+        </span>
 
         <li class="nav-item">
             <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Abmelden</a>
