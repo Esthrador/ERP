@@ -9,29 +9,30 @@
 <div class="animated fadeInLeft">
 
     <h4>@ViewBag.Title</h4>
-    <span> Test <i class="fas fa-circle"></i></span>
+
     <hr />
 
     <p>
-        @Html.ActionLinkWithIcon("Neue Ware erstellen", "fas fa-plus-circle", true, "Create", "Waren", null, new { @class = "btn btn-primary", style = "margin-left:0;" })
+        @Html.ActionLinkWithIcon("Neue Ware erstellen", "fa fa-plus-circle", true, "Create", "Waren", null, new { @class = "btn btn-primary", style = "margin-left:0;" })
     </p>
 
     <table id="indexTable" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
         <thead>
         <tr>
+            <th class="no-sort"></th>
             <th>@Html.DisplayNameFor(x => x.Bezeichnung)</th>
             <th>@Html.DisplayNameFor(x => x.KurzBezeichnung)</th>
             <th>@Html.DisplayNameFor(x => x.EinzelGewicht)</th>
             <th>@Html.DisplayNameFor(x => x.Preis)</th>
             <th>@Html.DisplayNameFor(x => x.Anzahl)</th>
             <th>@Html.DisplayNameFor(x => x.SteuerKlasse)</th>
-
         </tr>
         </thead>
         <tbody>
         @foreach (var ware in Model)
         {
             <tr>
+                <td><a href="@Url.Action("Details", "Waren", new { id = ware.ID })"><span class="badge badge-default button-column" style="padding: 5px">Details</span></a></td>
                 <td>@ware.Bezeichnung</td>
                 <td>@ware.KurzBezeichnung</td>
                 <td>@ware.EinzelGewicht</td>

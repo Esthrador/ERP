@@ -15,3 +15,16 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
+
+.no-sort:after {
+    display: none !important;
+}
+
+.no-sort {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+.button-column {
+    margin-left: 15px;
+}
