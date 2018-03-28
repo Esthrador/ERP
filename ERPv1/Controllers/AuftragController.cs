@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -12,7 +11,7 @@ namespace ERPv1.Controllers
     [Authorize]
     public class AuftragController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Auftrags
         public ActionResult Index()
@@ -23,23 +22,21 @@ namespace ERPv1.Controllers
         // GET: Auftrags/Details/5
         public ActionResult Details(Guid? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Auftrag auftrag = db.Auftrag.Find(id);
-            if (auftrag == null)
-            {
-                return HttpNotFound();
-            }
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var auftrag = db.Auftrag.Find(id);
+            if (auftrag == null) return HttpNotFound();
             return View(auftrag);
         }
 
         // GET: Auftrags/Create
         public ActionResult Create()
         {
-            AuftragViewModel avm = new AuftragViewModel();
-            avm.Waren = db.Waren.Where(c => c.Anzahl > 0);
+            var avm = new AuftragViewModel();
+            var waren = db.Waren.Where(c => c.Anzahl > 0);
+            avm.Waren = new List<WareViewModel>();
+            var warenListe = new List<WareViewModel>();
+            foreach (var ware in waren) warenListe.Add(new WareViewModel(ware, 0));
+            avm.Waren = warenListe;
             avm.Auftrag = new Auftrag();
             return View(avm);
         }
@@ -51,11 +48,7 @@ namespace ERPv1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AuftragViewModel avm)
         {
-            if (ModelState.IsValid)
-            {
-
-                return RedirectToAction("Index");
-            }
+            if (ModelState.IsValid) return RedirectToAction("Index");
 
             return View(avm);
         }
@@ -63,15 +56,9 @@ namespace ERPv1.Controllers
         // GET: Auftrags/Edit/5
         public ActionResult Edit(Guid? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Auftrag auftrag = db.Auftrag.Find(id);
-            if (auftrag == null)
-            {
-                return HttpNotFound();
-            }
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var auftrag = db.Auftrag.Find(id);
+            if (auftrag == null) return HttpNotFound();
             return View(auftrag);
         }
 
@@ -80,38 +67,28 @@ namespace ERPv1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID")] Auftrag auftrag)
+        public ActionResult Edit(AuftragViewModel avm)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(auftrag).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(auftrag);
+            if (ModelState.IsValid) return RedirectToAction("Index");
+            return View(avm);
         }
 
         // GET: Auftrags/Delete/5
         public ActionResult Delete(Guid? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Auftrag auftrag = db.Auftrag.Find(id);
-            if (auftrag == null)
-            {
-                return HttpNotFound();
-            }
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var auftrag = db.Auftrag.Find(id);
+            if (auftrag == null) return HttpNotFound();
             return View(auftrag);
         }
 
         // POST: Auftrags/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Auftrag auftrag = db.Auftrag.Find(id);
+            var auftrag = db.Auftrag.Find(id);
             db.Auftrag.Remove(auftrag);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -119,10 +96,7 @@ namespace ERPv1.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
+            if (disposing) db.Dispose();
             base.Dispose(disposing);
         }
     }

@@ -16,6 +16,9 @@
     padding-right: 0 !important;
 }
 
+.table-active {
+    background-color: rgba(130,242,155,1) !important;
+}
 .no-pointer:after {
     display: none !important;
 }

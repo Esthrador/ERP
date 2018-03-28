@@ -5,67 +5,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form">
-        <h4>Auftrag anlegen</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="md-form">
-            @Html.LabelFor(model => model.Auftrag.AuftragsDatum)
-            @Html.EditorFor(model => model.Auftrag.AuftragsDatum, new { htmlAttributes = new { type = "text", @class = "form-control datepicker" } })
-            @Html.ValidationMessageFor(model => model.Auftrag.AuftragsDatum, "", new { @class = "text-danger" })
-        </div>
-
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Auftrag.Lieferant, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Auftrag.Lieferant, new { htmlAttributes = new { @id = "datepicker", @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Auftrag.Lieferant, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <table id="selectionTable" class="table table-striped table-bordered" style="width:80%">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(x => x.Waren.First().Bezeichnung)</th>
-                    <th>@Html.DisplayNameFor(x => x.Waren.First().KurzBezeichnung)</th>
-                    <th>@Html.DisplayNameFor(x => x.Waren.First().EinzelGewicht)</th>
-                    <th>@Html.DisplayNameFor(x => x.Waren.First().Preis)</th>
-                    <th>@Html.DisplayNameFor(x => x.Waren.First().Anzahl)</th>
-                    <th>@Html.DisplayNameFor(x => x.Waren.First().SteuerKlasse)</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var ware in Model.Waren)
-                {
-                    <tr>
-                        <td>@ware.Bezeichnung</td>
-                        <td>@ware.KurzBezeichnung</td>
-                        <td>@ware.EinzelGewicht</td>
-                        <td>@ware.Preis</td>
-                        <td>@ware.Anzahl</td>
-                        <td>@ware.SteuerKlasse</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+<div class="card">
+    <div class="card-header deep-purple white-text lighten-1">
+        Auftrag anlegen
     </div>
-}
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.Partial("_CreateOrEditPartial", Model)
+        }
+    </div>
+</div>
+
+
+<div>
+    @Html.ActionLink("Zurück zur Übersicht", "Index")
+</div>
 
 
 @section Scripts {
@@ -74,15 +29,11 @@
     <script>
         $(document).ready(function () {
             $('.datepicker').datepicker();
-
-
             $('#selectionTable tbody').on('click',
                 'tr',
                 function () {
                     $(this).toggleClass('table-active');
                 });
         });
-
-
     </script>
 }
