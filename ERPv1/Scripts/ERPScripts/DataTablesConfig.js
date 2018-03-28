@@ -25,12 +25,15 @@
 
 $(document).ready(function () {
     $('#indexTable').DataTable({
-        "language": languageDE
+        "language": languageDE,
+        columnDefs: [
+            { targets: "no-sort", orderable: false }
+        ],
+        "aaSorting": [] // Prevent initial sorting
     });
 
     $('#selectionTable').DataTable({
-        "language": languageDE,
-
+        "language": languageDE
     });
 
 

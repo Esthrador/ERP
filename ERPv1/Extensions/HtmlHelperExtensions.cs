@@ -29,8 +29,8 @@ namespace ERPv1.Extensions
             var lnk = htmlHelper.ActionLink(repId, actionName, controllerName, routeValues, htmlAttributes);
 
             var newLinkText = left
-                ? "<i class=\"" + faClass + "\" ></i> " + linkText
-                : linkText + " <i class=\"" + faClass + "\" ></i>";
+                ? "<i class=\"" + faClass + "\" style=\"margin-right:5px;\"></i> " + linkText
+                : linkText + " <i class=\"" + faClass + "\" style=\"margin-left:5px;\"></i>";
 
             return MvcHtmlString.Create(lnk.ToString().Replace(repId, newLinkText));
         }

@@ -19,3 +19,17 @@
 .table-active {
     background-color: rgba(130,242,155,1) !important;
 }
+}
+
+.no-sort:after {
+    display: none !important;
+}
+
+.no-sort {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+.button-column {
+    margin-left: 15px;
+}
