@@ -31,7 +31,7 @@ $(document).ready(function () {
     $('#selectionTable').DataTable({
         "language": languageDE,
 
-    })
+    });
 
 
 });

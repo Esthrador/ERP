@@ -7,13 +7,13 @@ namespace ERPv1.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class whaaat : IMigrationMetadata
+    public sealed partial class None : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(whaaat));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(None));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803271148177_whaaat"; }
+            get { return "201803280833265_None"; }
         }
         
         string IMigrationMetadata.Source

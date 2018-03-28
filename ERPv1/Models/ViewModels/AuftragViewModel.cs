@@ -12,7 +12,7 @@ namespace ERPv1.Models.ViewModels
     }
 
 
-    public class ExtendedWare : Ware
+    public class ExtendedWare
     {
         public int SelectedAnzahl { get;set; }
     }

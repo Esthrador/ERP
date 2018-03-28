@@ -243,9 +243,9 @@
     <Compile Include="Migrations\201803271026230_PreisDouble.Designer.cs">
       <DependentUpon>201803271026230_PreisDouble.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803271148177_whaaat.cs" />
-    <Compile Include="Migrations\201803271148177_whaaat.Designer.cs">
-      <DependentUpon>201803271148177_whaaat.cs</DependentUpon>
+    <Compile Include="Migrations\201803280833265_None.cs" />
+    <Compile Include="Migrations\201803280833265_None.Designer.cs">
+      <DependentUpon>201803280833265_None.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -826,8 +826,8 @@
     <EmbeddedResource Include="Migrations\201803271026230_PreisDouble.resx">
       <DependentUpon>201803271026230_PreisDouble.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803271148177_whaaat.resx">
-      <DependentUpon>201803271148177_whaaat.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803280833265_None.resx">
+      <DependentUpon>201803280833265_None.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

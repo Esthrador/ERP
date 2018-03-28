@@ -5,7 +5,7 @@ namespace ERPv1.Migrations
     using System.Data.Entity.Infrastructure.Annotations;
     using System.Data.Entity.Migrations;
     
-    public partial class whaaat : DbMigration
+    public partial class None : DbMigration
     {
         public override void Up()
         {
@@ -24,8 +24,6 @@ namespace ERPv1.Migrations
                         ChangedOn = c.DateTime(),
                         DeletedOn = c.DateTime(),
                         CreatedOn = c.DateTime(nullable: false),
-                        SelectedAnzahl = c.Int(),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
                         ChangedBy_Id = c.String(maxLength: 128),
                         CreatedBy_Id = c.String(maxLength: 128),
                         DeletedBy_Id = c.String(maxLength: 128),
@@ -34,18 +32,18 @@ namespace ERPv1.Migrations
                 {
                     { 
                         "DynamicFilter_ExtendedWare_Deleted",
-                        new AnnotationValues(oldValue: null, newValue: "EntityFramework.DynamicFilters.DynamicFilterDefinition")
+                        new AnnotationValues(oldValue: "EntityFramework.DynamicFilters.DynamicFilterDefinition", newValue: null)
                     },
                 });
             
-            AddColumn("dbo.Waren", "SelectedAnzahl", c => c.Int());
-            AddColumn("dbo.Waren", "Discriminator", c => c.String(nullable: false, maxLength: 128));
+            DropColumn("dbo.Waren", "SelectedAnzahl");
+            DropColumn("dbo.Waren", "Discriminator");
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Waren", "Discriminator");
-            DropColumn("dbo.Waren", "SelectedAnzahl");
+            AddColumn("dbo.Waren", "Discriminator", c => c.String(nullable: false, maxLength: 128));
+            AddColumn("dbo.Waren", "SelectedAnzahl", c => c.Int());
             AlterTableAnnotations(
                 "dbo.Waren",
                 c => new
@@ -61,8 +59,6 @@ namespace ERPv1.Migrations
                         ChangedOn = c.DateTime(),
                         DeletedOn = c.DateTime(),
                         CreatedOn = c.DateTime(nullable: false),
-                        SelectedAnzahl = c.Int(),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
                         ChangedBy_Id = c.String(maxLength: 128),
                         CreatedBy_Id = c.String(maxLength: 128),
                         DeletedBy_Id = c.String(maxLength: 128),
@@ -71,7 +67,7 @@ namespace ERPv1.Migrations
                 {
                     { 
                         "DynamicFilter_ExtendedWare_Deleted",
-                        new AnnotationValues(oldValue: "EntityFramework.DynamicFilters.DynamicFilterDefinition", newValue: null)
+                        new AnnotationValues(oldValue: null, newValue: "EntityFramework.DynamicFilters.DynamicFilterDefinition")
                     },
                 });
             
