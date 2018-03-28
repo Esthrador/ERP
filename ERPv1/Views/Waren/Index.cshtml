@@ -6,6 +6,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Übersicht</li>
+</ol>
+
 <div class="animated fadeInLeft">
 
     <h4>@ViewBag.Title</h4>
@@ -19,7 +23,7 @@
     <table id="indexTable" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
         <thead>
         <tr>
-            <th class="no-sort"></th>
+            <th class="no-pointer"></th>
             <th>@Html.DisplayNameFor(x => x.Bezeichnung)</th>
             <th>@Html.DisplayNameFor(x => x.KurzBezeichnung)</th>
             <th>@Html.DisplayNameFor(x => x.EinzelGewicht)</th>

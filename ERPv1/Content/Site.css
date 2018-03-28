@@ -16,11 +16,11 @@
     padding-right: 0 !important;
 }
 
-.no-sort:after {
+.no-pointer:after {
     display: none !important;
 }
 
-.no-sort {
+.no-pointer {
     pointer-events: none !important;
     cursor: default !important;
 }

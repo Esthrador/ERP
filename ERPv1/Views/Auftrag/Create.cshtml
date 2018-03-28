@@ -32,7 +32,7 @@
         </div>
 
 
-        <table id="indexTable" class="table table-striped table-bordered" style="width:80%">
+        <table id="selectionTable" class="table table-striped table-bordered" style="width:80%">
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(x => x.Waren.First().Bezeichnung)</th>
@@ -43,7 +43,7 @@
                     <th>@Html.DisplayNameFor(x => x.Waren.First().SteuerKlasse)</th>
                 </tr>
             </thead>
-            <tbody id="selectionTable">
+            <tbody>
                 @foreach (var ware in Model.Waren)
                 {
                     <tr>
@@ -79,7 +79,7 @@
             $('#selectionTable tbody').on('click',
                 'tr',
                 function () {
-                    $(this).toggleClass('selected');
+                    $(this).toggleClass('table-active');
                 });
         });
 
