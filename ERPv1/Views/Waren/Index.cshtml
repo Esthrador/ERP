@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ERPv1.Models.Ware>
+﻿@using ERPv1.Extensions
+@model IEnumerable<ERPv1.Models.Ware>
 
 @{
     ViewBag.Title = "Waren Übersicht";
@@ -8,14 +9,14 @@
 <div class="animated fadeInLeft">
 
     <h4>@ViewBag.Title</h4>
-    
+    <span> Test <i class="fas fa-circle"></i></span>
     <hr />
 
     <p>
-        @Html.ActionLink("Neue Ware erstellen", "Create", null, new { @class = "btn btn-primary" })
+        @Html.ActionLinkWithIcon("Neue Ware erstellen", "fas fa-plus-circle", true, "Create", "Waren", null, new { @class = "btn btn-primary", style = "margin-left:0;" })
     </p>
 
-    <table id="indexTable" class="table table-striped table-bordered" style="width:100%">
+    <table id="indexTable" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
         <thead>
         <tr>
             <th>@Html.DisplayNameFor(x => x.Bezeichnung)</th>

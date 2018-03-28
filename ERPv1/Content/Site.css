@@ -10,3 +10,8 @@
 .card-body {
     padding-top: 0;
 }
+
+.col-sm-12 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}

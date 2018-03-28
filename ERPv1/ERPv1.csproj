@@ -211,41 +211,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803210854493_init.cs" />
-    <Compile Include="Migrations\201803210854493_init.Designer.cs">
-      <DependentUpon>201803210854493_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803210917520_KundeAuftragAuftragStatus.cs" />
-    <Compile Include="Migrations\201803210917520_KundeAuftragAuftragStatus.Designer.cs">
-      <DependentUpon>201803210917520_KundeAuftragAuftragStatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803210925114_Waren.cs" />
-    <Compile Include="Migrations\201803210925114_Waren.Designer.cs">
-      <DependentUpon>201803210925114_Waren.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803211229383_TestKram.cs" />
-    <Compile Include="Migrations\201803211229383_TestKram.Designer.cs">
-      <DependentUpon>201803211229383_TestKram.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803221011268_AuftragWarenAdditional.cs" />
-    <Compile Include="Migrations\201803221011268_AuftragWarenAdditional.Designer.cs">
-      <DependentUpon>201803221011268_AuftragWarenAdditional.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803221016319_AppUserWithName.cs" />
-    <Compile Include="Migrations\201803221016319_AppUserWithName.Designer.cs">
-      <DependentUpon>201803221016319_AppUserWithName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803221242487_MergeMigration1.cs" />
-    <Compile Include="Migrations\201803221242487_MergeMigration1.Designer.cs">
-      <DependentUpon>201803221242487_MergeMigration1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803271026230_PreisDouble.cs" />
-    <Compile Include="Migrations\201803271026230_PreisDouble.Designer.cs">
-      <DependentUpon>201803271026230_PreisDouble.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803280833265_None.cs" />
-    <Compile Include="Migrations\201803280833265_None.Designer.cs">
-      <DependentUpon>201803280833265_None.cs</DependentUpon>
+    <Compile Include="Migrations\201803280845542_Init.cs" />
+    <Compile Include="Migrations\201803280845542_Init.Designer.cs">
+      <DependentUpon>201803280845542_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -436,6 +404,9 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\business-planning.png" />
+    <Content Include="Content\Images\businessman.jpg" />
+    <Content Include="Content\Images\smart-home.jpg" />
     <Content Include="Content\img\lightbox\default-skin.png" />
     <Content Include="Content\img\lightbox\default-skin.svg" />
     <Content Include="Content\img\lightbox\preloader.gif" />
@@ -802,39 +773,15 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803210854493_init.resx">
-      <DependentUpon>201803210854493_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803210917520_KundeAuftragAuftragStatus.resx">
-      <DependentUpon>201803210917520_KundeAuftragAuftragStatus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803210925114_Waren.resx">
-      <DependentUpon>201803210925114_Waren.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803211229383_TestKram.resx">
-      <DependentUpon>201803211229383_TestKram.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803221016319_AppUserWithName.resx">
-      <DependentUpon>201803221016319_AppUserWithName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803221011268_AuftragWarenAdditional.resx">
-      <DependentUpon>201803221011268_AuftragWarenAdditional.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803221242487_MergeMigration1.resx">
-      <DependentUpon>201803221242487_MergeMigration1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803271026230_PreisDouble.resx">
-      <DependentUpon>201803271026230_PreisDouble.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803280833265_None.resx">
-      <DependentUpon>201803280833265_None.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803280845542_Init.resx">
+      <DependentUpon>201803280845542_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -23,7 +23,6 @@ namespace ERPv1
                       "~/Scripts/bootstrap.min.js",
                       "~/Scripts/mdb.min.js",
                       "~/Scripts/respond.min.js",
-                      "~/Scripts/bootstrap.js",
                       "~/Scripts/bootstrap-datepicker.js",
                       "~/Scripts/respond.js"));
 

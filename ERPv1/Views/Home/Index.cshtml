@@ -2,15 +2,48 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ERP</h1>
-    
+<div class="jumbotron bg-dark lighten-1 white-text" style="padding: 2em 2em">
+    <h1>ERP - Enterprise-Resource-Planning</h1>
+
 </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <p>
-            Hallo hallo hallo
-        </p>
+<!--Carousel Wrapper-->
+<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+        <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+        <!--First slide-->
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="~/Content/Images/businessman.jpg" alt="Erster Slide" height="450">
+        </div>
+        <!--/First slide-->
+        <!--Second slide-->
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/Content/Images/business-planning.png" alt="Zweiter Slide" height="450">
+        </div>
+        <!--/Second slide-->
+        <!--Third slide-->
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/Content/Images/smart-home.jpg" alt="Dritter Slide" height="450">
+        </div>
+        <!--/Third slide-->
     </div>
+    <!--/.Slides-->
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Vorherige</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Nächste</span>
+    </a>
+    <!--/.Controls-->
 </div>
+<!--/.Carousel Wrapper-->
