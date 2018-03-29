@@ -36,29 +36,28 @@ namespace ERPv1.Models
 
             if (currentUserId != null)
             {
-                au = this.Users.Find(HttpContext.Current?.User.Identity.GetUserId());
+                au = Users.Find(HttpContext.Current?.User.Identity.GetUserId());
             }
-
-           // if (au == null) base.SaveChanges();
 
             foreach (var e in entries)
             {
                 if (e.State == EntityState.Added)
                 {
-                    ((BaseClass) e.Entity).CreatedBy = au;
+                    ((BaseClass) e.Entity).CreatedBy = au?.UserName ?? "Anonymous";
                     ((BaseClass) e.Entity).CreatedOn = DateTime.Now;
                 }
                 if (e.State == EntityState.Deleted)
                 {
                     ((BaseClass) e.Entity).DeletedOn = DateTime.Now;
-                    ((BaseClass) e.Entity).DeletedBy = au;
+                    ((BaseClass) e.Entity).DeletedBy = au?.UserName ?? "Anonymous";
                     e.State = EntityState.Modified;
                 }
 
 
-                ((BaseClass) e.Entity).ChangedBy = au;
+                ((BaseClass) e.Entity).ChangedBy = au?.UserName ?? "Anonymous";
                 ((BaseClass) e.Entity).ChangedOn = DateTime.Now;
             }
+
             return base.SaveChanges();
         }
 

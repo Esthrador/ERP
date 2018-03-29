@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201803280845542_Init.Designer.cs">
       <DependentUpon>201803280845542_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803291240045_AppUserInBaseClassAsString.cs" />
+    <Compile Include="Migrations\201803291240045_AppUserInBaseClassAsString.Designer.cs">
+      <DependentUpon>201803291240045_AppUserInBaseClassAsString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
@@ -425,6 +429,8 @@
     <Content Include="Content\Logos\LogoCopyrightException_Simple.png" />
     <Content Include="Content\mdb.css" />
     <Content Include="Content\mdb.min.css" />
+    <Content Include="Content\Sounds\Dubstep.mp3" />
+    <Content Include="Content\Sounds\DubstepShort.mp3" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
@@ -512,6 +518,7 @@
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
     <Content Include="Scripts\ERPScripts\DataTablesConfig.js" />
+    <Content Include="Scripts\ERPScripts\DubstepMode.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -751,7 +758,6 @@
     <Content Include="Views\Auftrag\Edit.cshtml" />
     <Content Include="Views\Auftrag\Index.cshtml" />
     <Content Include="Views\Waren\Create.cshtml" />
-    <Content Include="Views\Waren\Delete.cshtml" />
     <Content Include="Views\Waren\Details.cshtml" />
     <Content Include="Views\Waren\Edit.cshtml" />
     <Content Include="Views\Waren\Index.cshtml" />
@@ -784,6 +790,9 @@
     <EmbeddedResource Include="Migrations\201803280845542_Init.resx">
       <DependentUpon>201803280845542_Init.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803291240045_AppUserInBaseClassAsString.resx">
+      <DependentUpon>201803291240045_AppUserInBaseClassAsString.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -800,7 +809,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2332</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

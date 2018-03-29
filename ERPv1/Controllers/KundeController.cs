@@ -111,8 +111,7 @@ namespace ERPv1.Controllers
         public ActionResult DeleteConfirmed(Guid id)
         {
             Kunde kunde = db.Kunden.Find(id);
-            kunde.DeletedOn = DateTime.Now;
-            kunde.DeletedBy = db.Users.Find(User.Identity.GetUserId());
+            db.Kunden.Remove(kunde);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

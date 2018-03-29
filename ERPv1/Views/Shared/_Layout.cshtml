@@ -18,6 +18,10 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        
+        <audio tabindex="0" id="dubstepControl" controls loop preload="auto" hidden>
+            <source src="Content/Sounds/DubstepShort.mp3">
+        </audio>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -31,7 +35,7 @@
                         @Html.ActionLink("Waren", "Index", "Waren", null, htmlAttributes: new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Aufträge", "Index", "Auftrag", null, htmlAttributes: new {@class = "nav-link"})
+                        @Html.ActionLink("Aufträge", "Index", "Auftrag", null, htmlAttributes: new { @class = "nav-link" })
                     </li>
                 }
 

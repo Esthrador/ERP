@@ -7,6 +7,10 @@
         @Html.ActionLink("Hallo, " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" onclick="toggleDubstepMode()">Dubstep Mode</a>
+    </li>
+
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
     {
         <span style="display: none">
@@ -24,3 +28,4 @@ else
         @Html.ActionLink("Anmelden", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })
     </li>
 }
+

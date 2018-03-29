@@ -12,13 +12,18 @@ namespace ERPv1.Models
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class AuftragWaren : BaseClass
     {
-        [Key, Column(Order = 0)]
+        [Key, Column(Order = 0), ForeignKey("Auftrag")]
         public Guid AuftragID { get; set; }
-        [Key, Column(Order = 1)]
+
+        [Key, Column(Order = 1), ForeignKey("Ware")]
         public Guid WareID { get; set; }
-        public virtual Auftrag Auftrag { get; set; }
-        public virtual Ware Ware { get; set; }
+
         public string Notiz { get; set; }
         public int Menge { get; set; }
+
+        public virtual Auftrag Auftrag { get; set; }
+        public virtual Ware Ware { get; set; }
+
+
     }
 }

@@ -25,11 +25,14 @@ namespace ERPv1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Ware ware = db.Waren.Find(id);
+
             if (ware == null)
             {
                 return HttpNotFound();
             }
+
             return View(ware);
         }
 
@@ -44,13 +47,15 @@ namespace ERPv1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Bezeichnung,KurzBezeichnung,Anzahl,ChangedOn,CreatedOn,Preis,SteuerKlasse,EinzelGewicht")] Ware ware)
+        public ActionResult Create(Ware ware)
         {
             if (ModelState.IsValid)
             {
                 ware.ID = Guid.NewGuid();
+
                 db.Waren.Add(ware);
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
@@ -64,11 +69,14 @@ namespace ERPv1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Ware ware = db.Waren.Find(id);
+
             if (ware == null)
             {
                 return HttpNotFound();
             }
+
             return View(ware);
         }
 
@@ -77,40 +85,28 @@ namespace ERPv1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Bezeichnung,KurzBezeichnung,Anzahl,ChangedOn,CreatedOn,Preis,SteuerKlasse,EinzelGewicht")] Ware ware)
+        public ActionResult Edit(Ware ware)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(ware).State = EntityState.Modified;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             return View(ware);
         }
 
-        // GET: Waren/Delete/5
-        public ActionResult Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Ware ware = db.Waren.Find(id);
-            if (ware == null)
-            {
-                return HttpNotFound();
-            }
-            return View(ware);
-        }
-
         // POST: Waren/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public ActionResult Delete(Guid id)
         {
             Ware ware = db.Waren.Find(id);
+
             db.Waren.Remove(ware);
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -120,6 +116,7 @@ namespace ERPv1.Controllers
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }

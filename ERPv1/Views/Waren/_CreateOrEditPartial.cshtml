@@ -8,6 +8,15 @@
 
     <div class="row">
         <div class="col-md-6">
+
+            @Html.HiddenFor(model => model.ID)
+            @Html.HiddenFor(model => model.ChangedBy)
+            @Html.HiddenFor(model => model.ChangedOn)
+            @Html.HiddenFor(model => model.CreatedBy)
+            @Html.HiddenFor(model => model.ChangedOn)
+            @Html.HiddenFor(model => model.DeletedBy)
+            @Html.HiddenFor(model => model.DeletedOn)
+
             <div class="md-form">
                 @Html.LabelFor(model => model.Bezeichnung)
                 @Html.EditorFor(model => model.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
@@ -50,7 +59,7 @@
     <div class="flex-row card-buttons">
         <input type="submit" value="Speichern" class="btn btn-primary" />
 
-        @Html.ActionLink("Zurück", "Index", null, new { @class = "btn btn-white text-dark" })
+        @Html.ActionLink("Zurück zur Liste", "Index", null, new { @class = "btn btn-white text-dark" })
     </div>
 
 }
