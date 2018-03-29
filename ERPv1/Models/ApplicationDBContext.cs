@@ -5,6 +5,7 @@ using System.Web;
 using EntityFramework.DynamicFilters;
 using ERPv1.Migrations;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using TrackerEnabledDbContext.Identity;
 
 namespace ERPv1.Models
@@ -32,11 +33,12 @@ namespace ERPv1.Models
             var entries = ChangeTracker.Entries().Where(c => c.Entity is BaseClass && c.State == EntityState.Added 
                                                              || c.State == EntityState.Deleted || c.State == EntityState.Modified);
 
-            var currentUserId = HttpContext.Current?.User?.Identity?.GetUserId();
 
-            if (currentUserId != null)
+            var currentUserName = HttpContext.Current?.User?.Identity?.Name;
+
+            if (currentUserName != null)
             {
-                au = Users.Find(HttpContext.Current?.User.Identity.GetUserId());
+                au = Users.FirstOrDefault(x => x.Email == currentUserName);
             }
 
             foreach (var e in entries)

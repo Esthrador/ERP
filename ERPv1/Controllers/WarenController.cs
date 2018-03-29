@@ -49,6 +49,7 @@ namespace ERPv1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Ware ware)
         {
+
             if (ModelState.IsValid)
             {
                 ware.ID = Guid.NewGuid();
@@ -98,8 +99,6 @@ namespace ERPv1.Controllers
         }
 
         // POST: Waren/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Delete(Guid id)
         {
             Ware ware = db.Waren.Find(id);

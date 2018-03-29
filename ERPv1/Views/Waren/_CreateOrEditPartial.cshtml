@@ -9,13 +9,18 @@
     <div class="row">
         <div class="col-md-6">
 
-            @Html.HiddenFor(model => model.ID)
-            @Html.HiddenFor(model => model.ChangedBy)
-            @Html.HiddenFor(model => model.ChangedOn)
-            @Html.HiddenFor(model => model.CreatedBy)
-            @Html.HiddenFor(model => model.ChangedOn)
-            @Html.HiddenFor(model => model.DeletedBy)
-            @Html.HiddenFor(model => model.DeletedOn)
+            @if (Model?.ID != null && Model.ID != Guid.Empty)
+            {
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.CreatedBy)
+                @Html.HiddenFor(model => model.CreatedOn)
+
+                @Html.HiddenFor(model => model.ChangedBy)
+                @Html.HiddenFor(model => model.ChangedOn)
+
+                @Html.HiddenFor(model => model.DeletedBy)
+                @Html.HiddenFor(model => model.DeletedOn)
+            }
 
             <div class="md-form">
                 @Html.LabelFor(model => model.Bezeichnung)

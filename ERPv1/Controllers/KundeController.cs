@@ -47,7 +47,7 @@ namespace ERPv1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Vorname,Nachname,IsFirma,Email,PLZ,Ort,Addresse,Tel,KurzBezeichnung,Gelöscht")] Kunde kunde)
         {
-            var usr = db.Users.Find(User.Identity.GetUserId());
+
             if (ModelState.IsValid)
             {
                 kunde.ID = Guid.NewGuid();
