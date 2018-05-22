@@ -14,28 +14,28 @@ namespace ERPv1.Models
         public Guid ID { get; set; }
 
         [Index("IX_ArtNr_Hersteller_Delete", 0, IsUnique = true)]
-        [Required, Display(Name = "Artikelnummer")]
+        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "Artikelnummer")]
         [StringLength(32, ErrorMessage = "Ungültige Länge der Artikelnummer")]
         public string ArtikelNummer { get; set; }
 
-        [Required, Display(Name = "Bezeichnung")]
+        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "Bezeichnung")]
         public string Bezeichnung { get; set; }
 
         [Display(Name = "Kurzbezeichnung")]
         public string KurzBezeichnung { get; set; }
 
         [Index("IX_ArtNr_Hersteller_Delete", 1, IsUnique = true)]
-        [Required, Display(Name = "Hersteller")]
+        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "Hersteller")]
         [StringLength(32, ErrorMessage = "Ungültige Länge des Herstellernamen")]
         public string HerstellerName { get; set; }
 
         [Index("IX_ArtNr_Hersteller_Delete", 2, IsUnique = true)]
         public override DateTime? DeletedOn { get; set; }
         
-        [Required, Display(Name = "Menge")]
+        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "Menge")]
         public int Anzahl { get; set; }
 
-        [Required, Display(Name = "Preis pro Einheit")]
+        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "Preis pro Einheit")]
         public double EinzelPreis { get; set; }
 
         [Display(Name = "Gewicht pro Einheit")]

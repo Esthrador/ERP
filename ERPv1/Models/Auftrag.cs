@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using System.Web.Mvc;
+using ERPv1.Models.IdentityModels;
 
 namespace ERPv1.Models
 {

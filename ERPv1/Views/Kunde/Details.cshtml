@@ -1,93 +1,27 @@
-﻿@model ERPv1.Models.Kunde
+﻿@using ERPv1.Extensions
+@model ERPv1.Models.Kunde
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Kunde")">Übersicht</a></li>
+    <li class="breadcrumb-item active">Details</li>
+</ol>
 
-<div>
-    <h4>Kunde</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Vorname)
-        </dt>
+<div class="card">
+    <div class="card-header">
+        Kunden Details
+    </div>
+    <div class="card-body detail-body">
+        @Html.Partial("_KundenInput", Model)
 
-        <dd>
-            @Html.DisplayFor(model => model.Vorname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nachname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nachname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsFirma)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsFirma)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PLZ)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PLZ)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ort)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ort)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Addresse)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Addresse)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KurzBezeichnung)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KurzBezeichnung)
-        </dd>
-
-       
-
-    </dl>
+        <div class="flex-row card-buttons">
+            @Html.ActionLink("Bearbeiten", "Edit", new { id = Model?.ID }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Löschen", "Delete", new { id = Model?.ID }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Zurück zur Liste", "Index", null, new { @class = "btn btn-white text-dark" })
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

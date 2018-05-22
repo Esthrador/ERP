@@ -32,6 +32,9 @@
                 @if (Request.IsAuthenticated)
                 {
                     <li class="nav-item">
+                        @Html.ActionLink("Kunden", "Index", "Kunde", null, htmlAttributes: new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
                         @Html.ActionLink("Waren", "Index", "Waren", null, htmlAttributes: new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
@@ -58,10 +61,14 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    <script>
-        $(document).ready(function () {
-            $("#htmlBody").fadeIn();
+<script>
+    $(document).ready(function () {
+        $(".detail-body input").each(function () {
+            $(this).prop("disabled", true);
         });
-    </script>
+
+        $("#htmlBody").fadeIn();
+    });
+</script>
 </body>
 </html>

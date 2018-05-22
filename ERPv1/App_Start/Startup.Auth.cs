@@ -5,6 +5,8 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using ERPv1.Models;
+using ERPv1.Models.DbContext;
+using ERPv1.Models.IdentityModels;
 
 namespace ERPv1
 {

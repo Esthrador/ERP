@@ -1,5 +1,4 @@
-﻿@using ERPv1.Extensions
-@model ERPv1.Models.Ware
+﻿@model ERPv1.Models.Ware
 
 @{
     ViewBag.Title = "Details";
@@ -16,62 +15,8 @@
         Waren Details
     </div>
     <div class="card-body detail-body">
-        <div class="row">
-            <div class="col-md-6">
-
-                @if (Model?.ID != null && Model.ID != Guid.Empty)
-                {
-                    @Html.HiddenFor(model => model.ID)
-                    @Html.HiddenFor(model => model.CreatedBy)
-                    @Html.HiddenFor(model => model.CreatedOn)
-
-                    @Html.HiddenFor(model => model.ChangedBy)
-                    @Html.HiddenFor(model => model.ChangedOn)
-
-                    if (!string.IsNullOrEmpty(Model.DeletedBy))
-                    {
-                        @Html.HiddenFor(model => model.DeletedBy)
-                        @Html.HiddenFor(model => model.DeletedOn)
-                    }
-                }
-
-                <div class="md-form">
-                    @Html.LabelFor(model => model.ArtikelNummer)
-                    @Html.EditorFor(model => model.ArtikelNummer, new { htmlAttributes = new { @class = "form-control no-pointer", @readonly = "readonly" } })
-                </div>
-
-                <div class="md-form">
-                    @Html.LabelFor(model => model.Bezeichnung)
-                    @Html.EditorFor(model => model.Bezeichnung, new { htmlAttributes = new { @class = "form-control no-pointer", @readonly = "readonly" } })
-                </div>
-
-                <div class="md-form">
-                    @Html.LabelFor(model => model.KurzBezeichnung)
-                    @Html.EditorFor(model => model.KurzBezeichnung, new { htmlAttributes = new { @class = "form-control no-pointer", @readonly = "readonly" } })
-                </div>
-
-                <div class="md-form">
-                    @Html.LabelFor(model => model.HerstellerName)
-                    @Html.EditorFor(model => model.HerstellerName, new { htmlAttributes = new { @class = "form-control no-pointer", @readonly = "readonly" } })
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="md-form">
-                    @Html.LabelFor(model => model.EinzelPreis)
-                    @Html.EditorFor(model => model.EinzelPreis, new { htmlAttributes = new { @class = "form-control no-pointer", @readonly = "readonly" } })
-                </div>
-
-                <div class="md-form">
-                    @Html.LabelFor(model => model.Anzahl)
-                    @Html.EditorFor(model => model.Anzahl, new { htmlAttributes = new { @class = "form-control no-pointer", @readonly = "readonly" } })
-                </div>
-
-                <div class="md-form">
-                    @Html.LabelFor(model => model.EinzelGewicht)
-                    @Html.EditorFor(model => model.EinzelGewicht, new { htmlAttributes = new { @class = "form-control no-pointer", @readonly = "readonly" } })
-                </div>
-            </div>
-        </div>
+        
+        @Html.Partial("_WarenInput", Model)
 
         <div class="flex-row card-buttons">
             @Html.ActionLink("Bearbeiten", "Edit", new { id = Model?.ID }, new { @class = "btn btn-primary" })

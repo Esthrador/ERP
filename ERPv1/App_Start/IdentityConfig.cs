@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using ERPv1.Models;
+using ERPv1.Models.DbContext;
+using ERPv1.Models.IdentityModels;
 
 namespace ERPv1
 {

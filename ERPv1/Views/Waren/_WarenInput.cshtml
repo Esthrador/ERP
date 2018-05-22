@@ -1,0 +1,68 @@
+﻿@model ERPv1.Models.Ware
+
+<div class="row">
+    <div class="col-md-6">
+
+        @if (Model?.ID != null && Model.ID != Guid.Empty)
+        {
+            @Html.HiddenFor(model => model.ID)
+            @Html.HiddenFor(model => model.CreatedBy)
+            @Html.HiddenFor(model => model.CreatedOn)
+
+            @Html.HiddenFor(model => model.ChangedBy)
+            @Html.HiddenFor(model => model.ChangedOn)
+
+            @Html.HiddenFor(model => model.DeletedBy)
+            @Html.HiddenFor(model => model.DeletedOn)
+        }
+
+        <div class="md-form">
+            @Html.LabelFor(model => model.ArtikelNummer)
+            @Html.EditorFor(model => model.ArtikelNummer, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArtikelNummer, "", new { @class = "text-danger"})
+        </div>
+
+        <div class="md-form">
+            @Html.LabelFor(model => model.Bezeichnung)
+            @Html.EditorFor(model => model.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Bezeichnung, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="md-form">
+            @Html.LabelFor(model => model.KurzBezeichnung)
+            @Html.EditorFor(model => model.KurzBezeichnung, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.KurzBezeichnung, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="md-form">
+            @Html.LabelFor(model => model.HerstellerName)
+            @Html.EditorFor(model => model.HerstellerName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.HerstellerName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="md-form input-group">
+            @Html.LabelFor(model => model.EinzelPreis)
+            @Html.EditorFor(model => model.EinzelPreis, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-euro"></i></span>
+            </div>
+            @Html.ValidationMessageFor(model => model.EinzelPreis, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="md-form">
+            @Html.LabelFor(model => model.Anzahl)
+            @Html.EditorFor(model => model.Anzahl, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Anzahl, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="md-form input-group">
+            @Html.LabelFor(model => model.EinzelGewicht)
+            @Html.EditorFor(model => model.EinzelGewicht, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="input-group-append">
+                <span class="input-group-text font-weight-bold">g</span>
+            </div>
+            @Html.ValidationMessageFor(model => model.EinzelGewicht, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>

@@ -4,33 +4,29 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using ERPv1.Models;
-using Microsoft.AspNet.Identity;
+using ERPv1.Models.DbContext;
 
 namespace ERPv1.Controllers
 {
     [Authorize]
     public class KundeController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Kunde
         public ActionResult Index()
         {
-            return View(db.Kunden.ToList());
+            return View(_db.Kunden.ToList());
         }
 
         // GET: Kunde/Details/5
-        public ActionResult Details(Guid? id)
+        public ActionResult Details(Guid id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Kunde kunde = db.Kunden.Find(id);
-            if (kunde == null)
-            {
+            Kunde kunde = _db.Kunden.Find(id);
+
+            if (kunde == null)           
                 return HttpNotFound();
-            }
+            
             return View(kunde);
         }
 
@@ -40,19 +36,17 @@ namespace ERPv1.Controllers
             return View();
         }
 
-        // POST: Kunde/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Vorname,Nachname,IsFirma,Email,PLZ,Ort,Addresse,Tel,KurzBezeichnung,Gelöscht")] Kunde kunde)
+        public ActionResult Create(Kunde kunde)
         {
-
             if (ModelState.IsValid)
             {
                 kunde.ID = Guid.NewGuid();
-                db.Kunden.Add(kunde);
-                db.SaveChanges();
+
+                _db.Kunden.Add(kunde);
+                _db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
@@ -60,59 +54,42 @@ namespace ERPv1.Controllers
         }
 
         // GET: Kunde/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Kunde kunde = db.Kunden.Find(id);
+            Kunde kunde = _db.Kunden.Find(id);
+
             if (kunde == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(kunde);
         }
 
-        // POST: Kunde/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Vorname,Nachname,IsFirma,Email,PLZ,Ort,Addresse,Tel,KurzBezeichnung,Gelöscht")] Kunde kunde)
+        public ActionResult Edit(Kunde kunde)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(kunde).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(kunde).State = EntityState.Modified;
+                _db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
-            return View(kunde);
-        }
 
-        // GET: Kunde/Delete/5
-        public ActionResult Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Kunde kunde = db.Kunden.Find(id);
-            if (kunde == null)
-            {
-                return HttpNotFound();
-            }
             return View(kunde);
         }
 
         // POST: Kunde/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public ActionResult Delete(Guid id)
         {
-            Kunde kunde = db.Kunden.Find(id);
-            db.Kunden.Remove(kunde);
-            db.SaveChanges();
+            Kunde kunde = _db.Kunden.Find(id);
+
+            if (kunde == null)
+                return HttpNotFound();
+
+            _db.Kunden.Remove(kunde);
+            _db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -120,7 +97,7 @@ namespace ERPv1.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -11,14 +11,32 @@ namespace ERPv1.Models
     {
         [Key]
         public Guid ID { get;set; }
+
+        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "Vorname")]
         public string Vorname { get; set; }
+
+        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "Nachname")]
         public string Nachname { get; set; }
+
+        [Display(Name = "Ist ein Unternehmen")]
         public bool IsFirma { get; set; }
+
+        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "E-Mail")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "PLZ")]
         public string PLZ { get; set; }
+
+        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "Ort")]
         public string Ort { get; set; }
+
+        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "Adresse")]
         public string Addresse { get; set; }
+
+        [Display(Name = "Telefon")]
         public string Tel { get; set; }
+
+        [Display(Name = "Bezeichnung")]
         public string KurzBezeichnung { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace ERPv1.Models
+namespace ERPv1.Models.IdentityModels
 {
     public class IndexViewModel
     {

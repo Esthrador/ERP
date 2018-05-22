@@ -1,82 +1,53 @@
-﻿@model IEnumerable<ERPv1.Models.Kunde>
+﻿@using System.Globalization
+@using ERPv1.Extensions
+@model IEnumerable<ERPv1.Models.Kunde>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Kunden Übersicht";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Übersicht</li>
+</ol>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Vorname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nachname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsFirma)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PLZ)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ort)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Addresse)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KurzBezeichnung)
-        </th>
-        <th></th>
-    </tr>
+<div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vorname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nachname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsFirma)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PLZ)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ort)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Addresse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KurzBezeichnung)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    <h4>@ViewBag.Title</h4>
 
-</table>
+    <hr />
+
+    <p>
+        @Html.ActionLinkWithIcon("Neuen Kunden erstellen", "fa fa-plus-circle", true, "Create", "Kunde", null, new { @class = "btn btn-primary", style = "margin-left:0;" })
+    </p>
+
+    <table id="indexTable" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
+        <thead>
+            <tr>
+                <th class="no-pointer"></th>
+                <th>@Html.DisplayNameFor(x => x.Vorname)</th>
+                <th>@Html.DisplayNameFor(x => x.Nachname)</th>
+                <th>@Html.DisplayNameFor(x => x.Email)</th>
+                <th>@Html.DisplayNameFor(x => x.KurzBezeichnung)</th>
+                <th>@Html.DisplayNameFor(x => x.IsFirma)</th>
+                <th>@Html.DisplayNameFor(x => x.CreatedOn)</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var kunde in Model)
+        {
+            <tr>
+                <td><a href="@Url.Action("Details", "Kunde", new { id = kunde.ID })"><span class="badge badge-default button-column" style="padding: 5px">Details</span></a></td>
+                <td>@kunde.Vorname</td>
+                <td>@kunde.Nachname</td>
+                <td>@kunde.Email</td>
+                <td>@kunde.KurzBezeichnung</td>
+                <td>@kunde.IsFirma.ToLocalisedString()</td>
+                <td>@kunde.CreatedOn.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+@Scripts.Render("~/Scripts/ERPScripts/DataTablesConfig.js")

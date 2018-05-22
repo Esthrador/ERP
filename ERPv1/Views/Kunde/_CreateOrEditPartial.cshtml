@@ -1,4 +1,4 @@
-﻿@model ERPv1.Models.Ware
+﻿@model ERPv1.Models.Kunde
 
 @using (Html.BeginForm())
 {
@@ -6,7 +6,7 @@
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    @Html.Partial("_WarenInput", Model)
+    @Html.Partial("_KundenInput", Model)
 
     <div class="flex-row card-buttons">
         <input type="submit" value="Speichern" class="btn btn-primary" />

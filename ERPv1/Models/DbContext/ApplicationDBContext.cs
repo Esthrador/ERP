@@ -4,11 +4,10 @@ using System.Linq;
 using System.Web;
 using EntityFramework.DynamicFilters;
 using ERPv1.Migrations;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+using ERPv1.Models.IdentityModels;
 using TrackerEnabledDbContext.Identity;
 
-namespace ERPv1.Models
+namespace ERPv1.Models.DbContext
 {
     public class ApplicationDbContext : TrackerIdentityContext<ApplicationUser>
     {
