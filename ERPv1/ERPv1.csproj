@@ -207,6 +207,7 @@
     <Compile Include="Controllers\KundeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WarenController.cs" />
+    <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -218,6 +219,14 @@
     <Compile Include="Migrations\201803291240045_AppUserInBaseClassAsString.cs" />
     <Compile Include="Migrations\201803291240045_AppUserInBaseClassAsString.Designer.cs">
       <DependentUpon>201803291240045_AppUserInBaseClassAsString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803311755341_WarenAnpassung.cs" />
+    <Compile Include="Migrations\201803311755341_WarenAnpassung.Designer.cs">
+      <DependentUpon>201803311755341_WarenAnpassung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804010430133_WarenAnpassung2.cs" />
+    <Compile Include="Migrations\201804010430133_WarenAnpassung2.Designer.cs">
+      <DependentUpon>201804010430133_WarenAnpassung2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -408,9 +417,7 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\Images\business-planning.png" />
     <Content Include="Content\Images\businessman.jpg" />
-    <Content Include="Content\Images\smart-home.jpg" />
     <Content Include="Content\img\lightbox\default-skin.png" />
     <Content Include="Content\img\lightbox\default-skin.svg" />
     <Content Include="Content\img\lightbox\preloader.gif" />
@@ -792,6 +799,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803291240045_AppUserInBaseClassAsString.resx">
       <DependentUpon>201803291240045_AppUserInBaseClassAsString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803311755341_WarenAnpassung.resx">
+      <DependentUpon>201803311755341_WarenAnpassung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804010430133_WarenAnpassung2.resx">
+      <DependentUpon>201804010430133_WarenAnpassung2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

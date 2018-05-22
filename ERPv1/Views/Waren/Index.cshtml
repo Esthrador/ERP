@@ -10,7 +10,7 @@
     <li class="breadcrumb-item active">Übersicht</li>
 </ol>
 
-<div class="animated fadeInLeft">
+<div>
 
     <h4>@ViewBag.Title</h4>
 
@@ -22,29 +22,29 @@
 
     <table id="indexTable" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
         <thead>
-        <tr>
-            <th class="no-pointer"></th>
-            <th>@Html.DisplayNameFor(x => x.Bezeichnung)</th>
-            <th>@Html.DisplayNameFor(x => x.KurzBezeichnung)</th>
-            <th>@Html.DisplayNameFor(x => x.EinzelGewicht)</th>
-            <th>@Html.DisplayNameFor(x => x.Preis)</th>
-            <th>@Html.DisplayNameFor(x => x.Anzahl)</th>
-            <th>@Html.DisplayNameFor(x => x.SteuerKlasse)</th>
-        </tr>
+            <tr>
+                <th class="no-pointer"></th>
+                <th>@Html.DisplayNameFor(x => x.ArtikelNummer)</th>
+                <th>@Html.DisplayNameFor(x => x.Bezeichnung)</th>
+                <th>@Html.DisplayNameFor(x => x.KurzBezeichnung)</th>
+                <th>@Html.DisplayNameFor(x => x.HerstellerName)</th>
+                <th>@Html.DisplayNameFor(x => x.EinzelPreis)</th>
+                <th>@Html.DisplayNameFor(x => x.Anzahl)</th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var ware in Model)
-        {
-            <tr>
-                <td><a href="@Url.Action("Details", "Waren", new { id = ware.ID })"><span class="badge badge-default button-column" style="padding: 5px">Details</span></a></td>
-                <td>@ware.Bezeichnung</td>
-                <td>@ware.KurzBezeichnung</td>
-                <td>@ware.EinzelGewicht</td>
-                <td>@ware.Preis</td>
-                <td>@ware.Anzahl</td>
-                <td>@ware.SteuerKlasse</td>
-            </tr>
-        }
+            @foreach (var ware in Model)
+            {
+                <tr>
+                    <td><a href="@Url.Action("Details", "Waren", new { id = ware.ID })"><span class="badge badge-default button-column" style="padding: 5px">Details</span></a></td>
+                    <td>@ware.ArtikelNummer</td>
+                    <td>@ware.Bezeichnung</td>
+                    <td>@ware.KurzBezeichnung</td>
+                    <td>@ware.HerstellerName</td>
+                    <td>@ware.EinzelPreis.ToEuro()</td>
+                    <td>@ware.Anzahl</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

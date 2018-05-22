@@ -12,13 +12,13 @@
     @Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap4.min.js")
 
 </head>
-<body>
+<body id="htmlBody" style="display: none">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">ERP</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <audio tabindex="0" id="dubstepControl" controls loop preload="auto" hidden>
             <source src="Content/Sounds/DubstepShort.mp3">
         </audio>
@@ -47,12 +47,21 @@
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p><img src="~/Content/Logos/LogoCopyrightException_Simple.png" height="30" /> Copyright Exception - @DateTime.Now.Year</p>
-        </footer>
     </div>
+
+    <footer class="footer">
+        <div class="container" style="margin-bottom: 0">
+            <span><img src="~/Content/Logos/LogoCopyrightException_Simple.png" height="30" /> Copyright Exception - @DateTime.Now.Year</span>
+        </div>
+    </footer>
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            $("#htmlBody").fadeIn();
+        });
+    </script>
 </body>
 </html>

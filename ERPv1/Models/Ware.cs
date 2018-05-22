@@ -13,22 +13,36 @@ namespace ERPv1.Models
         [Key]
         public Guid ID { get; set; }
 
+        [Index("IX_ArtNr_Hersteller_Delete", 0, IsUnique = true)]
+        [Required, Display(Name = "Artikelnummer")]
+        [StringLength(32, ErrorMessage = "Ungültige Länge der Artikelnummer")]
+        public string ArtikelNummer { get; set; }
+
+        [Required, Display(Name = "Bezeichnung")]
         public string Bezeichnung { get; set; }
 
         [Display(Name = "Kurzbezeichnung")]
         public string KurzBezeichnung { get; set; }
 
-        [Display(Name = "Anmerkung")]
-        public string Notiz { get; set; }
+        [Index("IX_ArtNr_Hersteller_Delete", 1, IsUnique = true)]
+        [Required, Display(Name = "Hersteller")]
+        [StringLength(32, ErrorMessage = "Ungültige Länge des Herstellernamen")]
+        public string HerstellerName { get; set; }
 
+        [Index("IX_ArtNr_Hersteller_Delete", 2, IsUnique = true)]
+        public override DateTime? DeletedOn { get; set; }
+        
+        [Required, Display(Name = "Menge")]
         public int Anzahl { get; set; }
 
-        public double Preis { get; set; }
+        [Required, Display(Name = "Preis pro Einheit")]
+        public double EinzelPreis { get; set; }
 
-        public int SteuerKlasse { get; set; }
-
-        [Display(Name = "Gewicht")]
+        [Display(Name = "Gewicht pro Einheit")]
         public double EinzelGewicht { get; set; }
+
+        [Display(Name = "Anmerkung")]
+        public string Notiz { get; set; }
 
         public virtual ICollection<AuftragWaren> AuftragWaren { get; set; }
     }

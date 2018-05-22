@@ -27,7 +27,7 @@ $(document).ready(function () {
     $('#indexTable').DataTable({
         "language": languageDE,
         columnDefs: [
-            { targets: "no-sort", orderable: false }
+            { targets: "no-pointer", orderable: false }
         ],
         "aaSorting": [] // Prevent initial sorting
     });
