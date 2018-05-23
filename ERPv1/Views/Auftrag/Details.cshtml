@@ -5,15 +5,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Auftrag")">Übersicht</a></li>
+    <li class="breadcrumb-item active">Details</li>
+</ol>
 
-<div>
-    <h4>Auftrag</h4>
-    <hr />
-    <dl class="dl-horizontal">
-    </dl>
+<div class="card">
+    <div class="card-header">
+        Auftrag Details
+    </div>
+    <div class="card-body detail-body">
+        @Html.Partial("_AuftragInput", Model)
+
+        <div class="flex-row card-buttons">
+            @Html.ActionLink("Bearbeiten", "Edit", new { id = Model?.ID }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Löschen", "Delete", new { id = Model?.ID }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Zurück zur Liste", "Index", null, new { @class = "btn btn-white text-dark" })
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

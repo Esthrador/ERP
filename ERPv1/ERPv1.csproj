@@ -774,7 +774,6 @@
     <Content Include="Views\Kunde\Edit.cshtml" />
     <Content Include="Views\Kunde\Index.cshtml" />
     <Content Include="Views\Auftrag\Create.cshtml" />
-    <Content Include="Views\Auftrag\Delete.cshtml" />
     <Content Include="Views\Auftrag\Details.cshtml" />
     <Content Include="Views\Auftrag\Edit.cshtml" />
     <Content Include="Views\Auftrag\Index.cshtml" />
@@ -802,6 +801,7 @@
     <Content Include="Views\Lager\Details.cshtml" />
     <Content Include="Views\Lager\Edit.cshtml" />
     <Content Include="Views\Lager\Index.cshtml" />
+    <Content Include="Views\Auftrag\_AuftragInput.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

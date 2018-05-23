@@ -1,47 +1,25 @@
-﻿@{
-    ViewBag.Title = "Edit";
+﻿@model ERPv1.Models.Auftrag
+
+@{
+    ViewBag.Title = "Bearbeiten";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Auftrag")">Übersicht</a></li>
+    <li class="breadcrumb-item"><a href="@Url.Action("Details", "Auftrag", new { id = Model.ID })">Details</a></li>
+    <li class="breadcrumb-item active">Bearbeiten</li>
+</ol>
 
 <div class="card">
-    <div class="card-header deep-purple white-text lighten-1">
+    <div class="card-header">
         Auftrag bearbeiten
     </div>
     <div class="card-body">
-        @using (Html.BeginForm())
-        {
-            @Html.Partial("_CreateOrEditPartial", Model)
-        }
+        @Html.Partial("_CreateOrEditPartial", Model)
     </div>
 </div>
 
-
-<div>
-    @Html.ActionLink("Zurück zur Übersicht", "Index")
-</div>
-
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/Scripts/ERPScripts/DataTablesConfig.js")
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.datepicker').datepicker();
-
-
-            $('#selectionTable').on('click',
-                'tr',
-                function() {
-                    $(this).toggleClass('selected');
-                });
-        });
-
-
-    </script>
 }

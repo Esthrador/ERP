@@ -11,7 +11,6 @@ namespace ERPv1.Models.ViewModels
         public List<WareViewModel> Waren { get; set; }
     }
 
-
     public class WareViewModel
     {
         public Ware Ware { get; set; }

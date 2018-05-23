@@ -36,4 +36,8 @@ $(document).ready(function () {
     $('#selectionTable').DataTable({
         "language": languageDE
     });
+
+    $('#selectionTable2').DataTable({
+        "language": languageDE
+    });
 });

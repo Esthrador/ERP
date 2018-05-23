@@ -1,39 +1,31 @@
-﻿@model ERPv1.Models.ViewModels.AuftragViewModel
+﻿@model ERPv1.Models.Auftrag
 
 @{
-    ViewBag.Title = "Auftrag anlegen";
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Auftrag")">Übersicht</a></li>
+    <li class="breadcrumb-item active">Erstellen</li>
+</ol>
+
 <div class="card">
-    <div class="card-header deep-purple white-text lighten-1">
-        Auftrag anlegen
+    <div class="card-header">
+        Auftrag erstellen
     </div>
     <div class="card-body">
-        @using (Html.BeginForm())
-        {
-            @Html.Partial("_CreateOrEditPartial", Model)
-        }
+        @Html.Partial("_CreateOrEditPartial", Model)
     </div>
 </div>
-
-
-<div>
-    @Html.ActionLink("Zurück zur Übersicht", "Index")
-</div>
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/Scripts/ERPScripts/DataTablesConfig.js")
-    <script>
-        $(document).ready(function () {
-            $('.datepicker').datepicker();
-            $('#selectionTable tbody').on('click',
-                'tr',
-                function () {
-                    $(this).toggleClass('table-active');
-                });
-        });
-    </script>
 }
+
+<script>
+    $(document).ready(function() {
+        $("#containerDiv").removeClass("container");
+        $("#containerDiv").addClass("container-fluid");
+    });
+</script>

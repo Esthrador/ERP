@@ -1,0 +1,75 @@
+﻿@model ERPv1.Models.Auftrag
+
+<div class="row">
+    <div class="col">
+        @if (Model?.ID != null && Model.ID != Guid.Empty)
+        {
+            @Html.HiddenFor(model => model.ID)
+            @Html.HiddenFor(model => model.CreatedBy)
+            @Html.HiddenFor(model => model.CreatedOn)
+
+            @Html.HiddenFor(model => model.ChangedBy)
+            @Html.HiddenFor(model => model.ChangedOn)
+
+            @Html.HiddenFor(model => model.DeletedBy)
+            @Html.HiddenFor(model => model.DeletedOn)
+        }
+
+        <div class="md-form">
+            @Html.LabelFor(model => model.Bezeichnung)
+            @Html.EditorFor(model => model.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Bezeichnung, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="md-form">
+            @Html.LabelFor(model => model.Lieferant)
+            @Html.EditorFor(model => model.Lieferant, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Lieferant, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="md-form">
+            @Html.LabelFor(model => model.Notiz)
+            @Html.EditorFor(model => model.Notiz, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Notiz, "", new { @class = "text-danger" })
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col">
+                <table id="selectionTable" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
+                    <thead>
+                        <tr>
+                            <th class="no-pointer"></th>
+                            <th>T1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Test1</td>
+                            <td>Test1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table id="selectionTable2" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
+                    <thead>
+                        <tr>
+                            <th class="no-pointer"></th>
+                            <th>T1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Test1</td>
+                            <td>Test1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
