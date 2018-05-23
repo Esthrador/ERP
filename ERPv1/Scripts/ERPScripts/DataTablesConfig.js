@@ -24,6 +24,7 @@
 };
 
 $(document).ready(function () {
+
     $('#indexTable').DataTable({
         "language": languageDE,
         columnDefs: [
@@ -35,6 +36,4 @@ $(document).ready(function () {
     $('#selectionTable').DataTable({
         "language": languageDE
     });
-
-
 });

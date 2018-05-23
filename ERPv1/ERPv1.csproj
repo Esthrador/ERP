@@ -237,6 +237,10 @@
     <Compile Include="Migrations\201805230957418_AddedLager.Designer.cs">
       <DependentUpon>201805230957418_AddedLager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805231028067_AddedPropertiesToAuftrag.cs" />
+    <Compile Include="Migrations\201805231028067_AddedPropertiesToAuftrag.Designer.cs">
+      <DependentUpon>201805231028067_AddedPropertiesToAuftrag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LagerWaren.cs" />
     <Compile Include="Models\IdentityModels\AccountViewModels.cs" />
@@ -830,6 +834,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805230957418_AddedLager.resx">
       <DependentUpon>201805230957418_AddedLager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805231028067_AddedPropertiesToAuftrag.resx">
+      <DependentUpon>201805231028067_AddedPropertiesToAuftrag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

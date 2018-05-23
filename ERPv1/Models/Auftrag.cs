@@ -15,7 +15,10 @@ namespace ERPv1.Models
         [Key]
         public Guid ID { get; set; }
 
-        [Display(Name = "Auftragssstatus")]
+        [Display(Name = "Bezeichnung")]
+        public string Bezeichnung { get; set; }
+
+        [Display(Name = "Auftrags-Status")]
         public AuftragStatus Status { get; set; }
 
         [Display(Name="Ausführungsdatum")]
