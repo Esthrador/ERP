@@ -1,0 +1,17 @@
+﻿@model ERPv1.Models.Lager
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.Partial("_LagerInput", Model)
+
+    <div class="flex-row card-buttons">
+        <input type="submit" value="Speichern" class="btn btn-primary" />
+
+        @Html.ActionLink("Zurück zur Liste", "Index", null, new { @class = "btn btn-white text-dark" })
+    </div>
+
+}

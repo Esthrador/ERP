@@ -20,6 +20,7 @@ namespace ERPv1.Models.DbContext
         public DbSet<AuftragStatus> AuftragStatus { get; set; }
         public DbSet<Auftrag> Auftrag { get; set; }
         public DbSet<Ware> Waren { get; set; }
+        public DbSet<Lager> Lager { get; set; }
 
         public static ApplicationDbContext Create()
         {

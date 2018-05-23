@@ -204,6 +204,7 @@
     <Compile Include="Controllers\AuftragController.cs" />
     <Compile Include="Controllers\AuftragStatusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LagerController.cs" />
     <Compile Include="Controllers\KundeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WarenController.cs" />
@@ -232,7 +233,12 @@
     <Compile Include="Migrations\201805221148289_DataAnnotations1.Designer.cs">
       <DependentUpon>201805221148289_DataAnnotations1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805230957418_AddedLager.cs" />
+    <Compile Include="Migrations\201805230957418_AddedLager.Designer.cs">
+      <DependentUpon>201805230957418_AddedLager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\LagerWaren.cs" />
     <Compile Include="Models\IdentityModels\AccountViewModels.cs" />
     <Compile Include="Models\DbContext\ApplicationDBContext.cs" />
     <Compile Include="Models\Auftrag.cs" />
@@ -240,6 +246,7 @@
     <Compile Include="Models\AuftragWaren.cs" />
     <Compile Include="Models\BaseClass.cs" />
     <Compile Include="Models\IdentityModels\IdentityModels.cs" />
+    <Compile Include="Models\Lager.cs" />
     <Compile Include="Models\Kunde.cs" />
     <Compile Include="Models\IdentityModels\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\AuftragViewModel.cs" />
@@ -785,6 +792,12 @@
     <Content Include="Views\Kunde\_CreateOrEditPartial.cshtml" />
     <Content Include="Views\Waren\_WarenInput.cshtml" />
     <Content Include="Views\Kunde\_KundenInput.cshtml" />
+    <Content Include="Views\Lager\_CreateOrEditPartial.cshtml" />
+    <Content Include="Views\Lager\_LagerInput.cshtml" />
+    <Content Include="Views\Lager\Create.cshtml" />
+    <Content Include="Views\Lager\Details.cshtml" />
+    <Content Include="Views\Lager\Edit.cshtml" />
+    <Content Include="Views\Lager\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -814,6 +827,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805221148289_DataAnnotations1.resx">
       <DependentUpon>201805221148289_DataAnnotations1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805230957418_AddedLager.resx">
+      <DependentUpon>201805230957418_AddedLager.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

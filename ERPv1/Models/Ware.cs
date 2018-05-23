@@ -32,7 +32,7 @@ namespace ERPv1.Models
         [Index("IX_ArtNr_Hersteller_Delete", 2, IsUnique = true)]
         public override DateTime? DeletedOn { get; set; }
         
-        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "Menge")]
+        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "Mindestmenge")]
         public int Anzahl { get; set; }
 
         [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "Preis pro Einheit")]
@@ -45,5 +45,7 @@ namespace ERPv1.Models
         public string Notiz { get; set; }
 
         public virtual ICollection<AuftragWaren> AuftragWaren { get; set; }
+        public virtual ICollection<LagerWaren> LagerWaren { get; set; }
+
     }
 }
