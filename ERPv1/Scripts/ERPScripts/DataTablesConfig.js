@@ -31,6 +31,7 @@ $(document).ready(function () {
             { targets: "no-pointer", orderable: false },
             { targets: "no-sort", orderable: false }
         ],
+        searching: true,
         "aaSorting": [] // Prevent initial sorting
     });
 
@@ -40,7 +41,17 @@ $(document).ready(function () {
             { targets: "no-pointer", orderable: false },
             { targets: "no-sort", orderable: false }
         ],
-        "aaSorting": [] // Prevent initial sorting
+        searching: true,
+        select: 'single',
+        "aaSorting": [], // Prevent initial sorting
+        buttons: [
+            {
+                text: 'Auswahl',
+                action: function(e, dt, node, config) {
+
+                }
+            }],
+        dom: 'Bfrtip'
     });
 
     $('#selectionTable2').DataTable({
@@ -49,6 +60,7 @@ $(document).ready(function () {
             { targets: "no-pointer", orderable: false },
             { targets: "no-sort", orderable: false }
         ],
+        searching: true,
         "aaSorting": [] // Prevent initial sorting
     });
 });

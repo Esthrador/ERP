@@ -37,6 +37,23 @@ namespace ERPv1.Controllers
         {
             var avm = new AuftragViewModel();
             avm.Waren = new List<WareViewModel>();
+            avm.Auftrag = new Auftrag();
+            avm.Auftrag.KundenAuswahl = new List<SelectListItem>();
+            avm.Auftrag.KundenAuswahl.Add(new SelectListItem
+            {
+                Text = "",
+                Value =""
+            });
+            var kunden = _db.Kunden.ToList();
+            foreach (var k in kunden)
+            {
+                avm.Auftrag.KundenAuswahl.Add(new SelectListItem
+                {
+                    Text = k.Vorname + " " + k.Nachname,
+                    Value = k.ID.ToString()
+                });
+            }
+
             var tmpWaren = _db.Waren.Include(c=>c.LagerWaren).ToList();
             foreach (var t in tmpWaren)
             {
