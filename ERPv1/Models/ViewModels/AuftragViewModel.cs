@@ -9,6 +9,7 @@ namespace ERPv1.Models.ViewModels
     {
         public Auftrag Auftrag { get; set; }
         public List<WareViewModel> Waren { get; set; }
+        public List<WareViewModel> SelectedWaren { get;set; }
     }
 
     public class WareViewModel

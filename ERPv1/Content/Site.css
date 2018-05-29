@@ -76,3 +76,27 @@ body {
 .field-validation-error {
     clear: both;
 }
+
+#selectionTable {
+    table-layout: fixed;
+}
+
+#selectionTable2 {
+    table-layout: fixed;
+}
+
+/*
+    HACK: Auftragerstellung / Warenauswahl
+*/
+
+
+#selectionTable td,th {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    overflow-wrap: initial;
+}
+#selectionTable2 td,th {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    overflow-wrap: initial;
+}
