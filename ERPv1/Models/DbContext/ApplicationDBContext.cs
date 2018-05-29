@@ -16,11 +16,14 @@ namespace ERPv1.Models.DbContext
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
+
         public DbSet<Kunde> Kunden { get; set; }
         public DbSet<AuftragStatus> AuftragStatus { get; set; }
         public DbSet<Auftrag> Auftrag { get; set; }
         public DbSet<Ware> Waren { get; set; }
         public DbSet<Lager> Lager { get; set; }
+        public DbSet<LagerWaren> LagerWaren { get; set; }
+        public DbSet<AuftragWaren> AuftragWaren { get; set; }
 
         public static ApplicationDbContext Create()
         {

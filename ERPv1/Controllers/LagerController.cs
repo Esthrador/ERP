@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using ERPv1.Models;
 using ERPv1.Models.DbContext;
+using ERPv1.Models.ViewModels;
 
 namespace ERPv1.Controllers
 {
@@ -90,6 +92,22 @@ namespace ERPv1.Controllers
             _db.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult AddProducts(Guid id)
+        {
+            Lager lager = _db.Lager.Find(id);
+
+            if (lager == null)
+                return HttpNotFound();
+
+            var vm = new LagerWarenViewModel
+            {
+                Lager = lager,
+                Waren = _db.Waren.ToList()
+            };
+
+            return View("LagerWaren", vm);
         }
 
         protected override void Dispose(bool disposing)

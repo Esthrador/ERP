@@ -28,16 +28,27 @@ $(document).ready(function () {
     $('#indexTable').DataTable({
         "language": languageDE,
         columnDefs: [
-            { targets: "no-pointer", orderable: false }
+            { targets: "no-pointer", orderable: false },
+            { targets: "no-sort", orderable: false }
         ],
         "aaSorting": [] // Prevent initial sorting
     });
 
     $('#selectionTable').DataTable({
-        "language": languageDE
+        "language": languageDE,
+        columnDefs: [
+            { targets: "no-pointer", orderable: false },
+            { targets: "no-sort", orderable: false }
+        ],
+        "aaSorting": [] // Prevent initial sorting
     });
 
     $('#selectionTable2').DataTable({
-        "language": languageDE
+        "language": languageDE,
+        columnDefs: [
+            { targets: "no-pointer", orderable: false },
+            { targets: "no-sort", orderable: false }
+        ],
+        "aaSorting": [] // Prevent initial sorting
     });
 });

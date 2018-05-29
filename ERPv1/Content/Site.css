@@ -8,7 +8,7 @@
 }
 
 .card-body {
-    padding-top: 0;
+    padding-top: 20px;
 }
 
 .col-sm-12 {
@@ -25,6 +25,10 @@
 
 .no-pointer {
     pointer-events: none !important;
+    cursor: default !important;
+}
+
+.no-sort {
     cursor: default !important;
 }
 
