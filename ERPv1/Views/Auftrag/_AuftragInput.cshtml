@@ -1,75 +1,121 @@
-﻿@model ERPv1.Models.Auftrag
+﻿@model ERPv1.Models.ViewModels.AuftragViewModel
+@using ERPv1.Models
 
 <div class="row">
-    <div class="col">
-        @if (Model?.ID != null && Model.ID != Guid.Empty)
+    <div class="col-6">
+        @if (Model?.Auftrag != null && Model.Auftrag.ID != Guid.Empty)
         {
-            @Html.HiddenFor(model => model.ID)
-            @Html.HiddenFor(model => model.CreatedBy)
-            @Html.HiddenFor(model => model.CreatedOn)
+            @Html.HiddenFor(model => model.Auftrag.ID)
+            @Html.HiddenFor(model => model.Auftrag.CreatedBy)
+            @Html.HiddenFor(model => model.Auftrag.CreatedOn)
 
-            @Html.HiddenFor(model => model.ChangedBy)
-            @Html.HiddenFor(model => model.ChangedOn)
+            @Html.HiddenFor(model => model.Auftrag.ChangedBy)
+            @Html.HiddenFor(model => model.Auftrag.ChangedOn)
 
-            @Html.HiddenFor(model => model.DeletedBy)
-            @Html.HiddenFor(model => model.DeletedOn)
+            @Html.HiddenFor(model => model.Auftrag.DeletedBy)
+            @Html.HiddenFor(model => model.Auftrag.DeletedOn)
         }
 
         <div class="md-form">
-            @Html.LabelFor(model => model.Bezeichnung)
-            @Html.EditorFor(model => model.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Bezeichnung, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.Auftrag.Bezeichnung)
+            @Html.EditorFor(model => model.Auftrag.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Auftrag.Bezeichnung, "", new { @class = "text-danger" })
         </div>
 
         <div class="md-form">
-            @Html.LabelFor(model => model.Lieferant)
-            @Html.EditorFor(model => model.Lieferant, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Lieferant, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.Auftrag.Lieferant)
+            @Html.EditorFor(model => model.Auftrag.Lieferant, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Auftrag.Lieferant, "", new { @class = "text-danger" })
         </div>
 
         <div class="md-form">
-            @Html.LabelFor(model => model.Notiz)
-            @Html.EditorFor(model => model.Notiz, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Notiz, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.Auftrag.Notiz)
+            @Html.EditorFor(model => model.Auftrag.Notiz, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Auftrag.Notiz, "", new { @class = "text-danger" })
         </div>
 
         <br />
 
-        <div class="row">
-            <div class="col">
-                <table id="selectionTable" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
-                    <thead>
-                        <tr>
-                            <th class="no-pointer"></th>
-                            <th>T1</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Test1</td>
-                            <td>Test1</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col">
-                <table id="selectionTable2" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
-                    <thead>
-                        <tr>
-                            <th class="no-pointer"></th>
-                            <th>T1</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Test1</td>
-                            <td>Test1</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+
+    </div>
+
+    <div class="col-6">
+        <div class="md-form">
+            @Html.LabelFor(model => model.Auftrag.AuftragsDatum)
+            @Html.EditorFor(model => model.Auftrag.AuftragsDatum, new { htmlAttributes = new { @class = "form-control datepicker", @type = "text" } })
+            @Html.ValidationMessageFor(model => model.Auftrag.AuftragsDatum, "", new { @class = "text-danger" })
+        </div>
+        <div class="md-form">
+            @Html.LabelFor(model => model.Auftrag.RechnungsDatum)
+            @Html.EditorFor(model => model.Auftrag.RechnungsDatum, new { htmlAttributes = new { @class = "form-control datepicker", @type = "text" } })
+            @Html.ValidationMessageFor(model => model.Auftrag.RechnungsDatum, "", new { @class = "text-danger" })
         </div>
 
+
+
+    </div>
+    
+    
+    
+
+</div>
+<div class="row">
+    <div class="col-6">
+        <table id="selectionTable" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
+            <thead>
+            <tr>
+                <th class="no-pointer"></th>
+                <th>@Html.DisplayName("Artikelnummer")</th>
+                <th>@Html.DisplayName("Bezeichnung")</th>
+                <th>@Html.DisplayName("Menge")</th>
+                <th>@Html.DisplayName("Lager")</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach(var wvm in Model.Waren)
+            {
+                <tr>
+                    <td></td>
+                    <td>@wvm.Ware.ArtikelNummer</td>
+                    <td>@wvm.Ware.KurzBezeichnung</td>
+                    <td>@wvm.Ware.LagerWaren.Sum(c => c.Menge)</td>
+                    <td>@wvm.Ware.LagerWaren.Select(c => c.Lager.Standort)</td>
+                </tr>   
+            }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-6">
+        <table id="selectionTable2" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
+            <thead>
+                <tr>
+                    <th class="no-pointer"></th>
+                    <th>T1</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Test1</td>
+                    <td>Test1</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
+
+^
+<script type="text/javascript">
+     $(document).ready(function() {
+         $(".datepicker").datepicker();
+
+
+         $("#selectionTable").bind('mouseenter', function() {
+             if($(this).offsetWidth < $(this).scrollWidth && !$(this).attr('title')){
+                 $(this).attr('title', $(this).text());
+             }
+         })
+
+
+     });
+</script>

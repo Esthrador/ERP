@@ -35,18 +35,29 @@ namespace ERPv1.Controllers
         // GET: Auftrag/Create
         public ActionResult Create()
         {
-            return View();
+            var avm = new AuftragViewModel();
+            avm.Waren = new List<WareViewModel>();
+            var tmpWaren = _db.Waren.Include(c=>c.LagerWaren).ToList();
+            foreach (var t in tmpWaren)
+            {
+                avm.Waren.Add(new WareViewModel
+                {
+                    Menge = t.LagerWaren?.Sum(c=>c.Menge) ?? 0,
+                    Ware = t
+                });
+            }
+            return View(avm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Auftrag auftrag)
+        public ActionResult Create(AuftragViewModel auftrag)
         {
             if (ModelState.IsValid)
             {
-                auftrag.ID = Guid.NewGuid();
+                auftrag.Auftrag.ID = Guid.NewGuid();
 
-                _db.Auftrag.Add(auftrag);
+                _db.Auftrag.Add(auftrag.Auftrag);
                 _db.SaveChanges();
 
                 return RedirectToAction("Index");
