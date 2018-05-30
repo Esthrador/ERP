@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.Mvc;
 using ERPv1.Models;
 using ERPv1.Models.DbContext;
+using ERPv1.Models.ModelBinder;
 using ERPv1.Models.ViewModels;
 
 namespace ERPv1.Controllers
@@ -108,6 +109,37 @@ namespace ERPv1.Controllers
             };
 
             return View("LagerWaren", vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddProducts([ModelBinder(typeof(LagerWarenModelBinder))]LagerWarenViewModel model)
+        {
+            var lager = _db.Lager.Find(model.Lager.ID);
+
+            if (lager == null)
+                return HttpNotFound();
+
+            foreach (var lagerWaren in lager.LagerWaren)
+            {
+                _db.LagerWaren.Remove(lagerWaren);
+            }
+
+            foreach (var lagerWaren in model.LagerWaren)
+            {
+                lagerWaren.Lager = _db.Lager.Find(lagerWaren.LagerID);
+                lagerWaren.Ware = _db.Waren.Find(lagerWaren.WareID);
+
+                _db.LagerWaren.Add(new LagerWaren{
+                    Lager = lagerWaren.Lager,
+                    Ware = lagerWaren.Ware,
+                    Menge = lagerWaren.Menge
+                });
+            }
+
+            _db.SaveChanges();
+
+            return RedirectToAction("Details", new {id = model.Lager.ID});
         }
 
         protected override void Dispose(bool disposing)
