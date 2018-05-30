@@ -257,6 +257,7 @@
     <Compile Include="Models\Lager.cs" />
     <Compile Include="Models\Kunde.cs" />
     <Compile Include="Models\IdentityModels\ManageViewModels.cs" />
+    <Compile Include="Models\ModelBinder\LagerWarenModelBinder.cs" />
     <Compile Include="Models\ViewModels\AuftragViewModel.cs" />
     <Compile Include="Models\ViewModels\LagerWarenViewModel.cs" />
     <Compile Include="Models\Ware.cs" />
