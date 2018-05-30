@@ -48,13 +48,17 @@ $(document).ready(function () {
             {
                 text: 'Auswahl',
                 action: function(e, dt, node, config) {
+                    if ($("#selectionTable").DataTable().row({ selected: true }).length === 0) return;
 
+                    var data = $("#selectionTable").DataTable().row({ selected: true }).data();
+                    var dt2 = $("#selectionTable2").DataTable();
+                    dt2.row.add(data).draw();
                 }
             }],
         dom: 'Bfrtip'
     });
 
-    $('#selectionTable2').DataTable({
+    var dt2 = $('#selectionTable2').DataTable({
         "language": languageDE,
         columnDefs: [
             { targets: "no-pointer", orderable: false },
