@@ -23,6 +23,12 @@ namespace ERPv1
                       "~/Scripts/bootstrap.min.js",
                       "~/Scripts/mdb.min.js",
                       "~/Scripts/respond.min.js",
+                      "~/Scripts/DataTables/jquery.dataTables.min.js",
+                      "~/Scripts/DataTables/dataTables.bootstrap4.min.js",
+                      "~/Scripts/DataTables/dataTables.buttons.min.js",
+                      "~/Scripts/DataTables/buttons.bootstrap4.min.js",
+                      "~/Scripts/DataTables/buttons.html5.min.js",
+                      "~/Scripts/DataTables/dataTables.select.min.js",
                       "~/Scripts/bootstrap-datepicker.min.js",
                       "~/Scripts/ERPScripts/DubstepMode.js"));
 
@@ -31,6 +37,9 @@ namespace ERPv1
                       "~/Content/bootstrap.min.css",
                       "~/Content/bootstrap-datepicker.standalone.css",
                       "~/Content/DataTables/css/dataTables.bootstrap4.min.css",
+                      "~/Content/DataTables/css/select.bootstrap4.min.css",
+                      //"~/Content/DataTables/css/jquery.dataTables.min.css",
+                      "~/Content/DataTables/css/buttons.bootstrap4.min.css",
                       "~/Content/font-awesome.min.css",
                       "~/Content/site.css"));
         }

@@ -41,6 +41,10 @@ namespace ERPv1.Models
 
         [NotMapped]
         public List<SelectListItem> WarenAuswahl { get; set; }
-
+        public virtual Kunde Kunde { get; set; }
+        [ForeignKey("Kunde")]
+        public Guid KundeId { get; set; }
+        [NotMapped]
+        public List<SelectListItem> KundenAuswahl { get; set; }
     }
 }
