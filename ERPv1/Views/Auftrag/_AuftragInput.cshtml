@@ -3,41 +3,41 @@
 
 <div class="row">
     <div class="col-6">
-        @if (Model?.Auftrag != null && Model.Auftrag.ID != Guid.Empty)
+        @if (Model?.AuftragToDo != null && Model.AuftragToDo.ID != Guid.Empty)
         {
-            @Html.HiddenFor(model => model.Auftrag.ID)
-            @Html.HiddenFor(model => model.Auftrag.CreatedBy)
-            @Html.HiddenFor(model => model.Auftrag.CreatedOn)
+            @Html.HiddenFor(model => model.AuftragToDo.ID)
+            @Html.HiddenFor(model => model.AuftragToDo.CreatedBy)
+            @Html.HiddenFor(model => model.AuftragToDo.CreatedOn)
             
-            @Html.HiddenFor(model => model.Auftrag.ChangedBy)
-            @Html.HiddenFor(model => model.Auftrag.ChangedOn)
+            @Html.HiddenFor(model => model.AuftragToDo.ChangedBy)
+            @Html.HiddenFor(model => model.AuftragToDo.ChangedOn)
 
-            @Html.HiddenFor(model => model.Auftrag.DeletedBy)
-            @Html.HiddenFor(model => model.Auftrag.DeletedOn)
+            @Html.HiddenFor(model => model.AuftragToDo.DeletedBy)
+            @Html.HiddenFor(model => model.AuftragToDo.DeletedOn)
         }
 
         <div class="md-form">
-            @Html.LabelFor(model => model.Auftrag.Bezeichnung)
-            @Html.EditorFor(model => model.Auftrag.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Auftrag.Bezeichnung, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.AuftragToDo.Bezeichnung)
+            @Html.EditorFor(model => model.AuftragToDo.Bezeichnung, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AuftragToDo.Bezeichnung, "", new { @class = "text-danger" })
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Auftrag.Kunde)
-            @Html.DropDownListFor(model => model.Auftrag.KundeId, Model.Auftrag.KundenAuswahl,  new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Auftrag.Notiz, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.AuftragToDo.Kunde)
+            @Html.DropDownListFor(model => model.AuftragToDo.KundeId, Model.AuftragToDo.KundenAuswahl,  new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.AuftragToDo.Notiz, "", new { @class = "text-danger" })
         </div>
 
         <div class="md-form">
-            @Html.LabelFor(model => model.Auftrag.Lieferant)
-            @Html.EditorFor(model => model.Auftrag.Lieferant, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Auftrag.Lieferant, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.AuftragToDo.Lieferant)
+            @Html.EditorFor(model => model.AuftragToDo.Lieferant, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AuftragToDo.Lieferant, "", new { @class = "text-danger" })
         </div>
 
         <div class="md-form">
-            @Html.LabelFor(model => model.Auftrag.Notiz)
-            @Html.EditorFor(model => model.Auftrag.Notiz, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Auftrag.Notiz, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.AuftragToDo.Notiz)
+            @Html.EditorFor(model => model.AuftragToDo.Notiz, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AuftragToDo.Notiz, "", new { @class = "text-danger" })
         </div>
 
         <br />
@@ -48,15 +48,15 @@
     <div class="col-6">
 
         <div class="md-form">
-            @Html.LabelFor(model => model.Auftrag.AuftragsDatum)
-            @Html.EditorFor(model => model.Auftrag.AuftragsDatum, new {htmlAttributes = new {@class = "form-control datepicker", @type = "text"}})
-            @Html.ValidationMessageFor(model => model.Auftrag.AuftragsDatum, "", new {@class = "text-danger"})
+            @Html.LabelFor(model => model.AuftragToDo.AuftragsDatum)
+            @Html.EditorFor(model => model.AuftragToDo.AuftragsDatum, new {htmlAttributes = new {@class = "form-control datepicker", @type = "text"}})
+            @Html.ValidationMessageFor(model => model.AuftragToDo.AuftragsDatum, "", new {@class = "text-danger"})
         </div>
 
         <div class="md-form">
-            @Html.LabelFor(model => model.Auftrag.RechnungsDatum)
-            @Html.EditorFor(model => model.Auftrag.RechnungsDatum, new {htmlAttributes = new {@class = "form-control datepicker", @type = "text"}})
-            @Html.ValidationMessageFor(model => model.Auftrag.RechnungsDatum, "", new {@class = "text-danger"})
+            @Html.LabelFor(model => model.AuftragToDo.RechnungsDatum)
+            @Html.EditorFor(model => model.AuftragToDo.RechnungsDatum, new {htmlAttributes = new {@class = "form-control datepicker", @type = "text"}})
+            @Html.ValidationMessageFor(model => model.AuftragToDo.RechnungsDatum, "", new {@class = "text-danger"})
         </div>
 
     </div>

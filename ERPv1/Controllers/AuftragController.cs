@@ -37,9 +37,9 @@ namespace ERPv1.Controllers
         {
             var avm = new AuftragViewModel();
             avm.Waren = new List<WareViewModel>();
-            avm.Auftrag = new Auftrag();
-            avm.Auftrag.KundenAuswahl = new List<SelectListItem>();
-            avm.Auftrag.KundenAuswahl.Add(new SelectListItem
+            avm.AuftragToDo = new Auftrag();
+            avm.AuftragToDo.KundenAuswahl = new List<SelectListItem>();
+            avm.AuftragToDo.KundenAuswahl.Add(new SelectListItem
             {
                 Text = "",
                 Value =""
@@ -47,7 +47,7 @@ namespace ERPv1.Controllers
             var kunden = _db.Kunden.ToList();
             foreach (var k in kunden)
             {
-                avm.Auftrag.KundenAuswahl.Add(new SelectListItem
+                avm.AuftragToDo.KundenAuswahl.Add(new SelectListItem
                 {
                     Text = k.Vorname + " " + k.Nachname,
                     Value = k.ID.ToString()
@@ -76,10 +76,13 @@ namespace ERPv1.Controllers
                 Auftrag af = new Auftrag
                 {
                     ID = Guid.NewGuid(),
-                    AuftragsDatum = auftrag.Auftrag.AuftragsDatum
+                    AuftragsDatum = auftrag.AuftragToDo.AuftragsDatum,
+                    RechnungsDatum = auftrag.AuftragToDo.RechnungsDatum,
+                    KundeId = auftrag.AuftragToDo.KundeId
+                    
                 };
 
-                _db.Auftrag.Add(auftrag.Auftrag);
+                _db.Auftrag.Add(auftrag.AuftragToDo);
                 _db.SaveChanges();
 
                 return RedirectToAction("Index");

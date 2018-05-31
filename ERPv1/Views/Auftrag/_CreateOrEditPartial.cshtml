@@ -7,11 +7,11 @@
         $(this).submit(function() {
             debugger;
             for (var i = 0; i < $("#selectionTable2").DataTable().rows().data().length; i++) {
-                var entry = $("#selectionTable2").DataTable().rows().data()[i].DT_RowId;
+                var entry = $("#selectionTable2").DataTable().rows().data()[i];
                 $("#hiddenInputs").append("<input type=\"hidden\" name=\"SelectedWaren[" +
                     i +
                     "].Ware.ID\" value=\"" +
-                    entry +
+                    entry.DT_RowId +
                     "\"/>");
             }
             debugger;
