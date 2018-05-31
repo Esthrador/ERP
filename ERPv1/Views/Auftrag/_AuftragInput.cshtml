@@ -8,7 +8,7 @@
             @Html.HiddenFor(model => model.Auftrag.ID)
             @Html.HiddenFor(model => model.Auftrag.CreatedBy)
             @Html.HiddenFor(model => model.Auftrag.CreatedOn)
-
+            
             @Html.HiddenFor(model => model.Auftrag.ChangedBy)
             @Html.HiddenFor(model => model.Auftrag.ChangedOn)
 
@@ -71,7 +71,7 @@
         <table id="selectionTable" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
             <thead>
             <tr>
-                <th class="no-pointer"></th>
+                <th class="no-pointer">ID - vorl.</th>
                 <th>@Html.DisplayName("Artikelnummer")</th>
                 <th>@Html.DisplayName("Bezeichnung")</th>
                 <th>@Html.DisplayName("Menge")</th>
@@ -81,7 +81,7 @@
             <tbody>
             @foreach (var wvm in Model.Waren)
             {
-                <tr>
+                <tr id="@wvm.Ware.ID">
                     <td></td>
                     <td>@wvm.Ware.ArtikelNummer</td>
                     <td>@wvm.Ware.KurzBezeichnung</td>
@@ -97,7 +97,7 @@
         <table id="selectionTable2" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
             <thead>
             <tr>
-                <th class="no-pointer"></th>
+                <th class="no-pointer">ID - vorl.</th>
                 <th>@Html.DisplayName("Artikelnummer")</th>
                 <th>@Html.DisplayName("Bezeichnung")</th>
                 <th>@Html.DisplayName("Menge")</th>
@@ -105,13 +105,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Test1</td>
-                <td>Test2</td>
-                <td>Test3</td>
-                <td>Test4</td>
-                <td>Test5</td>
-            </tr>
+            
             </tbody>
         </table>
     </div>

@@ -59,10 +59,11 @@ namespace ERPv1.Controllers
             {
                 avm.Waren.Add(new WareViewModel
                 {
-                    Menge = t.LagerWaren?.Sum(c=>c.Menge) ?? 0,
+                    Menge = t.Anzahl,
                     Ware = t
                 });
             }
+            avm.SelectedWaren = new List<WareViewModel>();
             return View(avm);
         }
 
@@ -72,7 +73,11 @@ namespace ERPv1.Controllers
         {
             if (ModelState.IsValid)
             {
-                auftrag.Auftrag.ID = Guid.NewGuid();
+                Auftrag af = new Auftrag
+                {
+                    ID = Guid.NewGuid(),
+                    AuftragsDatum = auftrag.Auftrag.AuftragsDatum
+                };
 
                 _db.Auftrag.Add(auftrag.Auftrag);
                 _db.SaveChanges();

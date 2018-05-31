@@ -31,7 +31,7 @@ $(document).ready(function () {
             { targets: "no-pointer", orderable: false },
             { targets: "no-sort", orderable: false }
         ],
-        searching: true,
+       // searching: true,
         "aaSorting": [] // Prevent initial sorting
     });
 
@@ -52,7 +52,8 @@ $(document).ready(function () {
 
                     var data = $("#selectionTable").DataTable().row({ selected: true }).data();
                     var dt2 = $("#selectionTable2").DataTable();
-                    dt2.row.add(data).draw();
+                    dt2.row.add(data).node().id = $("#selectionTable").DataTable().row({ selected: true }).id();
+                    dt2.draw();
                 }
             }],
         dom: 'Bfrtip'
@@ -65,6 +66,19 @@ $(document).ready(function () {
             { targets: "no-sort", orderable: false }
         ],
         searching: true,
-        "aaSorting": [] // Prevent initial sorting
+        select: 'single',
+        "aaSorting": [], // Prevent initial sorting
+        buttons:[
+            {
+                text: 'Löschen',
+                action: function(e, dt, node, config) {
+                    if ($("#selectionTable2").DataTable().row({ selected: true }).length === 0) return;
+
+                    var selRow = $("#selectionTable2").DataTable().row({ selected: true });
+                    selRow.remove().draw();
+
+                }
+            }],
+        dom: 'Bfrtip'
     });
 });
