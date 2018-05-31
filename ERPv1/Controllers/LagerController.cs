@@ -120,19 +120,21 @@ namespace ERPv1.Controllers
             if (lager == null)
                 return HttpNotFound();
 
-            foreach (var lagerWaren in lager.LagerWaren)
+            var lagerWarenIdList = lager.LagerWaren.Select(x => x.LagerWarenID).ToList();
+            foreach (var lagerWaren in lagerWarenIdList)
             {
-                _db.LagerWaren.Remove(lagerWaren);
+                var lagerWare = _db.LagerWaren.FirstOrDefault(x =>
+                    x.LagerWarenID == lagerWaren);
+
+                if (lagerWare != null)
+                    _db.LagerWaren.Remove(lagerWare);
             }
 
             foreach (var lagerWaren in model.LagerWaren)
             {
-                lagerWaren.Lager = _db.Lager.Find(lagerWaren.LagerID);
-                lagerWaren.Ware = _db.Waren.Find(lagerWaren.WareID);
-
                 _db.LagerWaren.Add(new LagerWaren{
-                    Lager = lagerWaren.Lager,
-                    Ware = lagerWaren.Ware,
+                    LagerID = lagerWaren.LagerID,
+                    WareID = lagerWaren.WareID,
                     Menge = lagerWaren.Menge
                 });
             }

@@ -12,10 +12,14 @@ namespace ERPv1.Models
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class AuftragWaren : BaseClass
     {
-        [Key, Column(Order = 0), ForeignKey("Auftrag")]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid AuftragWarenID { get; set; }
+
+        [ForeignKey("Auftrag")]
         public Guid AuftragID { get; set; }
 
-        [Key, Column(Order = 1), ForeignKey("Ware")]
+        [ForeignKey("Ware")]
         public Guid WareID { get; set; }
 
         [Display(Name = "Notiz")]
