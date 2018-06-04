@@ -18,6 +18,7 @@ namespace ERPv1.Models.ViewModels
         public int Menge { get; set; }
         public Guid LWID {get; set; }
         public string Lager { get; set; }
+        public Guid AWID { get; set; }
         public WareViewModel () { }
 
         public WareViewModel(Ware ware, int menge)
