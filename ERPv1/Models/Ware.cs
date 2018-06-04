@@ -44,7 +44,7 @@ namespace ERPv1.Models
         [Display(Name = "Anmerkung")]
         public string Notiz { get; set; }
 
-        public virtual ICollection<AuftragWaren> AuftragWaren { get; set; }
+        //public virtual ICollection<AuftragWaren> AuftragWaren { get; set; }
         public virtual ICollection<LagerWaren> LagerWaren { get; set; }
 
     }

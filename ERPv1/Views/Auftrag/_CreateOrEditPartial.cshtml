@@ -11,7 +11,7 @@
                 debugger;
                 $("#hiddenInputs").append("<input type=\"hidden\" name=\"SelectedWaren[" +
                     i +
-                    "].Ware.ID\" value=\"" +
+                    "].LWID\" value=\"" +
                     entry.DT_RowId +
                     "\"/>");
                 $("#hiddenInputs").append("<input type=\"hidden\" name=\"SelectedWaren[" +
@@ -27,7 +27,7 @@
                 $("#hiddenInputs").append("<input type=\"hidden\" name=\"SelectedWaren[" +
                     i +
                     "].Ware.Anzahl\" value=\"" +
-                    entry[4] +
+                    $("#selectionTable2").DataTable().cell(i,4).nodes().to$().find('input').val() +
                     '"/>');
                 $("#hiddenInputs").append("<input type=\"hidden\" name=\"SelectedWaren[" +
                     i +

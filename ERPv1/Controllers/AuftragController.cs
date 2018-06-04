@@ -28,8 +28,49 @@ namespace ERPv1.Controllers
 
             if (auftrag == null)
                 return HttpNotFound();
+            var avm = new AuftragViewModel();
+            avm.Waren = new List<WareViewModel>();
+            avm.AuftragToDo = auftrag;
+            avm.AuftragToDo.KundenAuswahl = new List<SelectListItem>();
+            avm.AuftragToDo.KundenAuswahl.Add(new SelectListItem
+            {
+                Text = "",
+                Value =""
+            });
+            var kunden = _db.Kunden.ToList();
+            foreach (var k in kunden)
+            {
+                avm.AuftragToDo.KundenAuswahl.Add(new SelectListItem
+                {
+                    Text = k.Vorname + " " + k.Nachname,
+                    Value = k.ID.ToString()
+                });
+            }
 
-            return View(auftrag);
+            var tmpWaren = _db.LagerWaren.Include(c=>c.Ware).ToList();
+            foreach (var t in tmpWaren)
+            {
+                avm.Waren.Add(new WareViewModel
+                {
+                    Menge = t.Menge,
+                    LWID = t.LagerWarenID,
+                    Ware = t.Ware,
+                    Lager = t.Lager.Bezeichnung
+                });
+            }
+            avm.SelectedWaren = new List<WareViewModel>();
+            var aufWaren = _db.AuftragWaren.Where(c => c.AuftragID == auftrag.ID).ToList();
+            foreach (var auftragWaren in aufWaren)
+            {
+                avm.SelectedWaren.Add(new WareViewModel
+                {
+                    Lager = auftragWaren.LagerWare.Lager.Bezeichnung,
+                    LWID = auftragWaren.LagerWareID,
+                    Menge = auftragWaren.Menge,
+                    Ware = auftragWaren.LagerWare.Ware
+                });
+            }
+            return View(avm);
         }
 
         // GET: Auftrag/Create
@@ -54,13 +95,15 @@ namespace ERPv1.Controllers
                 });
             }
 
-            var tmpWaren = _db.Waren.Include(c=>c.LagerWaren).ToList();
+            var tmpWaren = _db.LagerWaren.Include(c=>c.Ware).ToList();
             foreach (var t in tmpWaren)
             {
                 avm.Waren.Add(new WareViewModel
                 {
-                    Menge = t.Anzahl,
-                    Ware = t
+                    Menge = t.Menge,
+                    LWID = t.LagerWarenID,
+                    Ware = t.Ware,
+                    Lager = t.Lager.Bezeichnung
                 });
             }
             avm.SelectedWaren = new List<WareViewModel>();
@@ -87,7 +130,7 @@ namespace ERPv1.Controllers
                     _db.AuftragWaren.Add(new AuftragWaren
                     {
                         AuftragID = auftrag.AuftragToDo.ID,
-                        WareID = ware.Ware.ID,
+                        LagerWareID = ware.LWID,
                         Menge = ware.Ware.Anzahl
                     });
                 }
@@ -106,13 +149,15 @@ namespace ERPv1.Controllers
                 });
             }
 
-            var tmpWaren = _db.Waren.Include(c=>c.LagerWaren).ToList();
+           
+            var tmpWaren = _db.LagerWaren.Include(c=>c.Ware).ToList();
             foreach (var t in tmpWaren)
             {
                 auftrag.Waren.Add(new WareViewModel
                 {
-                    Menge = t.Anzahl,
-                    Ware = t
+                    Menge = t.Menge,
+                    Ware = t.Ware,
+                    Lager = t.Lager.Bezeichnung
                 });
             }
             return View(auftrag);
@@ -125,17 +170,58 @@ namespace ERPv1.Controllers
 
             if (auftrag == null)
                 return HttpNotFound();
+            var avm = new AuftragViewModel();
+            avm.Waren = new List<WareViewModel>();
+            avm.AuftragToDo = auftrag;
+            avm.AuftragToDo.KundenAuswahl = new List<SelectListItem>();
+            avm.AuftragToDo.KundenAuswahl.Add(new SelectListItem
+            {
+                Text = "",
+                Value =""
+            });
+            var kunden = _db.Kunden.ToList();
+            foreach (var k in kunden)
+            {
+                avm.AuftragToDo.KundenAuswahl.Add(new SelectListItem
+                {
+                    Text = k.Vorname + " " + k.Nachname,
+                    Value = k.ID.ToString()
+                });
+            }
 
-            return View(auftrag);
+            var tmpWaren = _db.LagerWaren.Include(c=>c.Ware).ToList();
+            foreach (var t in tmpWaren)
+            {
+                avm.Waren.Add(new WareViewModel
+                {
+                    Menge = t.Menge,
+                    LWID = t.LagerWarenID,
+                    Ware = t.Ware,
+                    Lager = t.Lager.Bezeichnung
+                });
+            }
+            avm.SelectedWaren = new List<WareViewModel>();
+            var aufWaren = _db.AuftragWaren.Where(c => c.AuftragID == auftrag.ID).ToList();
+            foreach (var auftragWaren in aufWaren)
+            {
+                avm.SelectedWaren.Add(new WareViewModel
+                {
+                    Lager = auftragWaren.LagerWare.Lager.Bezeichnung,
+                    LWID = auftragWaren.LagerWareID,
+                    Menge = auftragWaren.Menge,
+                    Ware = auftragWaren.LagerWare.Ware
+                });
+            }
+            return View(avm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Auftrag auftrag)
+        public ActionResult Edit(AuftragViewModel auftrag)
         {
             if (ModelState.IsValid)
             {
-                _db.Entry(auftrag).State = EntityState.Modified;
+                _db.Entry(auftrag.AuftragToDo).State = EntityState.Modified;
                 _db.SaveChanges();
 
                 return RedirectToAction("Index");

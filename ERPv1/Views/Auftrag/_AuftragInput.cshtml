@@ -81,13 +81,13 @@
             <tbody>
             @foreach (var wvm in Model.Waren)
             {
-                <tr id="@wvm.Ware.ID">
+                <tr id="@wvm.LWID">
                     <td></td>
                     <td>@wvm.Ware.ArtikelNummer</td>
                     <td>@wvm.Ware.KurzBezeichnung</td>
                     <td>@wvm.Ware.HerstellerName</td>
-                    <td>@wvm.Ware.LagerWaren.Sum(c => c.Menge)</td>
-                    <td>@wvm.Ware.LagerWaren.Select(c => c.Lager.Standort)</td>
+                    <td>@wvm.Menge</td>
+                    <td>@wvm.Lager</td>
                 </tr>
             }
             </tbody>
@@ -107,7 +107,17 @@
             </tr>
             </thead>
             <tbody>
-            
+            @foreach (var swvm in Model.SelectedWaren)
+            {
+                <tr id="@swvm.LWID">
+                    <td></td>
+                    <td>@swvm.Ware.ArtikelNummer</td>
+                    <td>@swvm.Ware.KurzBezeichnung</td>
+                    <td>@swvm.Ware.HerstellerName</td>
+                    <td><input type="number" class="form-control" value="@swvm.Menge"/></td>
+                    <td>@swvm.Lager</td>
+                </tr>
+            }
             </tbody>
         </table>
     </div>
