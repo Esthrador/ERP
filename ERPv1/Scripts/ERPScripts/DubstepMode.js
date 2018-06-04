@@ -16,7 +16,8 @@ $(document).ready(function () {
     setInterval(function () {
         if (!soundControl.paused) {
 
-            var randEl = $("*");
+            var randEl = document.getElementsByTagName("*");
+
             var randomNumber = Math.floor(Math.random() * randEl.length);
 
             randEl = randEl[randomNumber];
@@ -26,11 +27,23 @@ $(document).ready(function () {
             var rand3 = Math.floor(Math.random() * 255);
 
             try {
-                randEl.setAttribute("style", "background-color:rgb(" + rand1 + "," + rand2 + "," + rand3 + ")");
-            } catch (e) {
+                var style = randEl.getAttribute("style");
 
-            } 
-          
+                var pattern = /background-color:rgb\\([0-9]{1,3},[0-9]{1,3},[0-9]{1,3}\\)/g;
+
+                if (pattern.test(style)) {
+
+                    style = style.replace(pattern, "background-color:rgb(" + rand1 + "," + rand2 + "," + rand3 + ")");
+
+                    randEl.setAttribute("style", style);
+
+                } else {
+                    randEl.setAttribute("style", style + ";background-color:rgb(" + rand1 + "," + rand2 + "," + rand3 + ")");
+                }
+
+            } catch (e) {
+            }
+
         }
     }, 5);
 

@@ -106,6 +106,6 @@ body {
 }
 
 
-.bill-products td, th {
+.bill-products td, .bill-products th {
     font-size: 10px !important;
 }

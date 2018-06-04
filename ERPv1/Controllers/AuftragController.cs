@@ -140,6 +140,7 @@ namespace ERPv1.Controllers
                 return RedirectToAction("Index");
             }
             var kunden = _db.Kunden.ToList();
+
             foreach (var k in kunden)
             {
                 auftrag.AuftragToDo.KundenAuswahl.Add(new SelectListItem

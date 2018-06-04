@@ -1,4 +1,5 @@
-﻿@model ERPv1.Models.ViewModels.RechnungViewModel
+﻿@using ERPv1.Extensions
+@model ERPv1.Models.ViewModels.RechnungViewModel
 
 @{
     ViewBag.Title = "_Rechnung";
@@ -9,7 +10,7 @@
     <!-- HEADER -->
     <div class="row">
         <div class="col-8">
-            <h4>Rechnung - Auftrag: AUFTRAGID</h4>
+            <h4>Rechnung - Auftrag: @(Model.Auftrag.ID)</h4>
             <span class="small">@(DateTime.Now.ToString("dd.MM.yyyy"))</span>
         </div>
         <div class="col-4">
@@ -21,10 +22,10 @@
     <div class="row" style="margin-top: 50px; font-size: 12px">
         <div class="col">
             <span>
-                Musterkunde GmbH<br />
-                Max Mustermann<br />
-                Musterstraße 3<br />
-                Hamburg 20145<br />
+                @(Model.Auftrag.Kunde.KurzBezeichnung)<br />
+                @(Model.Auftrag.Kunde.Vorname + " " + Model.Auftrag.Kunde.Nachname)<br />
+                @(Model.Auftrag.Kunde.Addresse)<br />
+                @(Model.Auftrag.Kunde.Ort + ", " + Model.Auftrag.Kunde.PLZ)<br />
                 Deutschland
             </span>
         </div>
@@ -48,28 +49,28 @@
                 Auftragsbezeichnung
             </span>
             <br />
-            <span class="small">AUFTRAGSBEZEICHNUNG</span>
+            <span class="small">@(Model.Auftrag.Bezeichnung)</span>
         </div>
         <div class="col">
             <span class="font-weight-bold">
                 Bearbeiter
             </span>
             <br />
-            <span class="small">BEARBEITER</span>
+            <span class="small">@(Model.Auftrag.Bearbeiter.FirstName + " " + Model.Auftrag.Bearbeiter.LastName)</span>
         </div>
         <div class="col">
             <span class="font-weight-bold">
                 Lieferant
             </span>
             <br />
-            <span class="small">LIEFERANT</span>
+            <span class="small">@(Model.Auftrag.Lieferant)</span>
         </div>
         <div class="col">
             <span class="font-weight-bold">
                 Rechnungsdatum
             </span>
             <br />
-            <span class="small">RECHNUNGSDATUM</span>
+            <span class="small">@(Model.Auftrag.RechnungsDatum)</span>
         </div>
     </div>
 
@@ -85,47 +86,36 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>4323461</td>
-                <td>Test Artikel</td>
-                <td>5,00</td>
-                <td>3</td>
-                <td>15,00</td>
-            </tr>
-            <tr>
-                <td>4323461</td>
-                <td>Test Artikel</td>
-                <td>5,00</td>
-                <td>3</td>
-                <td>15,00</td>
-            </tr>
-            <tr>
-                <td>4323461</td>
-                <td>Test Artikel</td>
-                <td>5,00</td>
-                <td>3</td>
-                <td>15,00</td>
-            </tr>
-            <tr>
-                <td>4323461</td>
-                <td>Test Artikel</td>
-                <td>5,00</td>
-                <td>3</td>
-                <td>15,00</td>
-            </tr>
+        <tr>
+            @{
+                var gesamtSumme = 0.00;
+            }
+            @foreach (var auftragWaren in Model.Auftrag.AuftragWaren)
+            {
+                var ware = auftragWaren.LagerWare.Ware;
+
+                gesamtSumme += auftragWaren.Menge * ware.EinzelPreis;
+
+                <td>@(ware.ArtikelNummer)</td>
+                <td>@(ware.KurzBezeichnung)</td>
+                <td>@(ware.EinzelPreis.ToEuro())</td>
+                <td>@(auftragWaren.Menge)</td>
+                <td>@((auftragWaren.Menge * ware.EinzelPreis).ToEuro())</td>
+            }
+        </tr>
         </tbody>
     </table>
 
     <div class="row" style="margin-top: 10px; font-size: 12px">
         <div class="col">
-            <span class="float-right font-weight-bold">Gesamtsumme: 1000000</span>
+            <span class="float-right font-weight-bold">Gesamtsumme: @(gesamtSumme.ToEuro())</span>
         </div>
     </div>
     
     <!-- ADDITIONAL TEXT -->
     <div class="row" style="margin-top: 10px; font-size: 12px">
         <div class="col">
-            <span>Zahlbar bis zum: DATUM<br/>
+            <span>Zahlbar bis zum: @(DateTime.Now.AddDays(14).ToShortDateString())<br/>
             Vielen Dank für Ihre Bestellung. Bitte empfehlen Sie uns weiter!</span>
         </div>
     </div>
