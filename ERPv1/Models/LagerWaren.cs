@@ -9,10 +9,14 @@ namespace ERPv1.Models
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class LagerWaren : BaseClass
     {
-        [Key, Column(Order = 0), ForeignKey("Lager")]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid LagerWarenID { get; set; }
+
+        [ForeignKey("Lager")]
         public Guid LagerID { get; set; }
 
-        [Key, Column(Order = 1), ForeignKey("Ware")]
+        [ForeignKey("Ware")]
         public Guid WareID { get; set; }
 
         [Display(Name = "Menge")]

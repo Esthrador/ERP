@@ -34,12 +34,15 @@ namespace ERPv1.Models.ModelBinder
                         var warenId = formKey.Split('_')[1];
                         var menge = formVars[formKey];
 
-                        vm.LagerWaren.Add(new LagerWaren
+                        if (menge != "0" && !string.IsNullOrEmpty(menge) && vm.Lager != null)
                         {
-                            Ware = db.Waren.Find(Guid.Parse(warenId)),
-                            Lager = vm.Lager,
-                            Menge = Convert.ToInt32(menge)
-                        });
+                            vm.LagerWaren.Add(new LagerWaren
+                            {
+                                WareID = Guid.Parse(warenId),
+                                LagerID = vm.Lager.ID,
+                                Menge = Convert.ToInt32(menge)
+                            });
+                        }
                     }
                 }
 

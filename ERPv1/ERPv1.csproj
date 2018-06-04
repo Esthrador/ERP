@@ -213,37 +213,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803280845542_Init.cs" />
-    <Compile Include="Migrations\201803280845542_Init.Designer.cs">
-      <DependentUpon>201803280845542_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803291240045_AppUserInBaseClassAsString.cs" />
-    <Compile Include="Migrations\201803291240045_AppUserInBaseClassAsString.Designer.cs">
-      <DependentUpon>201803291240045_AppUserInBaseClassAsString.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803311755341_WarenAnpassung.cs" />
-    <Compile Include="Migrations\201803311755341_WarenAnpassung.Designer.cs">
-      <DependentUpon>201803311755341_WarenAnpassung.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804010430133_WarenAnpassung2.cs" />
-    <Compile Include="Migrations\201804010430133_WarenAnpassung2.Designer.cs">
-      <DependentUpon>201804010430133_WarenAnpassung2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805221148289_DataAnnotations1.cs" />
-    <Compile Include="Migrations\201805221148289_DataAnnotations1.Designer.cs">
-      <DependentUpon>201805221148289_DataAnnotations1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805230957418_AddedLager.cs" />
-    <Compile Include="Migrations\201805230957418_AddedLager.Designer.cs">
-      <DependentUpon>201805230957418_AddedLager.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805231028067_AddedPropertiesToAuftrag.cs" />
-    <Compile Include="Migrations\201805231028067_AddedPropertiesToAuftrag.Designer.cs">
-      <DependentUpon>201805231028067_AddedPropertiesToAuftrag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805290952300_KundeAuftrag.cs" />
-    <Compile Include="Migrations\201805290952300_KundeAuftrag.Designer.cs">
-      <DependentUpon>201805290952300_KundeAuftrag.cs</DependentUpon>
+    <Compile Include="Migrations\201805311203214_Init.cs" />
+    <Compile Include="Migrations\201805311203214_Init.Designer.cs">
+      <DependentUpon>201805311203214_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LagerWaren.cs" />
@@ -824,29 +796,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803280845542_Init.resx">
-      <DependentUpon>201803280845542_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803291240045_AppUserInBaseClassAsString.resx">
-      <DependentUpon>201803291240045_AppUserInBaseClassAsString.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803311755341_WarenAnpassung.resx">
-      <DependentUpon>201803311755341_WarenAnpassung.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804010430133_WarenAnpassung2.resx">
-      <DependentUpon>201804010430133_WarenAnpassung2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805221148289_DataAnnotations1.resx">
-      <DependentUpon>201805221148289_DataAnnotations1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805230957418_AddedLager.resx">
-      <DependentUpon>201805230957418_AddedLager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805231028067_AddedPropertiesToAuftrag.resx">
-      <DependentUpon>201805231028067_AddedPropertiesToAuftrag.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805290952300_KundeAuftrag.resx">
-      <DependentUpon>201805290952300_KundeAuftrag.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805311203214_Init.resx">
+      <DependentUpon>201805311203214_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
