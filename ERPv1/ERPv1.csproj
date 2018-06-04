@@ -218,6 +218,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\EmailHelper.cs" />
+    <Compile Include="Helpers\PdfHelper.cs" />
     <Compile Include="Migrations\201805311203214_Init.cs" />
     <Compile Include="Migrations\201805311203214_Init.Designer.cs">
       <DependentUpon>201805311203214_Init.cs</DependentUpon>
