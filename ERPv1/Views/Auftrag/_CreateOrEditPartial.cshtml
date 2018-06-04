@@ -8,14 +8,35 @@
             debugger;
             for (var i = 0; i < $("#selectionTable2").DataTable().rows().data().length; i++) {
                 var entry = $("#selectionTable2").DataTable().rows().data()[i];
+                debugger;
                 $("#hiddenInputs").append("<input type=\"hidden\" name=\"SelectedWaren[" +
                     i +
                     "].Ware.ID\" value=\"" +
                     entry.DT_RowId +
                     "\"/>");
+                $("#hiddenInputs").append("<input type=\"hidden\" name=\"SelectedWaren[" +
+                    i +
+                    "].Ware.Artikelnummer\" value=\"" +
+                    entry[1] +
+                    '"/>');
+                $("#hiddenInputs").append("<input type=\"hidden\" name=\"SelectedWaren[" +
+                    i +
+                    "].Ware.Bezeichnung\" value=\"" +
+                    entry[2] +
+                    '"/>');
+                $("#hiddenInputs").append("<input type=\"hidden\" name=\"SelectedWaren[" +
+                    i +
+                    "].Ware.Anzahl\" value=\"" +
+                    entry[4] +
+                    '"/>');
+                $("#hiddenInputs").append("<input type=\"hidden\" name=\"SelectedWaren[" +
+                    i +
+                    "].Ware.HerstellerName\" value=\"" +
+                    entry[3] +
+                    '"/>');
+
             }
-            debugger;
-        })
+        });
     </script>
 
 

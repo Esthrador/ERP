@@ -81,13 +81,40 @@ namespace ERPv1.Controllers
                     KundeId = auftrag.AuftragToDo.KundeId
                     
                 };
-
+                auftrag.AuftragToDo.ID = Guid.NewGuid();
+                foreach (var ware in auftrag.SelectedWaren)
+                {
+                    _db.AuftragWaren.Add(new AuftragWaren
+                    {
+                        AuftragID = auftrag.AuftragToDo.ID,
+                        WareID = ware.Ware.ID,
+                        Menge = ware.Ware.Anzahl
+                    });
+                }
                 _db.Auftrag.Add(auftrag.AuftragToDo);
                 _db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
+            var kunden = _db.Kunden.ToList();
+            foreach (var k in kunden)
+            {
+                auftrag.AuftragToDo.KundenAuswahl.Add(new SelectListItem
+                {
+                    Text = k.Vorname + " " + k.Nachname,
+                    Value = k.ID.ToString()
+                });
+            }
 
+            var tmpWaren = _db.Waren.Include(c=>c.LagerWaren).ToList();
+            foreach (var t in tmpWaren)
+            {
+                auftrag.Waren.Add(new WareViewModel
+                {
+                    Menge = t.Anzahl,
+                    Ware = t
+                });
+            }
             return View(auftrag);
         }
 

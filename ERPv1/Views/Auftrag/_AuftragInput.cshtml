@@ -11,7 +11,6 @@
             
             @Html.HiddenFor(model => model.AuftragToDo.ChangedBy)
             @Html.HiddenFor(model => model.AuftragToDo.ChangedOn)
-
             @Html.HiddenFor(model => model.AuftragToDo.DeletedBy)
             @Html.HiddenFor(model => model.AuftragToDo.DeletedOn)
         }
@@ -74,6 +73,7 @@
                 <th class="no-pointer">ID - vorl.</th>
                 <th>@Html.DisplayName("Artikelnummer")</th>
                 <th>@Html.DisplayName("Bezeichnung")</th>
+                <th>@Html.DisplayName("Hersteller")</th>
                 <th>@Html.DisplayName("Menge")</th>
                 <th>@Html.DisplayName("Lager")</th>
             </tr>
@@ -85,6 +85,7 @@
                     <td></td>
                     <td>@wvm.Ware.ArtikelNummer</td>
                     <td>@wvm.Ware.KurzBezeichnung</td>
+                    <td>@wvm.Ware.HerstellerName</td>
                     <td>@wvm.Ware.LagerWaren.Sum(c => c.Menge)</td>
                     <td>@wvm.Ware.LagerWaren.Select(c => c.Lager.Standort)</td>
                 </tr>
@@ -100,6 +101,7 @@
                 <th class="no-pointer">ID - vorl.</th>
                 <th>@Html.DisplayName("Artikelnummer")</th>
                 <th>@Html.DisplayName("Bezeichnung")</th>
+                <th>@Html.DisplayName("Hersteller")</th>
                 <th>@Html.DisplayName("Menge")</th>
                 <th>@Html.DisplayName("Lager")</th>
             </tr>

@@ -42,6 +42,7 @@
                 <td>@auftrag.Bezeichnung</td>
                 <td>@auftrag.Lieferant</td>
                 <td>@(auftrag.RechnungsDatum?.ToString("dd.MM.yyyy"))</td>
+                <td>@auftrag.ChangedBy</td>
                 <td>@auftrag.CreatedOn.ToString("dd.MM.yyyy")</td>
             </tr>
         }
