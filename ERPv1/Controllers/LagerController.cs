@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -89,6 +88,15 @@ namespace ERPv1.Controllers
             if (lager == null)
                 return HttpNotFound();
 
+            var lagerWarenIdList = lager.LagerWaren.Select(x => x.LagerWarenID).ToList();
+            foreach (var guid in lagerWarenIdList)
+            {
+                var lagerWare = _db.LagerWaren.Find(guid);
+
+                if (lagerWare != null)
+                    _db.LagerWaren.Remove(lagerWare);
+            }
+
             _db.Lager.Remove(lager);
             _db.SaveChanges();
 
@@ -120,6 +128,7 @@ namespace ERPv1.Controllers
             if (lager == null)
                 return HttpNotFound();
 
+            // Alle vorherigen LagerWaren Beziehungen löschen (SoftDelete)
             var lagerWarenIdList = lager.LagerWaren.Select(x => x.LagerWarenID).ToList();
             foreach (var lagerWaren in lagerWarenIdList)
             {
@@ -130,6 +139,7 @@ namespace ERPv1.Controllers
                     _db.LagerWaren.Remove(lagerWare);
             }
 
+            // Neue LagerWaren hinzufügen
             foreach (var lagerWaren in model.LagerWaren)
             {
                 _db.LagerWaren.Add(new LagerWaren{

@@ -1,0 +1,147 @@
+﻿@using System.Data.Entity
+@using System.Data.Entity.SqlServer
+@using System.Drawing
+@model ERPv1.Models.ViewModels.DashboardViewModel
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var month3 = DateTime.Now.AddMonths(-2);
+    var month2 = DateTime.Now.AddMonths(-1);
+    var month1 = DateTime.Now;
+
+    var kunden3Monat = Model.KundenListe.Count(x => x.CreatedOn <= month3);
+    var kunden2Monat = Model.KundenListe.Count(x => x.CreatedOn <= month2);
+    var kunden1Monat = Model.KundenListe.Count(x => x.CreatedOn <= month1);
+}
+
+<div class="card">
+    <div class="card-header">
+        <div class="jumbotron">
+            <h1>Dashboard</h1>
+        </div>
+    </div>
+    <div class="card-body">
+        <h4>Statistiken</h4>
+        <div class="row">
+            <div class="col">
+                <ul>
+                    <li>
+                        Warenanzahl: @(Model.WarenListe.Count)
+                    </li>
+                    <li>
+                        Kundenanzahl: @(Model.KundenListe.Count)
+                    </li>
+                    <li>
+                        Auftragsanzahl: @(Model.AuftragListe.Count)
+                    </li>
+                    <li>
+                        Lageranzahl: @(Model.LagerListe.Count)
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li>Aufträge in Bearbeitung: X</li>
+                    <li>Aufträge abgeschlossen: X</li>
+                </ul>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <p>
+                    Übersicht des Kundenwachstums (Letzte 3 Monate)
+                </p>
+                <canvas id="barChart" style="max-width: 500px; max-height: 500px"></canvas>
+            </div>
+            <div class="col">
+                <p>
+                    Übersicht der Lagerauslastung
+                </p>
+                <canvas id="doughnutChart" style="max-width: 500px; max-height: 500px"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ReSharper disable once ObjectLiteralsAreNotCommaFree *@
+<script>
+    $(document).ready(function () {
+
+        // Bar 1 - KUNDENWACHSTUM
+        var ctxB = document.getElementById("barChart").getContext('2d');
+        var myBarChart = new Chart(ctxB, {
+            type: 'bar',
+            data: {
+                labels: ["@(month3.ToString("dd.MM.yyyy"))", "@(month2.ToString("dd.MM.yyyy"))", "@(month1.ToString("dd.MM.yyyy"))"],
+                datasets: [{
+                    label: 'Anzahl der Neukunden',
+                    data: [@(kunden3Monat), @(kunden2Monat), @(kunden1Monat)],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'
+                        ],
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [
+                        {
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }
+                    ]
+                }
+            }
+        });
+
+
+        //Doughnut 1 - LAGERAUSLASTUNG
+        var ctxD = document.getElementById("doughnutChart").getContext('2d');
+        var myLineChart = new Chart(ctxD,
+            {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        @for (var index = 0; index < Model.LagerListe.Count; index++)
+                        {
+                            var lager = Model.LagerListe[index];
+                            @: "@(lager.Bezeichnung)"@(index != Model.LagerListe.Count ? "," : "")
+                        }
+                    ],
+                    datasets: [
+                        {
+                            data: [
+                                @for (var index = 0; index < Model.LagerListe.Count; index++)
+                                {
+                                    var lager = Model.LagerListe[index];
+                                    @: @(lager.LagerWaren.Count(y => y.DeletedOn == null))@(index != Model.LagerListe.Count ? "," : "")
+                                }
+                            ],
+                            backgroundColor: [
+                                @for (var index = 0; index < Model.LagerListe.Count; index++)
+                                {
+                                    var random = new Random(index);
+                                    Color c = Color.FromArgb(random.Next(255), random.Next(255), random.Next(255));
+                                    @: "@("#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2"))",
+                                }
+                            ]
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+
+    });
+</script>

@@ -32,6 +32,9 @@
                 @if (Request.IsAuthenticated)
                 {
                     <li class="nav-item">
+                        @Html.ActionLink("Dashbaord", "Index", "Dashboard", null, htmlAttributes: new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
                         @Html.ActionLink("Kunden", "Index", "Kunde", null, htmlAttributes: new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
@@ -56,7 +59,7 @@
     </div>
 
     <footer class="footer">
-        <div class="container" style="margin-bottom: 0">
+        <div id="containerDivFooter" class="container" style="margin-bottom: 0">
             <span><img src="~/Content/Logos/LogoCopyrightException_Simple.png" height="30" /> Copyright Exception - @DateTime.Now.Year</span>
         </div>
     </footer>
@@ -64,14 +67,14 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-<script>
-    $(document).ready(function () {
-        $(".detail-body input").each(function () {
-            $(this).prop("disabled", true);
-        });
+    <script>
+        $(document).ready(function () {
+            $(".detail-body input").each(function () {
+                $(this).prop("disabled", true);
+            });
 
-        $("#htmlBody").fadeIn();
-    });
-</script>
+            $("#htmlBody").fadeIn();
+        });
+    </script>
 </body>
 </html>
