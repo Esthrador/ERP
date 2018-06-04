@@ -1,4 +1,4 @@
-﻿@model ERPv1.Models.Auftrag
+﻿@model ERPv1.Models.ViewModels.AuftragViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -18,8 +18,8 @@
         @Html.Partial("_AuftragInput", Model)
 
         <div class="flex-row card-buttons">
-            @Html.ActionLink("Bearbeiten", "Edit", new { id = Model?.ID }, new { @class = "btn btn-primary" })
-            @Html.ActionLink("Löschen", "Delete", new { id = Model?.ID }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Bearbeiten", "Edit", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Löschen", "Delete", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-danger" })
             @Html.ActionLink("Zurück zur Liste", "Index", null, new { @class = "btn btn-white text-dark" })
         </div>
     </div>

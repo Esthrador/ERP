@@ -222,6 +222,14 @@
     <Compile Include="Migrations\201805311203214_Init.Designer.cs">
       <DependentUpon>201805311203214_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806041024363_LagerWarenFuerAuftrag.cs" />
+    <Compile Include="Migrations\201806041024363_LagerWarenFuerAuftrag.Designer.cs">
+      <DependentUpon>201806041024363_LagerWarenFuerAuftrag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806041037092_LagerWarenFuerAuftragAufraeumen.cs" />
+    <Compile Include="Migrations\201806041037092_LagerWarenFuerAuftragAufraeumen.Designer.cs">
+      <DependentUpon>201806041037092_LagerWarenFuerAuftragAufraeumen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LagerWaren.cs" />
     <Compile Include="Models\IdentityModels\AccountViewModels.cs" />
@@ -810,6 +818,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805311203214_Init.resx">
       <DependentUpon>201805311203214_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806041024363_LagerWarenFuerAuftrag.resx">
+      <DependentUpon>201806041024363_LagerWarenFuerAuftrag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806041037092_LagerWarenFuerAuftragAufraeumen.resx">
+      <DependentUpon>201806041037092_LagerWarenFuerAuftragAufraeumen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

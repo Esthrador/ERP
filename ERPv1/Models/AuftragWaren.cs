@@ -19,8 +19,8 @@ namespace ERPv1.Models
         [ForeignKey("Auftrag")]
         public Guid AuftragID { get; set; }
 
-        [ForeignKey("Ware")]
-        public Guid WareID { get; set; }
+        [ForeignKey("LagerWare")]
+        public Guid LagerWareID { get; set; }
 
         [Display(Name = "Notiz")]
         public string Notiz { get; set; }
@@ -30,7 +30,7 @@ namespace ERPv1.Models
         public int Menge { get; set; }
 
         public virtual Auftrag Auftrag { get; set; }
-        public virtual Ware Ware { get; set; }
+        public virtual LagerWaren LagerWare { get; set; }
 
 
     }
