@@ -22,11 +22,6 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/Scripts/ERPScripts/DataTablesConfig.js")
+    @Scripts.Render("~/Scripts/ERPScripts/SetMaxScreenWidth.js")
 }
 
-<script>
-    $(document).ready(function() {
-        $("#containerDiv").removeClass("container");
-        $("#containerDiv").addClass("container-fluid");
-    });
-</script>

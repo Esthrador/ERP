@@ -83,7 +83,16 @@ namespace ERPv1.Controllers
             Ware ware = _db.Waren.Find(id);
 
             if (ware == null)           
-                return HttpNotFound();          
+                return HttpNotFound();
+
+            var lagerWarenIdList = ware.LagerWaren.Select(x => x.LagerWarenID).ToList();
+            foreach (var guid in lagerWarenIdList)
+            {
+                var lagerWare = _db.LagerWaren.Find(guid);
+
+                if (lagerWare != null)
+                    _db.LagerWaren.Remove(lagerWare);
+            }
 
             _db.Waren.Remove(ware);
             _db.SaveChanges();

@@ -203,6 +203,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuftragController.cs" />
     <Compile Include="Controllers\AuftragStatusController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LagerController.cs" />
     <Compile Include="Controllers\KundeController.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="Models\IdentityModels\ManageViewModels.cs" />
     <Compile Include="Models\ModelBinder\LagerWarenModelBinder.cs" />
     <Compile Include="Models\ViewModels\AuftragViewModel.cs" />
+    <Compile Include="Models\ViewModels\DashboardViewModel.cs" />
     <Compile Include="Models\ViewModels\LagerWarenViewModel.cs" />
     <Compile Include="Models\Ware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -519,6 +521,7 @@
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
     <Content Include="Scripts\ERPScripts\DataTablesConfig.js" />
     <Content Include="Scripts\ERPScripts\DubstepMode.js" />
+    <Content Include="Scripts\ERPScripts\SetMaxScreenWidth.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -781,6 +784,7 @@
     <Content Include="Views\Lager\Index.cshtml" />
     <Content Include="Views\Auftrag\_AuftragInput.cshtml" />
     <Content Include="Views\Lager\LagerWaren.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
