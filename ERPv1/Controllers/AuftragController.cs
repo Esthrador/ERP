@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -114,6 +115,12 @@ namespace ERPv1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AuftragViewModel auftrag)
         {
+            if (auftrag.SelectedWaren == null || auftrag.SelectedWaren.Count == 0)
+            {
+                ModelState.AddModelError(string.Empty, "Auftrag muss Waren beinhalten!");
+            }
+
+
             if (ModelState.IsValid)
             {
                 Auftrag af = new Auftrag
@@ -140,7 +147,7 @@ namespace ERPv1.Controllers
                 return RedirectToAction("Index");
             }
             var kunden = _db.Kunden.ToList();
-
+            if(auftrag.AuftragToDo.KundenAuswahl == null)auftrag.AuftragToDo.KundenAuswahl = new List<SelectListItem>();
             foreach (var k in kunden)
             {
                 auftrag.AuftragToDo.KundenAuswahl.Add(new SelectListItem
@@ -152,6 +159,7 @@ namespace ERPv1.Controllers
 
            
             var tmpWaren = _db.LagerWaren.Include(c=>c.Ware).ToList();
+            if(auftrag.Waren == null) auftrag.Waren = new List<WareViewModel>();
             foreach (var t in tmpWaren)
             {
                 auftrag.Waren.Add(new WareViewModel
@@ -161,6 +169,7 @@ namespace ERPv1.Controllers
                     Lager = t.Lager.Bezeichnung
                 });
             }
+            if(auftrag.SelectedWaren == null)auftrag.SelectedWaren = new List<WareViewModel>();
             return View(auftrag);
         }
 
@@ -209,6 +218,7 @@ namespace ERPv1.Controllers
                 {
                     Lager = auftragWaren.LagerWare.Lager.Bezeichnung,
                     LWID = auftragWaren.LagerWareID,
+                    AWID = auftragWaren.AuftragWarenID,
                     Menge = auftragWaren.Menge,
                     Ware = auftragWaren.LagerWare.Ware
                 });
@@ -223,6 +233,14 @@ namespace ERPv1.Controllers
             if (ModelState.IsValid)
             {
                 _db.Entry(auftrag.AuftragToDo).State = EntityState.Modified;
+                foreach (var wareViewModel in auftrag.SelectedWaren)
+                {
+                    var aw = _db.AuftragWaren.SingleOrDefault(c => c.AuftragWarenID == wareViewModel.AWID);
+                    if (aw != null)
+                    {
+                        aw.Menge = wareViewModel.Menge;
+                    }
+                }
                 _db.SaveChanges();
 
                 return RedirectToAction("Index");
