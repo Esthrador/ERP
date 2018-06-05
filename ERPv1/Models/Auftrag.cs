@@ -17,6 +17,8 @@ namespace ERPv1.Models
 
         [Display(Name = "Bezeichnung")]
         public string Bezeichnung { get; set; }
+        [ForeignKey("Status")]
+        public Guid? StatusId { get; set; }
 
         [Display(Name = "Auftrags-Status")]
         public AuftragStatus Status { get; set; }

@@ -23,11 +23,11 @@ namespace ERPv1.Controllers
 
             if (User.IsInRole("Abteilungsleiter") || User.IsInRole("Administration"))
             {
-                aufträge = _db.Auftrag.ToList();
+                aufträge = _db.Auftrag.Include(c=>c.Status).ToList();
             }
             else
             {
-                aufträge = _db.Auftrag.Where(c => c.Status != null && c.Status.IsVisibleForAll).ToList();
+                aufträge = _db.Auftrag.Where(c => c.Status != null && c.Status.IsVisibleForAll).Include(c=>c.Status).ToList();
             }
 
             return View(aufträge);
@@ -134,9 +134,8 @@ namespace ERPv1.Controllers
 
             if (ModelState.IsValid)
             {
-                
-                auftrag.AuftragToDo.Status = _db.AuftragStatus.SingleOrDefault(c => c.Bezeichnung.Equals("Angelegt"));
-
+                var stat = _db.AuftragStatus.SingleOrDefault(c => c.Bezeichnung.Equals("Angelegt"));
+                auftrag.AuftragToDo.StatusId = stat?.ID;
                 auftrag.AuftragToDo.ID = Guid.NewGuid();
                 foreach (var ware in auftrag.SelectedWaren)
                 {
@@ -266,6 +265,28 @@ namespace ERPv1.Controllers
             _db.Auftrag.Remove(auftrag);
             _db.SaveChanges();
 
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult AuftragFreigeben(Guid id)
+        {
+            Auftrag auftrag = _db.Auftrag.Find(id);
+            if (auftrag != null)
+            {
+                auftrag.StatusId = _db.AuftragStatus.SingleOrDefault(c => c.Bezeichnung.Equals("Beauftragt"))?.ID;
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult AuftragAbweisen(Guid id)
+        {
+            Auftrag auftrag = _db.Auftrag.Find(id);
+            if (auftrag != null)
+            {
+                auftrag.StatusId = _db.AuftragStatus.SingleOrDefault(c => c.Bezeichnung.Equals("Revision"))?.ID;
+                _db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 

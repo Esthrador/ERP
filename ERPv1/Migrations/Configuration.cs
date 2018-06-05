@@ -36,6 +36,17 @@ namespace ERPv1.Migrations
                 };
                 context.AuftragStatus.Add(status1);
             }
+            if(!context.AuftragStatus.Any(c=>c.Bezeichnung.Equals("Revision")))
+            {
+                var status1 = new AuftragStatus
+                {
+                    ID = Guid.NewGuid(),
+                    Bezeichnung = "Revision",
+                    KurzBezeichnung = "Revision",
+                    IsVisibleForAll = true
+                };
+                context.AuftragStatus.Add(status1);
+            }
 
             if (!context.AuftragStatus.Any(c => c.Bezeichnung.Equals("Beauftragt")))
             {
