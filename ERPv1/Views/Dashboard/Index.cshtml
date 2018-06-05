@@ -45,8 +45,8 @@
             </div>
             <div class="col">
                 <ul>
-                    <li>Aufträge in Bearbeitung: X</li>
-                    <li>Aufträge abgeschlossen: X</li>
+                    <li>Aufträge in Bearbeitung: @(Model.AuftragListe.Count(c => c.Status != null && (c.Status.Bezeichnung.Equals("Revision") || c.Status.Bezeichnung.Equals("Angelegt") || c.Status.Bezeichnung.Equals("Beauftragt")))) </li>
+                    <li>Aufträge abgeschlossen: @(Model.AuftragListe.Count(c=>c.Status != null && (c.Status.Bezeichnung.Equals("Abgerechnet") || c.Status.Bezeichnung.Equals("Abgeschlossen"))))</li>
                 </ul>
             </div>
         </div>
