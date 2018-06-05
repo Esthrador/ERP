@@ -139,6 +139,8 @@ namespace ERPv1.Controllers
                 var stat = _db.AuftragStatus.SingleOrDefault(c => c.Bezeichnung.Equals("Angelegt"));
                 auftrag.AuftragToDo.StatusId = stat?.ID;
                 auftrag.AuftragToDo.ID = Guid.NewGuid();
+                auftrag.AuftragToDo.Auftragsnummer = _db.Auftrag.Max(x => x.Auftragsnummer) + 1;
+
                 foreach (var ware in auftrag.SelectedWaren)
                 {
                     _db.AuftragWaren.Add(new AuftragWaren

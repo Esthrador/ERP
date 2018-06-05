@@ -25,7 +25,7 @@
         <thead>
         <tr>
             <th class="no-pointer"></th>
-            <th>@Html.DisplayNameFor(x => x.ID)</th>
+            <th>@Html.DisplayNameFor(x => x.Auftragsnummer)</th>
             <th>@Html.DisplayNameFor(x => x.Bezeichnung)</th>
             <th>@Html.DisplayNameFor(x => x.Lieferant)</th>
             <th>@Html.DisplayNameFor(x => x.RechnungsDatum)</th>
@@ -39,7 +39,7 @@
         {
             <tr>
                 <td><a href="@Url.Action("Details", "Auftrag", new { id = auftrag.ID })"><span class="badge badge-default button-column" style="padding: 5px">Details</span></a></td>
-                <td>@auftrag.ID</td>
+                <td>@auftrag.Auftragsnummer.AsContractNumber()</td>
                 <td>@auftrag.Bezeichnung</td>
                 <td>@auftrag.Lieferant</td>
                 <td>@(auftrag.RechnungsDatum?.ToString("dd.MM.yyyy"))</td>

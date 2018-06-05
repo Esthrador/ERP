@@ -32,7 +32,7 @@ namespace ERPv1.Controllers
 
             var pdfBuffer = PdfHelper.GeneratePdfFromByteArray(url);
 
-            var mailMessage = EmailHelper.GetMailMessageForContractBill(_db.Auftrag.Find(auftragId), url);
+            var mailMessage = EmailHelper.GetMailMessageForContractBill(_db.Auftrag.Find(auftragId), pdfBuffer);
             EmailHelper.SendEmail(mailMessage);
 
             return File(pdfBuffer, "application/pdf");

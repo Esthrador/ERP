@@ -1,4 +1,5 @@
-﻿@model ERPv1.Models.ViewModels.AuftragViewModel
+﻿@using ERPv1.Extensions
+@model ERPv1.Models.ViewModels.AuftragViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -12,7 +13,7 @@
 
 <div class="card">
     <div class="card-header">
-        Auftrag erstellen
+        Auftrag erstellen - @(Model?.AuftragToDo?.Auftragsnummer.AsContractNumber())
     </div>
     <div class="card-body">
         @Html.Partial("_CreateOrEditPartial", Model)

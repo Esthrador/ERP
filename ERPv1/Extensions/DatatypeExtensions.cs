@@ -16,5 +16,10 @@ namespace ERPv1.Extensions
         {
             return value ? "Ja" : "Nein";
         }
+
+        public static string AsContractNumber(this int value)
+        {
+            return value.ToString().PadLeft(8, '0');
+        }
     }
 }

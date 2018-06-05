@@ -59,6 +59,12 @@
                 @Html.ActionLink("Auftrag abschließen", "AuftragAbschliessen", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-success" })
             </div>
         }
+        @if (Model?.AuftragToDo.Status != null && Model.AuftragToDo.Status.Bezeichnung.Equals("Abgeschlossen") && User.IsInRole("Abteilungsleiter"))
+        {
+            <div class="float-right">
+                @Html.ActionLink("Rechnung verschicken & herunterladen", "GenerateBillForContract", "Rechnung", new { auftragId = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-success", target = "_blank" })
+            </div>
+        }
     </div>
 
 }

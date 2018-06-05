@@ -1,4 +1,5 @@
 ﻿@model ERPv1.Models.ViewModels.AuftragViewModel
+@using ERPv1.Extensions
 @using ERPv1.Models
 
 <div class="row">
@@ -6,6 +7,7 @@
         @if (Model?.AuftragToDo != null && Model.AuftragToDo.ID != Guid.Empty)
         {
             @Html.HiddenFor(model => model.AuftragToDo.ID)
+            @Html.HiddenFor(model => model.AuftragToDo.Auftragsnummer)
             @Html.HiddenFor(model => model.AuftragToDo.CreatedBy)
             @Html.HiddenFor(model => model.AuftragToDo.CreatedOn)
             
@@ -22,6 +24,7 @@
                 }
             }
         }
+       
 
         <div class="md-form">
             @Html.LabelFor(model => model.AuftragToDo.Bezeichnung)
@@ -41,11 +44,7 @@
             @Html.ValidationMessageFor(model => model.AuftragToDo.Lieferant, "", new { @class = "text-danger" })
         </div>
 
-        <div class="md-form">
-            @Html.LabelFor(model => model.AuftragToDo.Notiz)
-            @Html.EditorFor(model => model.AuftragToDo.Notiz, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.AuftragToDo.Notiz, "", new { @class = "text-danger" })
-        </div>
+
 
         <br />
 
@@ -53,6 +52,12 @@
     </div>
 
     <div class="col-6">
+        
+        <div class="md-form">
+            @Html.LabelFor(model => model.AuftragToDo.Notiz)
+            @Html.EditorFor(model => model.AuftragToDo.Notiz, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AuftragToDo.Notiz, "", new { @class = "text-danger" })
+        </div>
 
         <div class="md-form">
             @Html.LabelFor(model => model.AuftragToDo.AuftragsDatum)

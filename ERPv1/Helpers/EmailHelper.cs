@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Net.Mail;
+using ERPv1.Extensions;
 using ERPv1.Models;
 
 namespace ERPv1.Helpers
@@ -11,14 +12,14 @@ namespace ERPv1.Helpers
 
         public static MailAddress FromAdress = new MailAddress("copyrightexception@gmail.com", "Copyright Exception Service");
 
-        public static MailMessage GetMailMessageForContractBill(Auftrag auftrag, string pdfBillUrl)
+        public static MailMessage GetMailMessageForContractBill(Auftrag auftrag, byte[] billPdf)
         {
             var message = new MailMessage
             {
                 Sender = FromAdress,
                 From = FromAdress,
                 To = { auftrag.Kunde.Email },
-                Subject = $"CRE - Rechnung für Auftrag-Nr: {auftrag.ID}",
+                Subject = $"CRE - Rechnung für Auftrag-Nr: {auftrag.Auftragsnummer.AsContractNumber()}",
                 Body = $"Sehr geehrte/r Frau/Herr {auftrag.Kunde.Nachname}, <br/>" +
                        $"Vielen Dank für Ihre Bestellung und Ihr Vertrauen in unsere Dienstleistungen!<br/>" +
                        $"Die Rechnung für diese Bestellung finden Sie im Anhang. <br/><br/>" +
@@ -28,7 +29,7 @@ namespace ERPv1.Helpers
                 
             };
 
-            message.Attachments.Add(new Attachment(new MemoryStream(PdfHelper.GeneratePdfFromByteArray(pdfBillUrl)),
+            message.Attachments.Add(new Attachment(new MemoryStream(billPdf),
                 "Rechnung_" + DateTime.Now.ToString("dd-MM-yyyy") + ".pdf"));
 
             return message;

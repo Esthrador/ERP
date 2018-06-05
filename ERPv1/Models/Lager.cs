@@ -13,7 +13,7 @@ namespace ERPv1.Models
         [Key]
         public Guid ID { get;set; }
 
-        [Display(Name = "Bezeichnung")]
+        [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name = "Bezeichnung")]
         public string Bezeichnung { get; set; }
 
         [Display(Name = "Standort")]
