@@ -170,6 +170,7 @@ namespace ERPv1.Controllers
                 auftrag.Waren.Add(new WareViewModel
                 {
                     Menge = t.Menge,
+                    LWID = t.LagerWarenID,
                     Ware = t.Ware,
                     Lager = t.Lager.Bezeichnung
                 });
