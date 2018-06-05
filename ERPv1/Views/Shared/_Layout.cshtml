@@ -32,7 +32,7 @@
                 @if (Request.IsAuthenticated)
                 {
                     <li class="nav-item">
-                        @Html.ActionLink("Dashbaord", "Index", "Dashboard", null, htmlAttributes: new { @class = "nav-link" })
+                        @Html.ActionLink("Dashboard", "Index", "Dashboard", null, htmlAttributes: new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("Kunden", "Index", "Kunde", null, htmlAttributes: new { @class = "nav-link" })
@@ -46,8 +46,10 @@
                     <li class="nav-item">
                         @Html.ActionLink("Aufträge", "Index", "Auftrag", null, htmlAttributes: new { @class = "nav-link" })
                     </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("TEST PDF", "GenerateBillForContract", "Rechnung", new { auftragId = Guid.NewGuid() }, htmlAttributes: new { @class = "nav-link" })
+                    </li>
                 }
-
             </ul>
             <ul class="navbar-nav">
                 @Html.Partial("_LoginPartial")

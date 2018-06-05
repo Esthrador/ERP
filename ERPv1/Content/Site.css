@@ -104,3 +104,8 @@ body {
     overflow: hidden;
     overflow-wrap: initial;
 }
+
+
+.bill-products td, .bill-products th {
+    font-size: 10px !important;
+}
