@@ -19,7 +19,18 @@ namespace ERPv1.Controllers
         // GET: Auftrag
         public ActionResult Index()
         {
-            return View(_db.Auftrag.ToList());
+            var aufträge = new List<Auftrag>();
+
+            if (User.IsInRole("Abteilungsleiter") || User.IsInRole("Administration"))
+            {
+                aufträge = _db.Auftrag.ToList();
+            }
+            else
+            {
+                aufträge = _db.Auftrag.Where(c => c.Status != null && c.Status.IsVisibleForAll).ToList();
+            }
+
+            return View(aufträge);
         }
 
         // GET: Auftrag/Details/5
@@ -129,8 +140,9 @@ namespace ERPv1.Controllers
                     AuftragsDatum = auftrag.AuftragToDo.AuftragsDatum,
                     RechnungsDatum = auftrag.AuftragToDo.RechnungsDatum,
                     KundeId = auftrag.AuftragToDo.KundeId
-                    
                 };
+                af.Status = _db.AuftragStatus.SingleOrDefault(c => c.Bezeichnung.Equals("Angelegt"));
+
                 auftrag.AuftragToDo.ID = Guid.NewGuid();
                 foreach (var ware in auftrag.SelectedWaren)
                 {

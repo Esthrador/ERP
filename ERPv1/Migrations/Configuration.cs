@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using ERPv1.Models;
 using ERPv1.Models.DbContext;
 using ERPv1.Models.IdentityModels;
@@ -24,42 +25,55 @@ namespace ERPv1.Migrations
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
             
             // Auftragsstati
-            var status1 = new AuftragStatus
+            if(!context.AuftragStatus.Any(c=>c.Bezeichnung.Equals("Angelegt")))
             {
-                ID = Guid.NewGuid(),
-                Bezeichnung = "Angelegt",
-                KurzBezeichnung = "Angelegt",
-                IsVisibleForAll = true
-            };
+                var status1 = new AuftragStatus
+                {
+                    ID = Guid.NewGuid(),
+                    Bezeichnung = "Angelegt",
+                    KurzBezeichnung = "Angelegt",
+                    IsVisibleForAll = true
+                };
+                context.AuftragStatus.Add(status1);
+            }
 
-            var status2 = new AuftragStatus
+            if (!context.AuftragStatus.Any(c => c.Bezeichnung.Equals("Beauftragt")))
             {
-                ID = Guid.NewGuid(),
-                Bezeichnung = "Beauftragt",
-                KurzBezeichnung = "Beauftragt",
-                IsVisibleForAll = true
-            };
+                var status2 = new AuftragStatus
+                {
+                    ID = Guid.NewGuid(),
+                    Bezeichnung = "Beauftragt",
+                    KurzBezeichnung = "Beauftragt",
+                    IsVisibleForAll = true
+                };
+                context.AuftragStatus.Add(status2);
+            }
 
-            var status3 = new AuftragStatus
+            if (!context.AuftragStatus.Any(c => c.Bezeichnung.Equals("Abgeschlossen")))
             {
-                ID = Guid.NewGuid(),
-                KurzBezeichnung = "Abgeschlossen",
-                Bezeichnung = "Abgeschlossen",
-                IsVisibleForAll = false
-            };
+                var status3 = new AuftragStatus
+                {
+                    ID = Guid.NewGuid(),
+                    KurzBezeichnung = "Abgeschlossen",
+                    Bezeichnung = "Abgeschlossen",
+                    IsVisibleForAll = false
+                };
+                context.AuftragStatus.Add(status3);
+            }
 
-            var status4 = new AuftragStatus
+
+            if (!context.AuftragStatus.Any(c => c.Bezeichnung.Equals("Abgerechnet")))
             {
-                ID = Guid.NewGuid(),
-                Bezeichnung = "Abgerechnet",
-                KurzBezeichnung = "Abgerechnet",
-                IsVisibleForAll = false
-            };
+                var status4 = new AuftragStatus
+                {
+                    ID = Guid.NewGuid(),
+                    Bezeichnung = "Abgerechnet",
+                    KurzBezeichnung = "Abgerechnet",
+                    IsVisibleForAll = false
+                };
+                context.AuftragStatus.Add(status4);
+            }
 
-            context.AuftragStatus.Add(status1);
-            context.AuftragStatus.Add(status2);
-            context.AuftragStatus.Add(status3);
-            context.AuftragStatus.Add(status4);
 
 
             // Rollen erzeugen
