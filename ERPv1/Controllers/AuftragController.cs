@@ -36,7 +36,7 @@ namespace ERPv1.Controllers
         // GET: Auftrag/Details/5
         public ActionResult Details(Guid id)
         {
-            Auftrag auftrag = _db.Auftrag.Find(id);
+            Auftrag auftrag = _db.Auftrag.Include("Status").SingleOrDefault(c=>c.ID == id);
 
             if (auftrag == null)
                 return HttpNotFound();
@@ -184,7 +184,7 @@ namespace ERPv1.Controllers
         // GET: Auftrag/Edit/5
         public ActionResult Edit(Guid id)
         {
-            Auftrag auftrag = _db.Auftrag.Find(id);
+            Auftrag auftrag = _db.Auftrag.Include("Status").SingleOrDefault(c=>c.ID == id);
 
             if (auftrag == null)
                 return HttpNotFound();
@@ -288,6 +288,17 @@ namespace ERPv1.Controllers
             if (auftrag != null)
             {
                 auftrag.StatusId = _db.AuftragStatus.SingleOrDefault(c => c.Bezeichnung.Equals("Revision"))?.ID;
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult AuftragAbschliessen(Guid id)
+        {
+            Auftrag auftrag = _db.Auftrag.Find(id);
+            if (auftrag != null)
+            {
+                auftrag.StatusId = _db.AuftragStatus.SingleOrDefault(c => c.Bezeichnung.Equals("Abgeschlossen"))?.ID;
                 _db.SaveChanges();
             }
             return RedirectToAction("Index");

@@ -53,6 +53,12 @@
                 @Html.ActionLink("Auftrag revisionieren", "AuftragAbweisen", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-warning" })
             </div>
         }
+        @if (Model?.AuftragToDo.Status != null && Model.AuftragToDo.Status.Bezeichnung.Equals("Beauftragt") && User.IsInRole("Mitarbeiter"))
+        {
+            <div class="float-right">
+                @Html.ActionLink("Auftrag abschließen", "AuftragAbschliessen", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-success" })
+            </div>
+        }
     </div>
 
 }
