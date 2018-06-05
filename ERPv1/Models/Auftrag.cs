@@ -24,9 +24,6 @@ namespace ERPv1.Models
         [Display(Name="Ausführungsdatum")]
         public DateTime AuftragsDatum { get; set; }
 
-        [Display(Name="Bearbeiter")]
-        public virtual ApplicationUser Bearbeiter { get; set; }
-
         [Display(Name="Rechnungsdatum")]
         public DateTime? RechnungsDatum { get; set; }
 

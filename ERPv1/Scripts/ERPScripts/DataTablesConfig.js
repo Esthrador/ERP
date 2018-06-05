@@ -54,7 +54,6 @@ $(document).ready(function () {
                     var dt2 = $("#selectionTable2").DataTable();
                     //dt2.row.add(data).node().id = $("#selectionTable").DataTable().row({ selected: true }).id();
                     var newRow = dt2.row.add(data);
-                    debugger;
                     newRow.node().id = $("#selectionTable").DataTable().row({ selected: true }).id();
                     dt2.cell(dt2.rows().data().length - 1, 4)
                         .data('<input type="number" value="0" class="form-control"/>');
