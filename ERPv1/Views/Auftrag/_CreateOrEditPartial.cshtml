@@ -49,8 +49,11 @@
         <input type="submit" value="Speichern" class="btn btn-primary" />
 
         @Html.ActionLink("Zurück zur Liste", "Index", null, new { @class = "btn btn-white text-dark" })
-        @Html.ActionLink("Auftrag freigeben", "AuftragFreigeben", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-success" })
-        @Html.ActionLink("Auftrag revisionieren", "AuftragAbweisen", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-warning" })
+        @if(User.IsInRole("Administration") || User.IsInRole("Abteilungsleiter"))
+        {
+            @Html.ActionLink("Auftrag freigeben", "AuftragFreigeben", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-success" })
+            @Html.ActionLink("Auftrag revisionieren", "AuftragAbweisen", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-warning" })
+        }
     </div>
 
 }

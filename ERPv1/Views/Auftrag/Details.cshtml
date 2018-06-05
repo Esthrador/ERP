@@ -6,7 +6,9 @@
 }
 
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Auftrag")">Übersicht</a></li>
+    <li class="breadcrumb-item">
+        <a href="@Url.Action("Index", "Auftrag")">Übersicht</a>
+    </li>
     <li class="breadcrumb-item active">Details</li>
 </ol>
 
@@ -18,11 +20,14 @@
         @Html.Partial("_AuftragInput", Model)
 
         <div class="flex-row card-buttons">
-            @Html.ActionLink("Bearbeiten", "Edit", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-primary" })
-            @Html.ActionLink("Löschen", "Delete", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-danger" })
-            @Html.ActionLink("Zurück zur Liste", "Index", null, new { @class = "btn btn-white text-dark" })
-            @Html.ActionLink("Auftrag freigeben", "AuftragFreigeben", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-success" })
-            @Html.ActionLink("Auftrag revisionieren", "AuftragAbweisen", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-warning" })
+            @Html.ActionLink("Bearbeiten", "Edit", new {id = Model?.AuftragToDo.ID}, new {@class = "btn btn-primary"})
+            @Html.ActionLink("Löschen", "Delete", new {id = Model?.AuftragToDo.ID}, new {@class = "btn btn-danger"})
+            @Html.ActionLink("Zurück zur Liste", "Index", null, new {@class = "btn btn-white text-dark"})
+            @if (User.IsInRole("Administration") || User.IsInRole("Abteilungsleiter"))
+            {
+                @Html.ActionLink("Auftrag freigeben", "AuftragFreigeben", new {id = Model?.AuftragToDo.ID}, new {@class = "btn btn-outline-success"})
+                @Html.ActionLink("Auftrag revisionieren", "AuftragAbweisen", new {id = Model?.AuftragToDo.ID}, new {@class = "btn btn-outline-warning"})
+            }
         </div>
     </div>
 </div>
