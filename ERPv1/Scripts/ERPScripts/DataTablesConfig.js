@@ -52,7 +52,14 @@ $(document).ready(function () {
 
                     var data = $("#selectionTable").DataTable().row({ selected: true }).data();
                     var dt2 = $("#selectionTable2").DataTable();
-                    //dt2.row.add(data).node().id = $("#selectionTable").DataTable().row({ selected: true }).id();
+
+                    var id = $("#selectionTable").DataTable().row({ selected: true }).id();
+
+
+                    var existingIds = dt2.rows().ids().toArray();
+                    if (existingIds.indexOf(id) !== -1)
+                        return;
+
                     var newRow = dt2.row.add(data);
                     newRow.node().id = $("#selectionTable").DataTable().row({ selected: true }).id();
                     dt2.cell(dt2.rows().data().length - 1, 4)
