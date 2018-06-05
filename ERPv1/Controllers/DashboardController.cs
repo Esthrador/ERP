@@ -14,9 +14,10 @@ namespace ERPv1.Controllers
         // GET: Dashboard
         public ActionResult Index()
         {
+            
             var vm = new DashboardViewModel
             {
-                AuftragListe = _db.Auftrag.ToList(),
+                AuftragListe = _db.Auftrag.Include("Status").ToList(),
                 KundenListe = _db.Kunden.ToList(),
                 LagerListe = _db.Lager.ToList(),
                 WarenListe = _db.Waren.ToList()
