@@ -8,11 +8,15 @@ namespace ERPv1.Helpers
 {
     public static class EmailHelper
     {
+
+        public static MailAddress FromAdress = new MailAddress("copyrightexception@gmail.com", "Copyright Exception Service");
+
         public static MailMessage GetMailMessageForContractBill(Auftrag auftrag, string pdfBillUrl)
         {
             var message = new MailMessage
             {
-                From = new MailAddress("copyrightexception@gmail.de"),
+                Sender = FromAdress,
+                From = FromAdress,
                 To = { auftrag.Kunde.Email },
                 Subject = $"CRE - Rechnung für Auftrag-Nr: {auftrag.ID}",
                 Body = $"Sehr geehrte/r Frau/Herr {auftrag.Kunde.Nachname}, <br/>" +
@@ -34,17 +38,15 @@ namespace ERPv1.Helpers
         {
             try
             {
-                var smtpClient = new SmtpClient("smtp.gmail.com")
+                var smtpClient = new SmtpClient
                 {
+                    Host = "smtp.gmail.com",
+                    Port = 25,
+                    EnableSsl = true,
+                    Timeout = 10000,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
-                    Timeout = 15000,
-                    Credentials = new NetworkCredential
-                    {
-                        UserName = "copyrightexception@gmail.de",
-                        Password = "Pw123456#"
-                    },
-                    EnableSsl = true
+                    Credentials = new NetworkCredential("copyrightexception@gmail.com", "Pw123456#")
                 };
 
                 smtpClient.Send(message);
