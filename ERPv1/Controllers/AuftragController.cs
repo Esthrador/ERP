@@ -138,7 +138,7 @@ namespace ERPv1.Controllers
                     {
                         AuftragID = auftrag.AuftragToDo.ID,
                         LagerWareID = ware.LWID,
-                        Menge = ware.Ware.Anzahl
+                        Menge = ware.Menge
                     });
                 }
                 _db.Auftrag.Add(auftrag.AuftragToDo);

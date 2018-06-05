@@ -1,3 +1,4 @@
+using System;
 using ERPv1.Models;
 using ERPv1.Models.DbContext;
 using ERPv1.Models.IdentityModels;
@@ -21,6 +22,45 @@ namespace ERPv1.Migrations
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new UserManager<ApplicationUser>(userStore);
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
+            
+            // Auftragsstati
+            var status1 = new AuftragStatus
+            {
+                ID = Guid.NewGuid(),
+                Bezeichnung = "Angelegt",
+                KurzBezeichnung = "Angelegt",
+                IsVisibleForAll = true
+            };
+
+            var status2 = new AuftragStatus
+            {
+                ID = Guid.NewGuid(),
+                Bezeichnung = "Beauftragt",
+                KurzBezeichnung = "Beauftragt",
+                IsVisibleForAll = true
+            };
+
+            var status3 = new AuftragStatus
+            {
+                ID = Guid.NewGuid(),
+                KurzBezeichnung = "Abgeschlossen",
+                Bezeichnung = "Abgeschlossen",
+                IsVisibleForAll = false
+            };
+
+            var status4 = new AuftragStatus
+            {
+                ID = Guid.NewGuid(),
+                Bezeichnung = "Abgerechnet",
+                KurzBezeichnung = "Abgerechnet",
+                IsVisibleForAll = false
+            };
+
+            context.AuftragStatus.Add(status1);
+            context.AuftragStatus.Add(status2);
+            context.AuftragStatus.Add(status3);
+            context.AuftragStatus.Add(status4);
+
 
             // Rollen erzeugen
             if (!roleManager.RoleExists("Administration"))
