@@ -97,6 +97,7 @@ namespace ERPv1.Controllers
                 Text = "",
                 Value =""
             });
+            avm.IsCreate = true;
             var kunden = _db.Kunden.ToList();
             foreach (var k in kunden)
             {
@@ -131,6 +132,7 @@ namespace ERPv1.Controllers
                 ModelState.AddModelError(string.Empty, "Auftrag muss Waren beinhalten!");
             }
 
+            auftrag.IsCreate = true;
 
             if (ModelState.IsValid)
             {

@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ERPv1.Helpers;
-using ERPv1.Models;
 using ERPv1.Models.DbContext;
 using ERPv1.Models.ViewModels;
-using HiQPdf;
-using Microsoft.Ajax.Utilities;
 
 namespace ERPv1.Controllers
 {

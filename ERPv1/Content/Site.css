@@ -98,11 +98,13 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
     overflow-wrap: initial;
+    word-wrap: normal;
 }
 #selectionTable2 td,th {
     text-overflow: ellipsis;
     overflow: hidden;
     overflow-wrap: initial;
+    word-wrap: normal;
 }
 
 

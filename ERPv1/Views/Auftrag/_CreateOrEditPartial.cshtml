@@ -4,11 +4,9 @@
 {
     @Html.AntiForgeryToken()
     <script type="text/javascript">
-        $(this).submit(function() {
-            debugger;
+        $(this).submit(function () {
             for (var i = 0; i < $("#selectionTable2").DataTable().rows().data().length; i++) {
                 var entry = $("#selectionTable2").DataTable().rows().data()[i];
-                debugger;
                 $("#hiddenInputs").append("<input type=\"hidden\" name=\"SelectedWaren[" +
                     i +
                     "].LWID\" value=\"" +
@@ -27,7 +25,7 @@
                 $("#hiddenInputs").append("<input type=\"hidden\" name=\"SelectedWaren[" +
                     i +
                     "].Menge\" value=\"" +
-                    $("#selectionTable2").DataTable().cell(i,4).nodes().to$().find('input').val() +
+                    $("#selectionTable2").DataTable().cell(i, 4).nodes().to$().find('input').val() +
                     '"/>');
                 $("#hiddenInputs").append("<input type=\"hidden\" name=\"SelectedWaren[" +
                     i +
@@ -38,21 +36,22 @@
         });
     </script>
 
-
-
-
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    
+
     @Html.Partial("_AuftragInput", Model)
+
     <div id="hiddenInputs"></div>
     <div class="flex-row card-buttons">
         <input type="submit" value="Speichern" class="btn btn-primary" />
 
         @Html.ActionLink("Zurück zur Liste", "Index", null, new { @class = "btn btn-white text-dark" })
-        @if(User.IsInRole("Administration") || User.IsInRole("Abteilungsleiter"))
+
+        @if ((User.IsInRole("Administration") || User.IsInRole("Abteilungsleiter")) && !Model.IsCreate)
         {
-            @Html.ActionLink("Auftrag freigeben", "AuftragFreigeben", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-success" })
-            @Html.ActionLink("Auftrag revisionieren", "AuftragAbweisen", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-warning" })
+            <div class="float-right">
+                @Html.ActionLink("Auftrag freigeben", "AuftragFreigeben", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-success" })
+                @Html.ActionLink("Auftrag revisionieren", "AuftragAbweisen", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-warning" })
+            </div>
         }
     </div>
 

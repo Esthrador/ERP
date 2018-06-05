@@ -10,6 +10,7 @@ namespace ERPv1.Models.ViewModels
         public Auftrag AuftragToDo { get; set; }
         public List<WareViewModel> Waren { get; set; }
         public List<WareViewModel> SelectedWaren { get;set; }
+        public bool IsCreate { get; set; }
     }
 
     public class WareViewModel

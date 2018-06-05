@@ -85,8 +85,6 @@ namespace ERPv1.Migrations
                 context.AuftragStatus.Add(status4);
             }
 
-
-
             // Rollen erzeugen
             if (!roleManager.RoleExists("Administration"))
                 roleManager.Create(new IdentityRole("Administration"));
