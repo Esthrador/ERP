@@ -232,6 +232,10 @@
     <Compile Include="Migrations\201806041037092_LagerWarenFuerAuftragAufraeumen.Designer.cs">
       <DependentUpon>201806041037092_LagerWarenFuerAuftragAufraeumen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806050823495_RemoveBearbeiterFromAuftrag.cs" />
+    <Compile Include="Migrations\201806050823495_RemoveBearbeiterFromAuftrag.Designer.cs">
+      <DependentUpon>201806050823495_RemoveBearbeiterFromAuftrag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LagerWaren.cs" />
     <Compile Include="Models\IdentityModels\AccountViewModels.cs" />
@@ -826,6 +830,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806041037092_LagerWarenFuerAuftragAufraeumen.resx">
       <DependentUpon>201806041037092_LagerWarenFuerAuftragAufraeumen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806050823495_RemoveBearbeiterFromAuftrag.resx">
+      <DependentUpon>201806050823495_RemoveBearbeiterFromAuftrag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

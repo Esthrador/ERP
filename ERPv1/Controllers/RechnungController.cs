@@ -18,19 +18,22 @@ namespace ERPv1.Controllers
         private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         [AllowAnonymous]
-        public ActionResult ShowBillForContract(Auftrag auftrag)
+        public ActionResult ShowBillForContract(Guid auftragIdForBill)
         {
             var vm = new RechnungViewModel
             {
-                Auftrag = auftrag
+                Auftrag = _db.Auftrag.Find(auftragIdForBill)
             };
+
+            // Bearbeiter hinzufügen
+            vm.Bearbeiter = _db.Users.FirstOrDefault(x => x.Email == vm.Auftrag.ChangedBy);
 
             return View("~/Views/Shared/_Rechnung.cshtml", vm);
         }
 
         public ActionResult GenerateBillForContract(Guid auftragId)
         {
-            string url = Url.Action("ShowBillForContract", "Rechnung", new { auftrag = _db.Auftrag.Find(auftragId) }, Request.Url?.Scheme);
+            string url = Url.Action("ShowBillForContract", "Rechnung", new { auftragIdForBill = auftragId }, Request.Url?.Scheme);
 
             var pdfBuffer = PdfHelper.GeneratePdfFromByteArray(url);
 
