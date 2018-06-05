@@ -134,14 +134,8 @@ namespace ERPv1.Controllers
 
             if (ModelState.IsValid)
             {
-                Auftrag af = new Auftrag
-                {
-                    ID = Guid.NewGuid(),
-                    AuftragsDatum = auftrag.AuftragToDo.AuftragsDatum,
-                    RechnungsDatum = auftrag.AuftragToDo.RechnungsDatum,
-                    KundeId = auftrag.AuftragToDo.KundeId
-                };
-                af.Status = _db.AuftragStatus.SingleOrDefault(c => c.Bezeichnung.Equals("Angelegt"));
+                
+                auftrag.AuftragToDo.Status = _db.AuftragStatus.SingleOrDefault(c => c.Bezeichnung.Equals("Angelegt"));
 
                 auftrag.AuftragToDo.ID = Guid.NewGuid();
                 foreach (var ware in auftrag.SelectedWaren)
