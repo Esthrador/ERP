@@ -28,9 +28,11 @@ namespace ERPv1.Models
         public AuftragStatus Status { get; set; }
 
         [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name="Ausführungsdatum")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime AuftragsDatum { get; set; }
 
         [Required(ErrorMessage = "Das Feld {0} wird benötigt."), Display(Name="Rechnungsdatum")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime? RechnungsDatum { get; set; }
 
         [Display(Name="Anmerkungen")]

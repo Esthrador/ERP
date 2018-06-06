@@ -15,6 +15,7 @@ namespace ERPv1.Models.DbContext
             : base("DefaultConnection")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            Configuration.ProxyCreationEnabled = true;
         }
 
         public DbSet<Kunde> Kunden { get; set; }

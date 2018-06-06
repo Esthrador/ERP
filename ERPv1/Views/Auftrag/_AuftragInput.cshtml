@@ -10,7 +10,7 @@
             @Html.HiddenFor(model => model.AuftragToDo.Auftragsnummer)
             @Html.HiddenFor(model => model.AuftragToDo.CreatedBy)
             @Html.HiddenFor(model => model.AuftragToDo.CreatedOn)
-            
+
             @Html.HiddenFor(model => model.AuftragToDo.ChangedBy)
             @Html.HiddenFor(model => model.AuftragToDo.ChangedOn)
             @Html.HiddenFor(model => model.AuftragToDo.DeletedBy)
@@ -19,12 +19,12 @@
             {
                 for (int i = 0; i < Model.SelectedWaren.Count; i++)
                 {
-                    @Html.HiddenFor(c=>c.SelectedWaren[i].AWID)
+                    @Html.HiddenFor(c => c.SelectedWaren[i].AWID)
                     @Html.HiddenFor(c => c.SelectedWaren[i].Ware.Bezeichnung)
                 }
             }
         }
-       
+
 
         <div class="md-form">
             @Html.LabelFor(model => model.AuftragToDo.Bezeichnung)
@@ -34,7 +34,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.AuftragToDo.Kunde)
-            @Html.DropDownListFor(model => model.AuftragToDo.KundeId, Model.AuftragToDo.KundenAuswahl,  new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.AuftragToDo.KundeId, Model.AuftragToDo.KundenAuswahl, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.AuftragToDo.Notiz, "", new { @class = "text-danger" })
         </div>
 
@@ -52,7 +52,7 @@
     </div>
 
     <div class="col-6">
-        
+
         <div class="md-form">
             @Html.LabelFor(model => model.AuftragToDo.Notiz)
             @Html.EditorFor(model => model.AuftragToDo.Notiz, new { htmlAttributes = new { @class = "form-control" } })
@@ -61,20 +61,20 @@
 
         <div class="md-form">
             @Html.LabelFor(model => model.AuftragToDo.AuftragsDatum)
-            @Html.EditorFor(model => model.AuftragToDo.AuftragsDatum, new {htmlAttributes = new {@class = "form-control datepicker", @type = "text"}})
-            @Html.ValidationMessageFor(model => model.AuftragToDo.AuftragsDatum, "", new {@class = "text-danger"})
+            @Html.EditorFor(model => model.AuftragToDo.AuftragsDatum, new { htmlAttributes = new { @class = "form-control datepicker", @type = "text" } })
+            @Html.ValidationMessageFor(model => model.AuftragToDo.AuftragsDatum, "", new { @class = "text-danger" })
         </div>
 
         <div class="md-form">
             @Html.LabelFor(model => model.AuftragToDo.RechnungsDatum)
-            @Html.EditorFor(model => model.AuftragToDo.RechnungsDatum, new {htmlAttributes = new {@class = "form-control datepicker", @type = "text"}})
-            @Html.ValidationMessageFor(model => model.AuftragToDo.RechnungsDatum, "", new {@class = "text-danger"})
+            @Html.EditorFor(model => model.AuftragToDo.RechnungsDatum, new { htmlAttributes = new { @class = "form-control datepicker", @type = "text" } })
+            @Html.ValidationMessageFor(model => model.AuftragToDo.RechnungsDatum, "", new { @class = "text-danger" })
         </div>
 
     </div>
-    
-    
-    
+
+
+
 
 </div>
 <div class="row">
@@ -82,27 +82,27 @@
         <h5>Verfügbare Waren</h5>
         <table id="selectionTable" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
             <thead>
-            <tr>
-                <th class="no-pointer">ID - vorl.</th>
-                <th>@Html.DisplayName("Artikelnummer")</th>
-                <th>@Html.DisplayName("Bezeichnung")</th>
-                <th>@Html.DisplayName("Hersteller")</th>
-                <th>@Html.DisplayName("Menge")</th>
-                <th>@Html.DisplayName("Lager")</th>
-            </tr>
+                <tr>
+                    <th class="no-pointer">ID - vorl.</th>
+                    <th>@Html.DisplayName("Artikelnummer")</th>
+                    <th>@Html.DisplayName("Bezeichnung")</th>
+                    <th>@Html.DisplayName("Hersteller")</th>
+                    <th>@Html.DisplayName("Menge")</th>
+                    <th>@Html.DisplayName("Lager")</th>
+                </tr>
             </thead>
             <tbody>
-            @foreach (var wvm in Model.Waren)
-            {
-                <tr id="@wvm.LWID">
-                    <td></td>
-                    <td>@wvm.Ware.ArtikelNummer</td>
-                    <td>@wvm.Ware.KurzBezeichnung</td>
-                    <td>@wvm.Ware.HerstellerName</td>
-                    <td>@wvm.Menge</td>
-                    <td>@wvm.Lager</td>
-                </tr>
-            }
+                @foreach (var wvm in Model.Waren)
+                {
+                    <tr id="@wvm.LWID">
+                        <td></td>
+                        <td>@wvm.Ware.ArtikelNummer</td>
+                        <td>@wvm.Ware.KurzBezeichnung</td>
+                        <td>@wvm.Ware.HerstellerName</td>
+                        <td>@wvm.Menge</td>
+                        <td>@wvm.Lager</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
@@ -110,27 +110,27 @@
         <h5>Ausgewählte Waren</h5>
         <table id="selectionTable2" class="table table-striped table-bordered" style="width: 100%; padding-left: 0; padding-right: 0;">
             <thead>
-            <tr>
-                <th class="no-pointer">ID - vorl.</th>
-                <th>@Html.DisplayName("Artikelnummer")</th>
-                <th>@Html.DisplayName("Bezeichnung")</th>
-                <th>@Html.DisplayName("Hersteller")</th>
-                <th>@Html.DisplayName("Menge")</th>
-                <th>@Html.DisplayName("Lager")</th>
-            </tr>
+                <tr>
+                    <th class="no-pointer">ID - vorl.</th>
+                    <th>@Html.DisplayName("Artikelnummer")</th>
+                    <th>@Html.DisplayName("Bezeichnung")</th>
+                    <th>@Html.DisplayName("Hersteller")</th>
+                    <th>@Html.DisplayName("Menge")</th>
+                    <th>@Html.DisplayName("Lager")</th>
+                </tr>
             </thead>
             <tbody>
-            @foreach (var swvm in Model.SelectedWaren)
-            {
-                <tr id="@swvm.LWID">
-                    <td></td>
-                    <td>@swvm.Ware.ArtikelNummer</td>
-                    <td>@swvm.Ware.KurzBezeichnung</td>
-                    <td>@swvm.Ware.HerstellerName</td>
-                    <td><input type="number" class="form-control" value="@swvm.Menge"/></td>
-                    <td>@swvm.Lager</td>
-                </tr>
-            }
+                @foreach (var swvm in Model.SelectedWaren)
+                {
+                    <tr id="@swvm.LWID">
+                        <td></td>
+                        <td>@swvm.Ware.ArtikelNummer</td>
+                        <td>@swvm.Ware.KurzBezeichnung</td>
+                        <td>@swvm.Ware.HerstellerName</td>
+                        <td><input type="number" class="form-control" value="@swvm.Menge" /></td>
+                        <td>@swvm.Lager</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
@@ -138,17 +138,24 @@
 
 
 <script type="text/javascript">
-     $(document).ready(function() {
-         $(".datepicker").datepicker();
+    $(document).ready(function () {
 
+        // Validiert ein Datum    /^(([0-2]?[0-9]|3[0-1]).([0]?[1-9]|1[0-2]).[1-9]\d{3})$/
+        $.validator.methods.date = function (value, element, param) {
+            var validationResult = this.optional(element) || /^(([0-2]?[0-9]|3[0-1]).([0]?[1-9]|1[0-2]).[1-9]\d{3})$/.test(value);
+            return validationResult;
+        }
 
-         $("#selectionTable").bind('mouseenter',
-             function() {
-                 if ($(this).offsetWidth < $(this).scrollWidth && !$(this).attr('title')) {
-                     $(this).attr('title', $(this).text());
-                 }
-             });
+        $(".datepicker").datepicker({
+            format: 'dd.mm.yyyy',
+            autoclose: true
+        });
 
-
-     });
+        $("#selectionTable").bind('mouseenter',
+            function () {
+                if ($(this).offsetWidth < $(this).scrollWidth && !$(this).attr('title')) {
+                    $(this).attr('title', $(this).text());
+                }
+            });
+    });
 </script>

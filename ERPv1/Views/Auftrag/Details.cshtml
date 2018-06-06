@@ -21,11 +21,15 @@
         @Html.Partial("_AuftragInput", Model)
 
         <div class="flex-row card-buttons">
-            @Html.ActionLink("Bearbeiten", "Edit", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-primary" })
-            @Html.ActionLink("Löschen", "Delete", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-danger" })
+            @if (Model?.AuftragToDo?.Status != null && !Model.AuftragToDo.Status.Bezeichnung.Equals("Abgeschlossen") || Model?.AuftragToDo?.Status == null)
+            {
+                @Html.ActionLink("Bearbeiten", "Edit", new { id = Model?.AuftragToDo?.ID }, new { @class = "btn btn-primary" })
+            }
+
+            @Html.ActionLink("Löschen", "Delete", new { id = Model?.AuftragToDo?.ID }, new { @class = "btn btn-danger" })
             @Html.ActionLink("Zurück zur Liste", "Index", null, new { @class = "btn btn-white text-dark" })
-            
-            @if ((User.IsInRole("Administration") || User.IsInRole("Abteilungsleiter")) && !Model.IsCreate)
+
+            @if ((User.IsInRole("Administration") || User.IsInRole("Abteilungsleiter")) && !Model.IsCreate && Model?.AuftragToDo?.Status != null && !Model.AuftragToDo.Status.Bezeichnung.Equals("Abgeschlossen"))
             {
                 <div class="float-right">
                     @Html.ActionLink("Auftrag freigeben", "AuftragFreigeben", new { id = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-success" })
@@ -41,7 +45,7 @@
             @if (Model?.AuftragToDo.Status != null && Model.AuftragToDo.Status.Bezeichnung.Equals("Abgeschlossen") && User.IsInRole("Abteilungsleiter"))
             {
                 <div class="float-right">
-                    @Html.ActionLink("Rechnung verschicken & herunterladen", "GenerateBillForContract", "Rechnung", new { auftragId = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-success" , target = "_blank"})
+                    @Html.ActionLink("Rechnung verschicken & herunterladen", "GenerateBillForContract", "Rechnung", new { auftragId = Model?.AuftragToDo.ID }, new { @class = "btn btn-outline-success", target = "_blank" })
                 </div>
             }
         </div>
