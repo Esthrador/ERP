@@ -50,7 +50,7 @@ namespace ERPv1.Models.DbContext
                 if (e.State == EntityState.Added)
                 {
                     ((BaseClass) e.Entity).CreatedBy = au?.UserName ?? "Anonymous";
-                    ((BaseClass) e.Entity).CreatedOn = DateTime.Now;
+                    ((BaseClass) e.Entity).CreatedOn = ((BaseClass)e.Entity).CreatedOn == DateTime.MinValue ? DateTime.Now : ((BaseClass)e.Entity).CreatedOn;
                 }
                 if (e.State == EntityState.Deleted)
                 {

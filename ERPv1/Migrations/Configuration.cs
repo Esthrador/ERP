@@ -295,7 +295,8 @@ namespace ERPv1.Migrations
                 });
             }
 
-
+            // Anderweitige Änderungen speichern
+            context.SaveChanges();
 
             // Rollen erzeugen
             if (!roleManager.RoleExists("Administration"))
@@ -353,11 +354,8 @@ namespace ERPv1.Migrations
                 userManager.AddToRole(mitarbeiter1User.Id, "Mitarbeiter");
             }
 
-
-
             // Anderweitige Änderungen speichern
             context.SaveChanges();
-
         }
     }
 }

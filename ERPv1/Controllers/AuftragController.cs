@@ -156,9 +156,9 @@ namespace ERPv1.Controllers
                 {
                     var lagerWare = _db.LagerWaren.Find(wareViewModel.LWID);
                     var auftragWaren = _db.AuftragWaren.Where(x =>
-                        (x.Auftrag.Status != null && !x.Auftrag.Status.Bezeichnung.Equals("Abgeschlossen")) ||
-                        x.Auftrag.Status == null);
-                    var schwebendeMenge = auftragWaren.Where(x => x.LagerWare.WareID == lagerWare.WareID).Sum(x => x.Menge);
+                        ((x.Auftrag.Status != null && !x.Auftrag.Status.Bezeichnung.Equals("Abgeschlossen")) ||
+                         x.Auftrag.Status == null) && x.Auftrag.DeletedOn == null && x.AuftragWarenID != wareViewModel.AWID && x.Auftrag != null);
+                    var schwebendeMenge = auftragWaren.Where(x => x.LagerWare != null && x.LagerWare.WareID == lagerWare.WareID).ToList().Sum(x => x.Menge);
 
                     if ((lagerWare?.Menge - schwebendeMenge) < wareViewModel.Menge)
                         ModelState.AddModelError(string.Empty, $@"Die Ware {wareViewModel.Ware.ArtikelNummer} ist in der Menge nicht mehr vorhanden!");
@@ -315,9 +315,9 @@ namespace ERPv1.Controllers
                 {
                     var lagerWare = _db.LagerWaren.Find(wareViewModel.LWID);
                     var auftragWaren = _db.AuftragWaren.Where(x =>
-                        (x.Auftrag.Status != null && !x.Auftrag.Status.Bezeichnung.Equals("Abgeschlossen")) ||
-                        x.Auftrag.Status == null);
-                    var schwebendeMenge = auftragWaren.Where(x => x.LagerWare.WareID == lagerWare.WareID).Sum(x => x.Menge);
+                        ((x.Auftrag.Status != null && !x.Auftrag.Status.Bezeichnung.Equals("Abgeschlossen")) ||
+                        x.Auftrag.Status == null) && x.Auftrag.DeletedOn == null && x.AuftragWarenID != wareViewModel.AWID && x.Auftrag != null);
+                    var schwebendeMenge = auftragWaren.Where(x => x.LagerWare != null && x.LagerWare.WareID == lagerWare.WareID).ToList().Sum(x => x.Menge);
 
                     if ((lagerWare?.Menge - schwebendeMenge) < wareViewModel.Menge)
                         ModelState.AddModelError(string.Empty, $@"Die Ware {wareViewModel.Ware.ArtikelNummer} ist in der Menge nicht mehr vorhanden!");
@@ -328,6 +328,7 @@ namespace ERPv1.Controllers
             {
                 _db.Entry(auftrag.AuftragToDo).State = EntityState.Modified;
 
+                auftrag.SelectedWaren = auftrag.SelectedWaren ?? new List<WareViewModel>();
                 foreach (var wareViewModel in auftrag.SelectedWaren)
                 {
                     var aw = _db.AuftragWaren.SingleOrDefault(c => c.AuftragWarenID == wareViewModel.AWID);
@@ -432,6 +433,14 @@ namespace ERPv1.Controllers
             Auftrag auftrag = _db.Auftrag.Find(id);
             if (auftrag != null)
             {
+                foreach (var auftragWaren in auftrag.AuftragWaren)
+                {
+                    var lagerWare = _db.LagerWaren.Find(auftragWaren.LagerWareID);
+
+                    if (lagerWare != null)
+                        lagerWare.Menge -= auftragWaren.Menge;
+                }
+
                 auftrag.StatusId = _db.AuftragStatus.SingleOrDefault(c => c.Bezeichnung.Equals("Abgeschlossen"))?.ID;
                 _db.SaveChanges();
             }
