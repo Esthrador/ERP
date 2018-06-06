@@ -84,6 +84,218 @@ namespace ERPv1.Migrations
                 };
                 context.AuftragStatus.Add(status4);
             }
+            
+            if (!context.Waren.Any(c => c.ArtikelNummer.Equals("10234587")))
+            {
+                context.Waren.Add(new Ware
+                {
+                    ArtikelNummer = "10234587",
+                    Anzahl = 1000,
+                    Bezeichnung = "Kinder Riegel",
+                    KurzBezeichnung = "Kinder Riegel",
+                    ID = Guid.NewGuid(),
+                    EinzelGewicht = 225,
+                    EinzelPreis = 2.99,
+                    HerstellerName = "Ferrero",
+                    Notiz = "MROEH SUGARZ"
+                });
+            }
+            if (!context.Waren.Any(c => c.ArtikelNummer.Equals("20234587")))
+            {
+                context.Waren.Add(new Ware
+                {
+                    ArtikelNummer = "20234587",
+                    Anzahl = 1000,
+                    Bezeichnung = "Samsung Galaxy S7",
+                    KurzBezeichnung = "Samsung Galaxy S7",
+                    ID = Guid.NewGuid(),
+                    EinzelGewicht = 225,
+                    EinzelPreis = 700.99,
+                    HerstellerName = "Samsung",
+                    Notiz = "Gib Phonez"
+                });
+            }
+            if (!context.Waren.Any(c => c.ArtikelNummer.Equals("30123476")))
+            {
+                context.Waren.Add(new Ware
+                {
+                    ArtikelNummer = "30123476",
+                    Anzahl = 1000,
+                    Bezeichnung = "Kingston DDR3-RAM 4GB 1866MHz",
+                    KurzBezeichnung = "4GB RAM",
+                    ID = Guid.NewGuid(),
+                    EinzelGewicht = 225,
+                    EinzelPreis = 299,
+                    HerstellerName = "Kingston",
+                    Notiz = "Gief RAM plox :DDd"
+                });
+            }
+            if (!context.Waren.Any(c => c.ArtikelNummer.Equals("51678301")))
+            {
+                context.Waren.Add(new Ware
+                {
+                    ArtikelNummer = "51678301",
+                    Anzahl = 1000,
+                    Bezeichnung = "Lucky Strike Big Pack",
+                    KurzBezeichnung = "Lucky Strike ",
+                    ID = Guid.NewGuid(),
+                    EinzelGewicht = 225,
+                    EinzelPreis = 6.5,
+                    HerstellerName = "BAT",
+                    Notiz = "Hust hust"
+                });
+            }
+            if (!context.Waren.Any(c => c.ArtikelNummer.Equals("66601337")))
+            {
+                context.Waren.Add(new Ware
+                {
+                    ArtikelNummer = "66601337",
+                    Anzahl = 1000,
+                    Bezeichnung = "Necronomicon",
+                    KurzBezeichnung = "Necronomicon",
+                    ID = Guid.NewGuid(),
+                    EinzelGewicht = 225,
+                    EinzelPreis = 100,
+                    HerstellerName = "Illuminati",
+                    Notiz = "MROEH DVEILZ"
+                });
+            }
+
+            if (!context.Lager.Any())
+            {
+                context.Lager.Add(new Lager
+                {
+                    Bezeichnung = "Hauptlager",
+                    ID = Guid.NewGuid(),
+                    Adresse = "Strasse 1",
+                    Ort = "Hamburg",
+                    PLZ = "22022",
+                    Standort = "Hamburg Süd"
+                });
+                context.Lager.Add(new Lager
+                {
+                    Bezeichnung = "Nebenlager",
+                    ID = Guid.NewGuid(),
+                    Adresse = "Strasse 1",
+                    Ort = "Reinbek",
+                    PLZ = "21465",
+                    Standort = "Hamburg Ost"
+                });
+            }
+
+            var now = DateTime.Now.Month;
+            if (!context.Kunden.Any(c => c.CreatedOn.Month < now))
+            {
+                context.Kunden.Add(new Kunde
+                {
+                    ID = Guid.NewGuid(),
+                    KurzBezeichnung = "Erster Kunde",
+                    Vorname = "Hans",
+                    Nachname = "Meiser",
+                    PLZ = "01234",
+                    Ort = "Duisburg",
+                    Addresse = "Strasse 1",
+                    Email = "a@a.a",
+                    Tel = "04043218765",
+                    CreatedOn = new DateTime(2018,4,23)
+                });
+                context.Kunden.Add(new Kunde
+                {
+                    ID = Guid.NewGuid(),
+                    KurzBezeichnung = "Zweiter Kunde",
+                    Vorname = "Horst",
+                    Nachname = "Seehofer",
+                    PLZ = "81234",
+                    Ort = "München",
+                    Addresse = "Strasse 1",
+                    Email = "a@a.a",
+                    Tel = "04043218765",
+                    CreatedOn = new DateTime(2018,4,26)
+                });
+                context.Kunden.Add(new Kunde
+                {
+                    ID = Guid.NewGuid(),
+                    KurzBezeichnung = "Dritter Kunde",
+                    Vorname = "Deutsche Bank",
+                    Nachname = "..",
+                    IsFirma = true,
+                    PLZ = "41234",
+                    Ort = "Frankfurt",
+                    Addresse = "Strasse 1",
+                    Email = "a@a.a",
+                    Tel = "04043218765",
+                    CreatedOn = new DateTime(2018,5,3)
+                });
+                context.Kunden.Add(new Kunde
+                {
+                    ID = Guid.NewGuid(),
+                    KurzBezeichnung = "Vierter Kunde",
+                    Vorname = "Röhrich & Co. Sanitärbetriebe GmbH",
+                    Nachname = "..",
+                    PLZ = "24234",
+                    Ort = "Husum",
+                    Addresse = "Strasse 1",
+                    IsFirma = true,
+                    Email = "a@a.a",
+                    Tel = "04043218765",
+                    CreatedOn = new DateTime(2018,5,3)
+                });
+                context.Kunden.Add(new Kunde
+                {
+                    ID = Guid.NewGuid(),
+                    KurzBezeichnung = "Fünfter Kunde",
+                    Vorname = "Hans",
+                    Nachname = "Meiser",
+                    PLZ = "01234",
+                    Ort = "Halle",
+                    Addresse = "Strasse 1",
+                    Email = "a@a.a",
+                    Tel = "04043218765",
+                    CreatedOn = new DateTime(2018,5,12)
+                });
+                context.Kunden.Add(new Kunde
+                {
+                    ID = Guid.NewGuid(),
+                    KurzBezeichnung = "Sechster Kunde",
+                    Vorname = "Reinhardt",
+                    Nachname = "Köchler",
+                    PLZ = "21465",
+                    Ort = "Reinbek",
+                    Addresse = "Strasse 1",
+                    Email = "a@a.a",
+                    Tel = "04043218765",
+                    CreatedOn = new DateTime(2018,5,26)
+                });
+                context.Kunden.Add(new Kunde
+                {
+                    ID = Guid.NewGuid(),
+                    KurzBezeichnung = "Siebter Kunde",
+                    Vorname = "Soul Kebap",
+                    Nachname = "..",
+                    IsFirma = true,
+                    PLZ = "01234",
+                    Ort = "Duisburg",
+                    Addresse = "Strasse 1",
+                    Email = "a@a.a",
+                    Tel = "04043218765",
+                    CreatedOn = new DateTime(2018,6,3)
+                });
+                context.Kunden.Add(new Kunde
+                {
+                    ID = Guid.NewGuid(),
+                    KurzBezeichnung = "Achter Kunde",
+                    Vorname = "Timo",
+                    Nachname = "Sattler",
+                    PLZ = "21031",
+                    Ort = "Hamburg",
+                    Addresse = "Binnenfeldredder 30",
+                    Email = "a@a.a",
+                    Tel = "04043218765",
+                    CreatedOn = new DateTime(2018,6,4)
+                });
+            }
+
+
 
             // Rollen erzeugen
             if (!roleManager.RoleExists("Administration"))
@@ -140,6 +352,8 @@ namespace ERPv1.Migrations
                 userManager.Create(mitarbeiter1User, "Pw123456#");
                 userManager.AddToRole(mitarbeiter1User.Id, "Mitarbeiter");
             }
+
+
 
             // Anderweitige Änderungen speichern
             context.SaveChanges();

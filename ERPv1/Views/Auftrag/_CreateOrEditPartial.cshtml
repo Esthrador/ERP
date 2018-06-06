@@ -45,7 +45,7 @@
         <input type="submit" value="Speichern" class="btn btn-primary" />
 
         @Html.ActionLink("Zurück zur Liste", "Index", null, new { @class = "btn btn-white text-dark" })
-
+        
         @if ((User.IsInRole("Administration") || User.IsInRole("Abteilungsleiter")) && !Model.IsCreate)
         {
             <div class="float-right">
