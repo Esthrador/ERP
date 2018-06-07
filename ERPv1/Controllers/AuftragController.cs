@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using EntityFramework.DynamicFilters;
 using ERPv1.Models;
 using ERPv1.Models.DbContext;
 using ERPv1.Models.ViewModels;
@@ -176,7 +177,9 @@ namespace ERPv1.Controllers
                 var auftragsnummer = 0;
                 try
                 {
+                    _db.DisableFilter("Deleted");
                     auftragsnummer = _db.Auftrag.Max(x => x.Auftragsnummer) + 1;
+                    _db.EnableFilter("Deleted");
                 }
                 catch
                 {

@@ -86,23 +86,28 @@
             </tr>
         </thead>
         <tbody>
-        <tr>
             @{
                 var gesamtSumme = 0.00;
             }
+
             @foreach (var auftragWaren in Model.Auftrag.AuftragWaren)
             {
-                var ware = auftragWaren.LagerWare.Ware;
+                <tr>
 
-                gesamtSumme += auftragWaren.Menge * ware.EinzelPreis;
+                    @{
+                        var ware = auftragWaren.LagerWare.Ware;
 
-                <td>@(ware.ArtikelNummer)</td>
-                <td>@(ware.KurzBezeichnung)</td>
-                <td>@(ware.EinzelPreis.ToEuro())</td>
-                <td>@(auftragWaren.Menge)</td>
-                <td>@((auftragWaren.Menge * ware.EinzelPreis).ToEuro())</td>
+                        gesamtSumme += auftragWaren.Menge * ware.EinzelPreis;
+                    }
+
+                    <td>@(ware.ArtikelNummer)</td>
+                    <td>@(ware.KurzBezeichnung)</td>
+                    <td>@(ware.EinzelPreis.ToEuro())</td>
+                    <td>@(auftragWaren.Menge)</td>
+                    <td>@((auftragWaren.Menge * ware.EinzelPreis).ToEuro())</td>
+                </tr>
             }
-        </tr>
+
         </tbody>
     </table>
 
@@ -111,12 +116,14 @@
             <span class="float-right font-weight-bold">Gesamtsumme: @(gesamtSumme.ToEuro())</span>
         </div>
     </div>
-    
+
     <!-- ADDITIONAL TEXT -->
     <div class="row" style="margin-top: 10px; font-size: 12px">
         <div class="col">
-            <span>Zahlbar bis zum: @(DateTime.Now.AddDays(14).ToString("dd.MM.yyyy"))<br/>
-            Vielen Dank für Ihre Bestellung. Bitte empfehlen Sie uns weiter!</span>
+            <span>
+                Zahlbar bis zum: @(DateTime.Now.AddDays(14).ToString("dd.MM.yyyy"))<br />
+                Vielen Dank für Ihre Bestellung. Bitte empfehlen Sie uns weiter!
+            </span>
         </div>
     </div>
 
